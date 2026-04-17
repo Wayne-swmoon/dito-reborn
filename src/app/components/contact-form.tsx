@@ -1,5 +1,21 @@
 import { Phone, Mail, MessageSquare, User } from "lucide-react";
 import { useState } from "react";
+import { initializeApp } from "firebase/app";
+import { getFirestore, addDoc, collection, serverTimestamp } from "firebase/firestore";
+import emailjs from "@emailjs/browser";
+
+// Firebase 설정 (환경 변수 사용)
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -10,17 +26,50 @@ export function ContactForm() {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // 전송 중 상태를 관리하는 변수 (버튼 중복 클릭 방지)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // 실제 환경에서는 API 호출 처리
-    alert("상담 신청이 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.");
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-      debtAmount: "",
-      message: ""
-    });
+    setIsSubmitting(true); // 버튼을 '접수 중...' 상태로 변경
+
+    try {
+      // 1. Firebase 데이터베이스에 저장
+      await addDoc(collection(db, "consultations"), {
+        ...formData,
+        createdAt: serverTimestamp(),
+      });
+
+      // 2. EmailJS로 관리자에게 이메일 발송
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          debt_amount: formData.debtAmount,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      alert("상담 신청이 성공적으로 접수되었습니다. 담당자가 곧 연락드리겠습니다!");
+      
+      // 폼 초기화
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        debtAmount: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error("접수 중 오류 발생:", error);
+      alert("접수 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+    } finally {
+      setIsSubmitting(false); // 전송이 끝나면 다시 버튼 활성화
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -195,9 +244,10 @@ export function ContactForm() {
 
               <button
                 type="submit"
-                className="w-full py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-colors shadow-lg"
+                disabled={isSubmitting}
+                className="w-full py-4 bg-primary hover:bg-primary/90 disabled:bg-gray-400 text-white font-semibold rounded-lg transition-colors shadow-lg"
               >
-                무료 상담 신청하기
+                {isSubmitting ? "접수 중..." : "무료 상담 신청하기"}
               </button>
 
               <p className="text-xs text-gray-500 text-center">
