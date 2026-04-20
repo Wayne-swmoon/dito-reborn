@@ -87,7 +87,10 @@ export function ContactForm() {
             무료 상담 신청
           </h2>
           <p className="text-lg text-gray-300">
-            지금 바로 신청하시면 24시간 내 전문가가 연락드립니다
+            당신의 삶을 바꾸세요!
+          </p>
+          <p className="text-lg text-gray-300">
+            지금 바로 신청하시면 24시간 내 전문가가 직접 연락드립니다
           </p>
         </div>
 
@@ -105,7 +108,7 @@ export function ContactForm() {
                   </div>
                   <div>
                     <div className="mb-1">전화 상담</div>
-                    <div className="text-2xl text-primary font-semibold">0507-1342-5755</div>
+                    <div className="text-2xl text-primary font-semibold">051-951-4088</div>
                     <div className="text-sm text-gray-400 mt-1">평일 09:00 - 18:00 (주말, 공휴일 휴무)</div>
                   </div>
                 </div>
@@ -126,9 +129,9 @@ export function ContactForm() {
                     <MessageSquare className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="mb-1">카카오톡 상담</div>
-                    <div className="text-primary">@개인회생상담</div>
-                    <div className="text-sm text-gray-400 mt-1">실시간 채팅 상담</div>
+                    <div className="mb-1">출장 상담서비스 안내</div>
+                    <div className="text-primary">원하는 곳까지 직접 찾아가는 서비스</div>
+                    <div className="text-sm text-gray-400 mt-1">출장비용 발생. 상담 시 협의</div>
                   </div>
                 </div>
               </div>

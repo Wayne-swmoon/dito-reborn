@@ -4,18 +4,18 @@ export function Features() {
   const features = [
     {
       icon: Shield,
-      title: "법무법인 공식 파트너",
-      description: "대형 법무법인과 공식 제휴로 안전하고 정확한 법률 서비스를 제공합니다."
+      title: "개인회생 전문센터",
+      description: "판사 출신 변호사가 안전하고 정확한 법률 서비스를 제공합니다."
     },
     {
       icon: Users,
       title: "15년 경력 전문가",
-      description: "개인회생 전문 변호사와 채무 전문가가 직접 상담하고 진행합니다."
+      description: "개인회생 전문 변호사, 전담 사무장이 직접 상담하고 진행합니다."
     },
     {
       icon: FileCheck,
       title: "승인율 97.8%",
-      description: "2024년 기준 97.8%의 높은 승인율로 검증된 노하우를 제공합니다."
+      description: "2024년, 2025년 기준 97.8%의 높은 승인율로 검증된 노하우를 제공합니다."
     },
     {
       icon: HeadphonesIcon,
@@ -24,8 +24,8 @@ export function Features() {
     },
     {
       icon: Award,
-      title: "성공 보수제",
-      description: "초기 비용 부담 없이 시작할 수 있으며, 성공 후 합리적인 비용만 청구합니다."
+      title: "초기 상담무료, 비용 분할납부 가능",
+      description: "초기 비용 부담 없이 상담을 진행하세요. 그리고, 분할납부로 부담없이 진행하세요."
     },
     {
       icon: Lock,

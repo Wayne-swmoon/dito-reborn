@@ -668,6 +668,7 @@ export function SelfDiagnosis() {
                 </div>
 
                 {/* PDF 리포트 안내 */}
+                {/*}
                 {!isPaid && (
                   <div className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-lg p-6 mb-6">
                     <div className="flex items-start gap-4">
@@ -702,7 +703,7 @@ export function SelfDiagnosis() {
                     </div>
                   </div>
                 )}
-
+                */}
                 {/* 기본 정보 요약 */}
                 <div className="bg-gray-50 rounded-lg p-6 mb-6 border">
                   <h4 className="font-semibold text-gray-900 mb-3">📊 진단 결과 요약</h4>
@@ -768,6 +769,7 @@ export function SelfDiagnosis() {
       </div>
 
       {/* 결제 다이얼로그 */}
+      {/*
       <Dialog open={showPayment} onOpenChange={setShowPayment}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
@@ -815,6 +817,7 @@ export function SelfDiagnosis() {
           </div>
         </DialogContent>
       </Dialog>
+      */}
     </section>
   );
 }

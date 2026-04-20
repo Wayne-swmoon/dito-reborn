@@ -1,8 +1,9 @@
-import { Phone, FileText, CheckSquare, Scale, CheckCircle2 } from "lucide-react";
+import { Phone, FileText, CheckSquare, Scale, CheckCircle2, PhoneCall } from "lucide-react";
 
 export function ProcessSteps() {
   const steps = [
     {
+      icon: PhoneCall,
       title: "1. 무료 상담",
       description: "전화 또는 온라인으로 간편하게 상담을 받으세요. 개인회생 가능 여부를 즉시 확인해드립니다.",
       color: "bg-primary/10 text-primary"
@@ -16,7 +17,7 @@ export function ProcessSteps() {
     {
       icon: CheckSquare,
       title: "3. 법원 신청",
-      description: "변호사가 직접 법원에 개인회생을 신청하고, 법원 면담까지 동행합니다.",
+      description: "변호사가 직접 법원에 개인회생을 신청하고, 전담 매니저가 끝까지 함께합니다.",
       color: "bg-primary/20 text-primary"
     },
     {

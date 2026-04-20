@@ -1,2 +1,20 @@
-@import url('https://fonts.cdnfonts.com/css/br-cobane');
-@import url('https://fonts.cdnfonts.com/css/asta-sans');
+/* 안정적인 프리텐다드 CDN 사용 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+
+:root {
+  /* 한글/영문 모두 프리텐다드로 통일 (가장 깔끔함) */
+  --font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  /* 가독성을 높이는 마법의 한 줄 */
+  letter-spacing: -0.01em; 
+  line-height: 1.6;
+}
+
+/* 제목은 조금 더 좁은 자간으로 전문성 강조 */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}

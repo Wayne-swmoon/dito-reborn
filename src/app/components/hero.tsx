@@ -14,13 +14,13 @@ export function Hero() {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="inline-block px-4 py-2 bg-white/20 rounded-full">
-              <p className="text-sm">✓ 변호사 김태기 법률사무소</p>
+              <p className="text-sm">✓ 변호사 김태기 법률사무소 개인회생 전문센터</p>
             </div>
 
             <h1 className="text-4xl lg:text-5xl xl:text-6xl">
-              빚 때문에 힘드신가요?<br />
+              빚 때문에 힘드신가요?<br /><br />
               <span className="text-primary">개인회생</span>으로<br />
-              새로운 시작을 하세요
+              당신의 <span className="text-primary">삶</span>을 바꾸세요!
             </h1>
             
             <p className="text-lg text-gray-300">
@@ -36,7 +36,7 @@ export function Hero() {
 
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                <span>승인율 97.8% 달성 (2024년 기준)</span>
+                <span>승인율 97.8% 달성 (2024년, 2025년 기준)</span>
               </div>
 
               <div className="flex items-center gap-3">
@@ -77,7 +77,7 @@ export function Hero() {
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="text-xl">
-                  "개인회생 후 새로운 삶을 시작했습니다"
+                  "개인회생 후 새로운 삶을 시작했습니다!"
                 </p>
               </div>
             </div>
