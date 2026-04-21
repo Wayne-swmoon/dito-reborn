@@ -125,7 +125,7 @@ export function ContactForm() {
                   </div>
                   <div>
                     <div className="mb-1">전화 상담</div>
-                    <div className="text-2xl text-primary font-semibold">070-8064-6525</div>
+                    <div className="text-2xl text-primary font-semibold"><a href="tel:070-8064-6525">070-8064-6525</a></div>
                     <div className="text-sm text-gray-400 mt-1">평일 09:00 - 18:00 (주말, 공휴일 휴무)</div>
                   </div>
                 </div>
