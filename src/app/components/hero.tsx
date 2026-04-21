@@ -14,34 +14,35 @@ export function Hero() {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="inline-block px-4 py-2 bg-white/20 rounded-full">
-              <p className="text-sm">✓ 변호사 김태기 법률사무소 개인회생 전문센터</p>
+              <p className="text-sm">✓ 변호사 김태기 법률사무소 개인회생·파산 전문센터</p>
             </div>
 
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl">
-              빚 때문에 힘드신가요?<br /><br />
-              <span className="text-primary">개인회생</span>으로<br />
+            <h1 className="text-4xl lg:text-5xl xl:text-6xl leading-tight">
+              이젠 결정하세요!<br /><br />
+              최적의 <span className="text-primary">탕감 솔루션</span>으로<br />
               당신의 <span className="text-primary">삶</span>을 바꾸세요!
             </h1>
             
             <p className="text-lg text-gray-300">
-              채무 최대 90% 감면, 이자 전액 면제<br />
-              15년 경력의 전문가가 성공까지 책임집니다
+              소득이 있다면 회생, 소득이 없다면 파산 전액 면책<br />
+              15년 이상 경력의 전문가가 함께하여,<br />
+              당신의 상황에 꼭 맞는 최적의 탕감 솔루션을 제시합니다.
             </p>
 
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                <span>상담료 및 초기 비용 무료</span>
+                <span>상담 무료 | 출장 상담 가능 (비용 협의)</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                <span>승인율 97.8% 달성 (2024년, 2025년 기준)</span>
+                <span>회생·파산 인가율 97.8% 달성 (2024~2025년 기준)</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                <span>서류 준비부터 법원 인가까지 전담 지원</span>
+                <span>원금 최대 90% ~ 100% 전액 감면 지원</span>
               </div>
             </div>
 
@@ -77,7 +78,7 @@ export function Hero() {
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="text-xl">
-                  "개인회생 후 새로운 삶을 시작했습니다!"
+                  "회생과 파산 중 저에게 맞는 길을 찾았습니다!"
                 </p>
               </div>
             </div>

@@ -8,6 +8,7 @@ import { FAQ } from "./components/faq";
 import { ContactForm } from "./components/contact-form";
 import { Footer } from "./components/footer";
 import { SelfDiagnosis } from "./components/self-diagnosis";
+import { ComparisonSection } from "./components/comparison-section";
 
 // 경로 주의! 아까 성공했던 그 경로 그대로 써줘.
 import PreviewPage from "../pages/PreviewPage"; 
@@ -21,6 +22,7 @@ export default function App() {
           <div className="min-h-screen bg-white">
             <Hero />
             <Stats />
+            <ComparisonSection />
             <SelfDiagnosis />
             <ProcessSteps />
             <Features />

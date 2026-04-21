@@ -4,33 +4,33 @@ export function Features() {
   const features = [
     {
       icon: Shield,
-      title: "개인회생 전문센터",
-      description: "판사 출신 변호사가 안전하고 정확한 법률 서비스를 제공합니다."
+      title: "개인회생·파산 전문센터",
+      description: "풍부한 실무 경험을 갖춘 판사 출신 변호사가 안전하고 정확한 맞춤형 법률 서비스를 제공합니다."
     },
     {
       icon: Users,
-      title: "15년 경력 전문가",
-      description: "개인회생 전문 변호사, 전담 사무장이 직접 상담하고 진행합니다."
+      title: "15년 경력 전문가 전담",
+      description: "회생·파산 사건을 전담해 온 전문 변호사와 대표 사무장이 직접 상담부터 최종 인가/면책까지 책임집니다."
     },
     {
       icon: FileCheck,
-      title: "승인율 97.8%",
-      description: "2024년, 2025년 기준 97.8%의 높은 승인율로 검증된 노하우를 제공합니다."
+      title: "인가 및 면책 성공률 97.8%",
+      description: "2024~2025년 기준 97.8%의 압도적인 성공률로 검증된 노하우와 철저한 사건 관리 시스템을 자랑합니다."
     },
     {
       icon: HeadphonesIcon,
-      title: "전담 매니저 배정",
-      description: "처음부터 끝까지 1:1 전담 매니저가 모든 과정을 책임집니다."
+      title: "1:1 전담 매니저 밀착 관리",
+      description: "상담부터 복잡한 서류 준비, 법원 보정 권고 대응까지 1:1 전담 매니저가 배치되어 모든 과정을 밀착 지원합니다."
     },
     {
       icon: Award,
-      title: "초기 상담무료, 비용 분할납부 가능",
-      description: "초기 비용 부담 없이 상담을 진행하세요. 그리고, 분할납부로 부담없이 진행하세요."
+      title: "100% 무료 상담 및 비용 분할납부",
+      description: "초기 비용 부담 없이 1:1 맞춤 진단을 받아보세요. 수임료 자체 분할 납부 시스템으로 당장의 경제적 부담을 확실히 덜어드립니다."
     },
     {
       icon: Lock,
-      title: "철저한 보안",
-      description: "개인정보는 암호화되어 관리되며, 상담 내용은 절대 외부에 유출되지 않습니다."
+      title: "가족/직장 철저한 비밀 보장",
+      description: "직장이나 가족 모르게 조용히 진행 가능합니다. 모든 상담 내용과 개인정보는 변호사법에 의거하여 철저히 보안 유지됩니다."
     }
   ];
 
@@ -38,11 +38,11 @@ export function Features() {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl mb-4">
-            왜 저희를 선택해야 할까요?
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900">
+            왜 김태기 법률사무소일까요?
           </h2>
           <p className="text-lg text-gray-600">
-            15년간 5,000건 이상의 성공 사례로 검증된 전문성
+            15년간 5,000건 이상의 압도적인 성공 사례로 검증된 전문성
           </p>
         </div>
 
@@ -52,15 +52,15 @@ export function Features() {
             return (
               <div 
                 key={index}
-                className="p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+                className="p-8 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group"
               >
-                <div className="w-14 h-14 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-5">
+                <div className="w-14 h-14 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   <Icon className="w-7 h-7" />
                 </div>
-                <h3 className="text-xl mb-3">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-sm">
                   {feature.description}
                 </p>
               </div>

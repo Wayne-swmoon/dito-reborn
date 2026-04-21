@@ -11,7 +11,8 @@ import {
   AlertCircle,
   TrendingUp,
   Shield,
-  Briefcase
+  Briefcase,
+  Scale // 파산 결과용 아이콘 추가
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
@@ -104,14 +105,14 @@ const questions: Question[] = [
     id: "income_type",
     category: "소득 정보",
     question: "현재 소득의 형태는 어떻게 되시나요?",
-    helpText: "개인회생은 정기적인 소득이 필수입니다. 소득의 안정성과 지속성이 중요한 판단 기준입니다.",
+    helpText: "개인회생은 정기적인 소득이 필수입니다. 소득이 없는 경우 파산을 고려해야 합니다.",
     options: [
       { value: "salary", label: "급여소득 (정규직)", points: 15, description: "가장 안정적" },
       { value: "contract", label: "계약직 / 일용직", points: 12 },
       { value: "business", label: "사업소득 (자영업)", points: 10 },
       { value: "pension", label: "연금 / 임대소득", points: 13 },
       { value: "irregular", label: "불규칙한 소득", points: 5 },
-      { value: "none", label: "소득 없음", points: 0, description: "개인회생 어려움" },
+      { value: "none", label: "소득 없음", points: 0, description: "개인파산 면책 대상" },
     ],
   },
   {
@@ -202,7 +203,7 @@ const questions: Question[] = [
     id: "lawsuit",
     category: "법적 이력",
     question: "현재 진행 중인 소송이나 법적 분쟁이 있나요?",
-    helpText: "민사소송, 가압류, 가처분 등이 진행 중이어도 개인회생 신청은 가능하나, 복잡도가 증가할 수 있습니다.",
+    helpText: "민사소송, 가압류, 가처분 등이 진행 중이어도 신청은 가능하나, 복잡도가 증가할 수 있습니다.",
     options: [
       { value: "none", label: "없음", points: 10 },
       { value: "pending", label: "진행 중", points: 5 },
@@ -305,10 +306,16 @@ export function SelfDiagnosis() {
     return categoryScores;
   };
 
-  const getRecommendations = (percentage: number, categoryScores: Record<string, { score: number; max: number }>) => {
+  // ✅ [수정] answers 데이터를 파라미터로 받아 파산 추천 여부 결정
+  const getRecommendations = (percentage: number, categoryScores: Record<string, { score: number; max: number }>, currentAnswers: Record<string, string>) => {
     const recommendations: string[] = [];
+    const isBankruptcyCandidate = currentAnswers["income_type"] === "none";
 
-    if (percentage >= 75) {
+    if (isBankruptcyCandidate) {
+      recommendations.push("현재 일정한 소득이 없으시므로, 빚을 전액(100%) 탕감받는 '개인파산' 신청을 적극 검토하시기 바랍니다.");
+      recommendations.push("파산은 면책 결정 시 채무가 전액 소멸되어 즉시 새 출발이 가능한 강력한 제도입니다.");
+      recommendations.push("다만, 재산 처분 등 심사가 엄격하므로 변호사와의 정밀 상담이 가장 먼저 필요합니다.");
+    } else if (percentage >= 75) {
       recommendations.push("개인회생 절차를 즉시 진행하시는 것을 권장합니다.");
       recommendations.push("변호사와 상담하여 필요 서류를 준비하세요.");
       recommendations.push("신청 후 약 4-6개월 내 인가결정을 받을 수 있습니다.");
@@ -318,15 +325,15 @@ export function SelfDiagnosis() {
       recommendations.push("채무조정이나 워크아웃 등 대안도 검토할 수 있습니다.");
     } else {
       recommendations.push("현재 상황에서는 개인파산이나 다른 채무조정 방법을 고려하세요.");
-      recommendations.push("소득이 없다면 개인파산 신청을 검토할 수 있습니다.");
-      recommendations.push("금융기관과의 직접 협상을 시도해보는 것도 방법입니다.");
+      recommendations.push("소득이 최저생계비 미만이라면 개인파산 신청을 검토할 수 있습니다.");
+      recommendations.push("법률사무소의 1:1 진단을 통해 돌파구를 찾아보세요.");
     }
 
     // 카테고리별 조언
     Object.entries(categoryScores).forEach(([category, data]) => {
       const categoryPercentage = (data.score / data.max) * 100;
       
-      if (category === "소득 정보" && categoryPercentage < 50) {
+      if (category === "소득 정보" && categoryPercentage < 50 && !isBankruptcyCandidate) {
         recommendations.push("소득 안정성 확보가 중요합니다. 부업이나 안정적인 직장 확보를 고려하세요.");
       }
       
@@ -335,7 +342,7 @@ export function SelfDiagnosis() {
       }
       
       if (category === "재산 정보" && categoryPercentage < 50) {
-        recommendations.push("보유 자산이 많은 경우 청산가치가 높아 불리할 수 있습니다. 자산 구조조정을 검토하세요.");
+        recommendations.push("보유 자산이 많은 경우 청산가치가 높아 변제금이 오를 수 있습니다. 자산 평가를 먼저 받아보세요.");
       }
     });
 
@@ -343,7 +350,6 @@ export function SelfDiagnosis() {
   };
 
   const handlePayment = () => {
-    // 실제로는 결제 API를 호출
     toast.success("결제가 완료되었습니다!");
     setIsPaid(true);
     setShowPayment(false);
@@ -356,12 +362,10 @@ export function SelfDiagnosis() {
       const doc = new jsPDF();
       const { score, maxScore, percentage } = calculateScore();
       const categoryScores = getDetailedAnalysis();
-      const recommendations = getRecommendations(percentage, categoryScores);
+      const recs = getRecommendations(percentage, categoryScores, answers);
 
-      // 한글 폰트 문제로 영문으로 표시하거나, 한글이 깨질 수 있음을 알림
       let yPos = 20;
 
-      // 제목
       doc.setFontSize(20);
       doc.text("Personal Recovery Self-Diagnosis Report", 20, yPos);
       yPos += 15;
@@ -370,7 +374,6 @@ export function SelfDiagnosis() {
       doc.text(`Date: ${new Date().toLocaleDateString('ko-KR')}`, 20, yPos);
       yPos += 10;
 
-      // 점수
       doc.setFontSize(14);
       doc.text("Overall Score", 20, yPos);
       yPos += 8;
@@ -378,7 +381,6 @@ export function SelfDiagnosis() {
       doc.text(`Score: ${score}/${maxScore} (${percentage}%)`, 20, yPos);
       yPos += 15;
 
-      // 카테고리별 분석
       doc.setFontSize(14);
       doc.text("Category Analysis", 20, yPos);
       yPos += 8;
@@ -392,13 +394,12 @@ export function SelfDiagnosis() {
 
       yPos += 10;
 
-      // 권장사항
       doc.setFontSize(14);
       doc.text("Recommendations", 20, yPos);
       yPos += 8;
       doc.setFontSize(10);
 
-      recommendations.forEach((rec, index) => {
+      recs.forEach((rec, index) => {
         const lines = doc.splitTextToSize(`${index + 1}. ${rec}`, 170);
         lines.forEach((line: string) => {
           if (yPos > 280) {
@@ -428,15 +429,32 @@ export function SelfDiagnosis() {
   const currentAnswer = answers[currentQuestion?.id];
   const { score, maxScore, percentage } = calculateScore();
   const categoryScores = getDetailedAnalysis();
-  const recommendations = getRecommendations(percentage, categoryScores);
+  const recommendations = getRecommendations(percentage, categoryScores, answers);
 
-  const getResultLevel = (percentage: number) => {
+  // ✅ [수정] 점수뿐만 아니라 answers를 검사하여 파산 대상자 분기 처리
+  const getResultLevel = (percentage: number, currentAnswers: Record<string, string>) => {
+    const isBankruptcyCandidate = currentAnswers["income_type"] === "none";
+
+    // 소득이 없는 경우 무조건 파산 안내로 분기
+    if (isBankruptcyCandidate) {
+      return {
+        status: "bankruptcy",
+        title: "개인파산(전액 면책) 대상자에 가깝습니다",
+        description:
+          "현재 소득이 없으시거나 최저생계비에 미치지 못하여, 빚을 나누어 갚는 '회생'보다는 남은 채무 전액(100%)을 탕감받는 '개인파산 및 면책' 제도가 가장 적합해 보입니다.",
+        icon: Scale,
+        color: "text-blue-600",
+        bgColor: "bg-blue-50",
+        borderColor: "border-blue-300",
+      };
+    }
+
     if (percentage >= 75) {
       return {
         status: "high",
         title: "개인회생 신청 가능성 높음",
         description:
-          "현재 상황으로 보아 개인회생 절차를 진행하실 수 있는 조건을 충족하고 계십니다.",
+          "현재 상황으로 보아 개인회생 절차를 진행하실 수 있는 조건을 충분히 충족하고 계십니다.",
         icon: CheckCircle2,
         color: "text-primary",
         bgColor: "bg-primary/10",
@@ -445,9 +463,9 @@ export function SelfDiagnosis() {
     } else if (percentage >= 50) {
       return {
         status: "medium",
-        title: "전문가 상담 필요",
+        title: "전문가 심층 상담 필요",
         description:
-          "개인회생 신청이 가능할 수 있으나, 일부 조건에 대한 추가 검토가 필요합니다.",
+          "개인회생 신청이 가능할 수 있으나, 재산이나 소득 요건에 대한 전문가의 추가 검토가 필요합니다.",
         icon: AlertCircle,
         color: "text-amber-600",
         bgColor: "bg-amber-50",
@@ -458,7 +476,7 @@ export function SelfDiagnosis() {
         status: "low",
         title: "다른 해결 방법 권장",
         description:
-          "현재 상황에서는 개인회생보다 다른 채무 조정 방법이 더 적합할 수 있습니다.",
+          "현재 상황에서는 개인회생보다는 다른 채무 조정 방법(워크아웃 등)이 더 유리할 수 있습니다.",
         icon: XCircle,
         color: "text-gray-600",
         bgColor: "bg-gray-50",
@@ -467,7 +485,7 @@ export function SelfDiagnosis() {
     }
   };
 
-  const result = getResultLevel(percentage);
+  const result = getResultLevel(percentage, answers);
   const ResultIcon = result.icon;
   const CategoryIcon = categoryIcons[currentQuestion?.category] || HelpCircle;
 
@@ -482,15 +500,16 @@ export function SelfDiagnosis() {
     <section className="py-16 bg-gradient-to-b from-white to-gray-50" id="diagnosis">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
+          {/* ✅ [수정] 타이틀 영역 회생/파산 통합으로 변경 */}
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/20">
-              전문가급 진단 시스템
+              AI 기반 정밀 진단 시스템
             </Badge>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              개인회생 정밀 자가진단
+              회생·파산 맞춤형 자가진단
             </h2>
             <p className="text-xl text-gray-600">
-              15개의 상세 질문으로 정확한 진단과 맞춤형 해결방안을 제시합니다
+              15개의 상세 질문으로 귀하에게 '회생'과 '파산' 중 어떤 제도가 맞는지 진단합니다.
             </p>
           </div>
 
@@ -585,7 +604,7 @@ export function SelfDiagnosis() {
                       disabled={!currentAnswer}
                       className="gap-2 bg-primary hover:bg-primary/90 text-white"
                     >
-                      {currentStep === questions.length - 1 ? "진단 완료" : "다음"}
+                      {currentStep === questions.length - 1 ? "진단 결과 확인" : "다음"}
                       <ChevronRight className="h-4 w-4" />
                     </Button>
                   </div>
@@ -609,7 +628,7 @@ export function SelfDiagnosis() {
                           총점: {score}/{maxScore}점
                         </Badge>
                         <Badge variant="secondary" className="text-base px-4 py-2">
-                          적합도: {percentage}%
+                          추천 제도 적합도: {percentage}%
                         </Badge>
                       </div>
                     </div>
@@ -653,57 +672,20 @@ export function SelfDiagnosis() {
                 <div className="mb-8">
                   <h4 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
                     <TrendingUp className="h-5 w-5 text-primary" />
-                    맞춤형 해결 방안
+                    전문가 맞춤형 코멘트
                   </h4>
                   <div className="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-lg p-6 border-2 border-teal-100">
                     <ul className="space-y-3">
                       {recommendations.map((rec, index) => (
                         <li key={index} className="flex items-start gap-3">
                           <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700">{rec}</span>
+                          <span className="text-gray-700 font-medium">{rec}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
 
-                {/* PDF 리포트 안내 */}
-                {/*}
-                {!isPaid && (
-                  <div className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-lg p-6 mb-6">
-                    <div className="flex items-start gap-4">
-                      <FileText className="h-12 w-12 text-purple-600 flex-shrink-0" />
-                      <div className="flex-1">
-                        <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                          상세 PDF 리포트 제공
-                        </h4>
-                        <p className="text-gray-700 mb-4">
-                          진단 결과를 전문가가 작성한 준의 상세 PDF 리포트로 받아보세요. 
-                          변호사 상담 시 유용하게 활용하실 수 있습니다.
-                        </p>
-                        <ul className="text-sm text-gray-600 mb-4 space-y-1">
-                          <li>✓ 15페이지 이상의 상세 분석 리포트</li>
-                          <li>✓ 단계별 실행 가이드 포함</li>
-                          <li>✓ 필요 서류 체크리스트 제공</li>
-                          <li>✓ 변호사 상담 시 활용 가능</li>
-                        </ul>
-                        <div className="flex items-center gap-3">
-                          <Button 
-                            onClick={() => setShowPayment(true)}
-                            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 gap-2"
-                          >
-                            <CreditCard className="h-4 w-4" />
-                            9,900원에 리포트 받기
-                          </Button>
-                          <span className="text-sm text-gray-500">
-                            원가 49,000원 → <span className="font-semibold text-purple-600">80% 할인</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                */}
                 {/* 기본 정보 요약 */}
                 <div className="bg-gray-50 rounded-lg p-6 mb-6 border">
                   <h4 className="font-semibold text-gray-900 mb-3">📊 진단 결과 요약</h4>
@@ -721,12 +703,12 @@ export function SelfDiagnosis() {
                       <p className="font-semibold text-lg">{score}점</p>
                     </div>
                     <div>
-                      <p className="text-gray-500">적합도</p>
+                      <p className="text-gray-500">제도 적합도</p>
                       <p className="font-semibold text-lg">{percentage}%</p>
                     </div>
                   </div>
                   <p className="text-xs text-gray-500 mt-4">
-                    ※ 본 자가진단은 참고용이며, 정확한 판단은 전문가 상담이 필요합니다.
+                    ※ 본 자가진단은 단순 참고용이며, 개인의 정확한 채무/재산/소득 산정은 변호사 상담을 통해서만 확정될 수 있습니다.
                   </p>
                 </div>
 
@@ -735,25 +717,15 @@ export function SelfDiagnosis() {
                   <Button
                     variant="outline"
                     onClick={handleRestart}
-                    className="flex-1"
+                    className="flex-1 h-12"
                   >
                     다시 진단하기
                   </Button>
-                  {isPaid && (
-                    <Button
-                      onClick={generatePDF}
-                      disabled={isGeneratingPDF}
-                      className="flex-1 bg-purple-600 hover:bg-purple-700 gap-2"
-                    >
-                      <Download className="h-4 w-4" />
-                      {isGeneratingPDF ? "생성 중..." : "PDF 다운로드"}
-                    </Button>
-                  )}
                   <Button
                     onClick={scrollToContact}
-                    className="flex-1 bg-primary hover:bg-primary/90 text-white font-semibold"
+                    className="flex-1 h-12 bg-primary hover:bg-primary/90 text-white font-bold text-lg"
                   >
-                    무료 전문가 상담 신청
+                    결과 바탕으로 무료 상담 신청
                   </Button>
                 </div>
               </CardContent>
@@ -762,62 +734,11 @@ export function SelfDiagnosis() {
 
           <div className="mt-8 text-center">
             <p className="text-sm text-gray-500">
-              💡 정확한 개인회생 가능 여부는 전문 변호사와의 상담을 통해 확인하실 수 있습니다.
+              💡 모든 개인정보는 입력과 동시에 암호화되며, 상담 용도 외에는 절대 사용되지 않습니다.
             </p>
           </div>
         </div>
       </div>
-
-      {/* 결제 다이얼로그 */}
-      {/*
-      <Dialog open={showPayment} onOpenChange={setShowPayment}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>PDF 리포트 결제</DialogTitle>
-            <DialogDescription>
-              상세 진단 리포트를 9,900원에 제공합니다.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="space-y-4 py-4">
-            <div className="bg-gray-50 rounded-lg p-4">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-gray-700">개인회생 정밀 진단 리포트</span>
-                <span className="font-semibold">9,900원</span>
-              </div>
-              <Separator className="my-2" />
-              <div className="flex justify-between items-center">
-                <span className="font-semibold">최종 결제금액</span>
-                <span className="text-xl font-bold text-primary">9,900원</span>
-              </div>
-            </div>
-
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h4 className="font-semibold text-sm mb-2">포함 내용</h4>
-              <ul className="text-xs text-gray-700 space-y-1">
-                <li>✓ 카테고리별 상세 분석 (15페이지 이상)</li>
-                <li>✓ 맞춤형 실행 계획</li>
-                <li>✓ 필요 서류 체크리스트</li>
-                <li>✓ 예상 변제금액 시뮬레이션</li>
-                <li>✓ 변호사 상담 준비 가이드</li>
-              </ul>
-            </div>
-
-            <div className="space-y-2">
-              <p className="text-xs text-gray-500">
-                * 본 서비스는 데모 버전입니다. 실제 결제는 진행되지 않습니다.
-              </p>
-              <Button
-                onClick={handlePayment}
-                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold gap-2"
-              >
-                <CreditCard className="h-4 w-4" />
-                결제하기 (데모)
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-      */}
     </section>
   );
 }

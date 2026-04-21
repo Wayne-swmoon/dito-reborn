@@ -3,24 +3,30 @@ import { Star } from "lucide-react";
 export function Testimonials() {
   const testimonials = [
     {
+      type: "개인회생",
+      typeColor: "bg-emerald-100 text-emerald-700",
       name: "김○○",
-      age: "42세",
+      age: "42세 직장인",
       case: "채무 8천만원 → 2천만원",
-      content: "카드빚과 대출로 막막했는데, 개인회생으로 빚의 75%가 면제되었습니다. 이제 희망을 갖고 살아갑니다.",
+      content: "카드빚과 대출로 막막했는데, 개인회생으로 빚의 75%가 면제되었습니다. 덕분에 소중한 제 집도 지키고 희망을 갖고 살아갑니다.",
       rating: 5
     },
     {
+      type: "개인파산",
+      typeColor: "bg-blue-100 text-blue-700",
+      name: "최○○",
+      age: "55세 무직",
+      case: "채무 1억 5천만원 → 전액 면책",
+      content: "건강 악화로 일자리를 잃고 빚더미에 앉아 삶을 포기하고 싶었습니다. 변호사님 덕분에 파산 면책을 받아 채무 100%를 탕감받고 새 생명을 얻었습니다.",
+      rating: 5
+    },
+    {
+      type: "개인회생",
+      typeColor: "bg-emerald-100 text-emerald-700",
       name: "이○○",
-      age: "38세",
+      age: "38세 자영업",
       case: "채무 1억 2천만원 → 3천만원",
-      content: "사업 실패로 큰 빚을 졌지만, 전문가 덕분에 개인회생에 성공했습니다. 정말 감사합니다.",
-      rating: 5
-    },
-    {
-      name: "박○○",
-      age: "45세",
-      case: "채무 6천만원 → 1천5백만원",
-      content: "복잡한 서류와 절차를 전담 매니저님이 다 도와주셔서 쉽게 진행할 수 있었습니다.",
+      content: "사업 실패로 매일 독촉 전화에 시달렸습니다. 복잡한 서류와 절차를 전담 매니저님이 다 도와주셔서 무사히 인가받고 새 출발을 준비 중입니다.",
       rating: 5
     }
   ];
@@ -29,11 +35,11 @@ export function Testimonials() {
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl mb-4">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
             실제 성공 사례
           </h2>
           <p className="text-lg text-gray-600">
-            개인회생으로 새로운 삶을 시작한 분들의 이야기
+            리본마이라이프와 함께 빚의 굴레에서 벗어난 분들의 이야기
           </p>
         </div>
 
@@ -41,24 +47,29 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="p-8 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+              className="p-8 bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 relative overflow-hidden"
             >
-              <div className="flex gap-1 mb-4">
+              {/* 회생/파산 구분 뱃지 */}
+              <div className={`absolute top-0 right-0 px-4 py-1.5 rounded-bl-xl text-sm font-bold ${testimonial.typeColor}`}>
+                {testimonial.type}
+              </div>
+
+              <div className="flex gap-1 mb-4 pt-2">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                  <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
                 ))}
               </div>
 
-              <div className="mb-4">
-                <div className="text-lg mb-1">
-                  {testimonial.name} ({testimonial.age})
+              <div className="mb-5">
+                <div className="text-lg font-bold text-gray-900 mb-1">
+                  {testimonial.name} <span className="text-sm font-normal text-gray-500">({testimonial.age})</span>
                 </div>
-                <div className="text-sm text-primary font-medium">
+                <div className={`text-base font-semibold ${testimonial.type === '개인파산' ? 'text-blue-600' : 'text-emerald-600'}`}>
                   {testimonial.case}
                 </div>
               </div>
               
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed font-medium">
                 "{testimonial.content}"
               </p>
             </div>
@@ -67,7 +78,7 @@ export function Testimonials() {
 
         <div className="mt-12 text-center">
           <p className="text-sm text-gray-500">
-            ※ 개인정보 보호를 위해 이름은 익명 처리되었습니다. 실제 사례이며, 결과는 개인별로 상이할 수 있습니다.
+            ※ 개인정보 보호를 위해 이름은 익명 처리되었습니다. 실제 사례이며, 결과는 개인의 소득 및 재산 상황에 따라 상이할 수 있습니다.
           </p>
         </div>
       </div>
