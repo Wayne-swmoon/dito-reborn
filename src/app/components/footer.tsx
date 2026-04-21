@@ -16,7 +16,7 @@ export function Footer() {
           <div>
             <h4 className="text-white mb-4">상담 안내</h4>
             <div className="space-y-2 text-sm">
-              <p>전화: 051-951-4088</p>
+              <p>전화: 070-8064-6525</p>
               <p>이메일: sinegienter@gmail.com</p>
               <p>평일 09:00 - 18:00</p>
             </div>

@@ -125,7 +125,7 @@ export function ContactForm() {
                   </div>
                   <div>
                     <div className="mb-1">전화 상담</div>
-                    <div className="text-2xl text-primary font-semibold">051-951-4088</div>
+                    <div className="text-2xl text-primary font-semibold">070-8064-6525</div>
                     <div className="text-sm text-gray-400 mt-1">평일 09:00 - 18:00 (주말, 공휴일 휴무)</div>
                   </div>
                 </div>
@@ -348,7 +348,7 @@ export function ContactForm() {
                           <h4 className="font-bold text-gray-900 mb-2">개인정보 보호책임자</h4>
                           <div className="bg-gray-100 p-3 rounded-lg space-y-1">
                             <p><strong>성명 :</strong> 김주희 사무장</p>
-                            <p><strong>전화번호 :</strong> 051-951-4088 (평일 : 오전 9:00 ~ 오후 6:00)</p>
+                            <p><strong>전화번호 :</strong> 070-8064-6525 (평일 : 오전 9:00 ~ 오후 6:00)</p>
                             <p><strong>이메일 :</strong> sinegienter@gmail.com</p>
                           </div>
                         </section>
