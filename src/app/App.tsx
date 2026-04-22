@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Hero } from "./components/hero";
+import { DebtReductionChart } from "./components/debt-reduction-chart";
 import { ProcessSteps } from "./components/process-steps";
 import { Stats } from "./components/stats";
 import { Features } from "./components/features";
@@ -9,31 +10,44 @@ import { ContactForm } from "./components/contact-form";
 import { Footer } from "./components/footer";
 import { SelfDiagnosis } from "./components/self-diagnosis";
 import { ComparisonSection } from "./components/comparison-section";
+import { MobileSpecialFeature } from "./components/mobile-special-feature";
+import { MobileStickyActions } from "./components/mobile-sticky-actions";
 
-// 경로 주의! 아까 성공했던 그 경로 그대로 써줘.
 import PreviewPage from "../pages/PreviewPage"; 
 
 export default function App() {
   return (
     <Router>
       <Routes>
-        {/* 기본 주소 (/) : 메인 홈페이지 */}
         <Route path="/" element={
-          <div className="min-h-screen bg-white">
+          /* !important 역할을 하는 스타일 강제 적용 */
+          <div className="min-h-screen bg-white pb-24 lg:pb-0" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", dotum, "돋움", sans-serif' }}>
             <Hero />
+            <DebtReductionChart />
             <Stats />
-            <ComparisonSection />
+
+            <div className="hidden lg:block">
+              <ComparisonSection />
+            </div>
+            <div className="block lg:hidden">
+              <MobileSpecialFeature />
+            </div>
+
             <SelfDiagnosis />
             <ProcessSteps />
             <Features />
             <Testimonials />
             <FAQ />
-            <ContactForm />
+            
+            {/* 버튼 클릭 시 이 위치로 오게 함 */}
+            <section id="contact">
+              <ContactForm />
+            </section>
+            
             <Footer />
+            <MobileStickyActions />
           </div>
         } />
-
-        {/* 리포트 확인 주소 (/preview) : 지금 작업 중인 리포트 화면 */}
         <Route path="/preview" element={<PreviewPage />} />
       </Routes>
     </Router>

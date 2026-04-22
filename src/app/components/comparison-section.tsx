@@ -1,152 +1,108 @@
-import { Scale, ShieldCheck, AlertCircle, CheckCircle2, Info } from "lucide-react";
-import { Card, CardContent } from "./ui/card";
-import { Badge } from "./ui/badge";
+import { Check, Scale, Zap, ShieldCheck, ArrowRight } from "lucide-react";
 
 export function ComparisonSection() {
   return (
-    <section className="py-20 bg-slate-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* 헤더 영역 */}
-        <div className="text-center mb-16">
-          <Badge className="bg-emerald-100 text-emerald-700 hover:bg-emerald-100 mb-4 px-4 py-1 text-sm font-semibold border-none">
-            나에게 맞는 제도는?
-          </Badge>
-          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-            개인회생 <span className="text-slate-400 font-light mx-2">vs</span> 개인파산
+    <section className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* 헤더: 폰트 크기 강제 고정 */}
+        <div className="text-center mb-20">
+          <h2 style={{ fontSize: '3.5rem', fontWeight: 900, letterSpacing: '-0.05em' }} className="text-gray-900 mb-6">
+            나에게 맞는 <span style={{ color: '#10b981' }}>최적의 제도</span>는?
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            두 제도 모두 법원이 주관하는 합법적인 빚 탕감 제도입니다.
-            현재의 소득과 재산 상황에 따라 가장 유리한 제도를 선택해야 합니다.
+          <p className="text-xl text-gray-500 font-light">
+            복잡한 법률 용어 대신, 핵심만 확실하게 비교해 드립니다.
           </p>
         </div>
 
-        {/* 핵심 요약 카드 영역 */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16 relative">
-          {/* VS 뱃지 (데스크톱에서 가운데 표시) */}
-          <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full items-center justify-center shadow-lg z-10 font-bold text-slate-400 border border-slate-100">
-            VS
-          </div>
-
-          {/* 개인회생 카드 */}
-          <Card className="border-2 border-emerald-500 shadow-lg shadow-emerald-100 overflow-hidden relative">
-            <div className="absolute top-0 right-0 bg-emerald-500 text-white px-4 py-1 rounded-bl-xl text-sm font-bold shadow-sm">
-              재산 보호형
-            </div>
-            <CardContent className="p-8">
-              <div className="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6">
-                <ShieldCheck className="w-7 h-7 text-emerald-600" />
+        <div className="grid lg:grid-cols-2 gap-10 relative">
+          
+          {/* 개인회생 Card */}
+          <div className="relative bg-[#f0fdf4] rounded-[3rem] p-12 border-2 border-[#dcfce7] shadow-sm hover:shadow-2xl transition-all duration-500">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-12 h-12 bg-[#10b981] rounded-2xl flex items-center justify-center text-white shadow-lg">
+                <Zap className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">개인회생</h3>
-              <p className="text-emerald-600 font-semibold mb-6">
-                "안정적인 수입이 있고, 내 재산을 지키고 싶다면"
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                  <span>매월 생계비를 제외한 금액으로 <strong>3~5년간 분할 상환</strong></span>
-                </li>
-                <li className="flex items-start gap-2 text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                  <span>집, 자동차 등 <strong>본인 명의 재산 유지 가능</strong></span>
-                </li>
-                <li className="flex items-start gap-2 text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                  <span>남은 원금 및 이자 전액 탕감</span>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          {/* 개인파산 카드 */}
-          <Card className="border-2 border-blue-500 shadow-lg shadow-blue-100 overflow-hidden relative">
-            <div className="absolute top-0 right-0 bg-blue-500 text-white px-4 py-1 rounded-bl-xl text-sm font-bold shadow-sm">
-              전액 면책형
+              <span className="text-[#059669] font-bold tracking-widest text-sm uppercase">Recovery Plan</span>
             </div>
-            <CardContent className="p-8">
-              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
-                <Scale className="w-7 h-7 text-blue-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">개인파산</h3>
-              <p className="text-blue-600 font-semibold mb-6">
-                "소득이 최저생계비 미만이고, 갚을 능력이 도저히 없다면"
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                  <span>분할 상환 절차 없이 <strong>즉시 채무 전액(100%) 탕감</strong></span>
-                </li>
-                <li className="flex items-start gap-2 text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                  <span>원칙적으로 <strong>보유 재산은 처분</strong>하여 채권자에게 배당</span>
-                </li>
-                <li className="flex items-start gap-2 text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                  <span>채무 한도 제한 없음</span>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* 상세 비교표 영역 (모바일 반응형) */}
-        <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden mb-8">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="p-4 font-bold text-slate-900 w-1/4 min-w-[120px]">비교 항목</th>
-                  <th className="p-4 font-bold text-emerald-700 w-3/8 min-w-[200px]">개인회생</th>
-                  <th className="p-4 font-bold text-blue-700 w-3/8 min-w-[200px]">개인파산</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 text-sm md:text-base">
-                <tr className="hover:bg-slate-50/50 transition-colors">
-                  <td className="p-4 font-semibold text-slate-700 bg-slate-50/30">소득 요건</td>
-                  <td className="p-4 text-slate-600">지속적이고 반복적인 소득 필수<br/><span className="text-xs text-slate-400">(급여, 사업, 연금 등)</span></td>
-                  <td className="p-4 text-slate-600">소득이 없거나 최저생계비 미만</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50 transition-colors">
-                  <td className="p-4 font-semibold text-slate-700 bg-slate-50/30">채무 한도</td>
-                  <td className="p-4 text-slate-600">무담보 10억 / 담보 15억 이하</td>
-                  <td className="p-4 text-slate-600 font-medium text-blue-600">제한 없음</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50 transition-colors">
-                  <td className="p-4 font-semibold text-slate-700 bg-slate-50/30">재산 처리</td>
-                  <td className="p-4 text-slate-600">
-                    <span className="font-medium text-emerald-600">재산 보유 가능</span>
-                    <br/>
-                    <span className="text-xs text-slate-500">※ 청산가치 보장 원칙: 재산 가치보다 많이 변제해야 함</span>
-                  </td>
-                  <td className="p-4 text-slate-600">원칙적으로 재산 처분 및 배당 필수</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50 transition-colors">
-                  <td className="p-4 font-semibold text-slate-700 bg-slate-50/30">변제 방식</td>
-                  <td className="p-4 text-slate-600">3년 ~ 5년 동안 원금 일부 변제</td>
-                  <td className="p-4 text-slate-600">변제 절차 없이 재산 배당 후 면책</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50 transition-colors">
-                  <td className="p-4 font-semibold text-slate-700 bg-slate-50/30">신용 회복</td>
-                  <td className="p-4 text-slate-600">1년 성실 상환 시 공공정보 조기 삭제 가능</td>
-                  <td className="p-4 text-slate-600">면책 결정 시 공공정보 삭제</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* 전문가 팁 박스 */}
-        <div className="bg-slate-900 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-4 shadow-xl shadow-slate-900/10">
-          <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center flex-shrink-0">
-            <Info className="w-6 h-6 text-emerald-400" />
-          </div>
-          <div className="flex-1">
-            <h4 className="text-white font-bold text-lg mb-1">리본마이라이프의 전문가 Tip</h4>
-            <p className="text-slate-300 text-sm leading-relaxed">
-              최근 법원 실무에서는 <strong className="text-emerald-400">개인회생 신용 회복 혜택(1년 성실 상환 시 공공정보 조기 삭제)</strong>을 대폭 지원하고 있습니다. 
-              반면, 개인파산은 면책 불허가 사유(재산 은닉, 도박 등)를 엄격하게 심사합니다. 자가진단을 통해 본인에게 유리한 제도를 먼저 확인해 보세요.
+            
+            {/* 극단적 강약 조절 타이틀 */}
+            <h3 style={{ fontSize: '4.5rem', fontWeight: 900, lineHeight: 1, marginBottom: '1.5rem', letterSpacing: '-0.05em' }} className="text-slate-900">
+              개인<span style={{ color: '#10b981' }}>회생</span>
+            </h3>
+            
+            {/* 형광펜 효과 강제 적용 */}
+            <p className="text-2xl text-slate-700 leading-snug mb-12">
+              일정한 소득이 있다면,<br />
+              <span style={{ backgroundColor: '#bbf7d0', padding: '0 8px', fontWeight: 800, color: '#064e3b' }}>
+                재산을 지키며
+              </span> 빚을 탕감받으세요.
             </p>
+
+            <div className="space-y-6">
+              <div className="flex justify-between items-end border-b-2 border-[#dcfce7] pb-4">
+                <span className="text-gray-500 font-bold">원금 탕감</span>
+                <span style={{ fontSize: '1.8rem', fontWeight: 900, color: '#10b981' }}>최대 90%</span>
+              </div>
+              <div className="flex justify-between items-end border-b-2 border-[#dcfce7] pb-4">
+                <span className="text-gray-500 font-bold">재산 보유</span>
+                <span className="text-xl font-extrabold text-slate-800">집·차량 유지 가능</span>
+              </div>
+            </div>
           </div>
+
+          {/* 개인파산 Card */}
+          <div className="relative bg-[#eff6ff] rounded-[3rem] p-12 border-2 border-[#dbeafe] shadow-sm hover:shadow-2xl transition-all duration-500">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-12 h-12 bg-[#3b82f6] rounded-2xl flex items-center justify-center text-white shadow-lg">
+                <Scale className="w-6 h-6" />
+              </div>
+              <span className="text-[#2563eb] font-bold tracking-widest text-sm uppercase">Bankruptcy Plan</span>
+            </div>
+
+            {/* 극단적 강약 조절 타이틀 */}
+            <h3 style={{ fontSize: '4.5rem', fontWeight: 900, lineHeight: 1, marginBottom: '1.5rem', letterSpacing: '-0.05em' }} className="text-slate-900">
+              개인<span style={{ color: '#3b82f6' }}>파산</span>
+            </h3>
+
+            {/* 형광펜 효과 강제 적용 */}
+            <p className="text-2xl text-slate-700 leading-snug mb-12">
+              소득이 없어도 괜찮습니다.<br />
+              <span style={{ backgroundColor: '#bfdbfe', padding: '0 8px', fontWeight: 800, color: '#1e3a8a' }}>
+                원금 100%를
+              </span> 즉시 면책받으세요.
+            </p>
+
+            <div className="space-y-6">
+              <div className="flex justify-between items-end border-b-2 border-[#dbeafe] pb-4">
+                <span className="text-gray-500 font-bold">원금 탕감</span>
+                <span style={{ fontSize: '1.8rem', fontWeight: 900, color: '#3b82f6' }}>전액(100%) 면책</span>
+              </div>
+              <div className="flex justify-between items-end border-b-2 border-[#dbeafe] pb-4">
+                <span className="text-gray-500 font-bold">신청 대상</span>
+                <span className="text-xl font-extrabold text-slate-800">무직·고령·환자 등</span>
+              </div>
+            </div>
+          </div>
+
         </div>
+
+        {/* 하단 블랙 배너: 시각적 임팩트 끝판왕 */}
+        <div className="mt-20 bg-[#111827] rounded-[3.5rem] p-12 text-center shadow-2xl relative overflow-hidden">
+          <div className="relative z-10">
+            <h4 style={{ fontSize: '2.2rem', fontWeight: 800, color: 'white', lineHeight: 1.3 }} className="mb-10">
+              나에게 <span style={{ color: '#10b981' }}>가장 유리한 제도</span>는 무엇일까?<br />
+              <span style={{ fontSize: '1.2rem', color: '#9ca3af', fontWeight: 400 }}>김태기 변호사 전담팀이 1:1 비밀 상담으로 알려드립니다.</span>
+            </h4>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <a href="#diagnosis" style={{ fontSize: '1.3rem' }} className="px-12 py-6 bg-[#10b981] text-white rounded-2xl font-black shadow-xl hover:scale-105 transition-transform">
+                1분 자가진단 시작하기
+              </a>
+            </div>
+          </div>
+          <ShieldCheck style={{ opacity: 0.05 }} className="absolute -right-10 -bottom-10 w-80 h-80 text-white transform rotate-12" />
+        </div>
+
       </div>
     </section>
   );

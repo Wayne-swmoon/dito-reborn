@@ -1,3 +1,31 @@
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';
+
+@layer base {
+  html, body {
+    /* 1. 애플 시스템 폰트, 2. 안드로이드/윈도우 표준 폰트 순서로 배치 */
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, "Malgun Gothic", "맑은 고딕", sans-serif !important;
+    
+    /* 글자 렌더링을 더 선명하게 처리 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    /* 모바일에서 텍스트 크기 자동 조절 방지 */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* 가독성을 위해 기본 줄간격과 자간 미세 조정 */
+  body {
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    color: #1a1a1a;
+  }
+}
+
+/* 유틸리티 클래스: 텍스트 강약 조절용 하이라이트 효과 */
+.text-highlight {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #bbf7d0 40%);
+  font-weight: 700;
+}
