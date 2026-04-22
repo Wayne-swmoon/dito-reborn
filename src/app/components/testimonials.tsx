@@ -55,7 +55,7 @@ export function Testimonials() {
             실제 성공 사례
           </h2>
           <p className="text-lg text-gray-600">
-            리본마이라이프와 함께 빚의 굴레에서 벗어난 분들의 생생한 기록
+            변호사 김태기 법률사무소 개인회생·파산 전문센터와 함께 빚의 굴레에서 벗어난 분들의 생생한 기록
           </p>
         </div>
 

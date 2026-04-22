@@ -16,8 +16,8 @@ export function ProcessSteps() {
     },
     {
       icon: CheckSquare,
-      title: "3. 법원 접수 및 금지명령",
-      description: "변호사가 직접 법원에 신청서를 접수합니다. 회생의 경우 빠른 시일 내에 빚 독촉을 막는 '금지명령'을 받아냅니다.",
+      title: "3. 빠른 접수 및 금지명령",
+      description: "빠른 시일내에 신청서를 접수하고, 일주일 안에 금지 또는 중지 결정을 통한 채권추심 금지 또는 중단이 가능합니다.",
       color: "bg-emerald-100 text-emerald-600"
     },
     {

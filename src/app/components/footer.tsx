@@ -5,7 +5,7 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <h3 className="text-white text-lg font-bold mb-4">
-              김태기 법률사무소<br />
+              변호사 김태기 법률사무소<br />
               개인회생·파산 전문센터
             </h3>
             <p className="text-sm leading-relaxed text-gray-400">
