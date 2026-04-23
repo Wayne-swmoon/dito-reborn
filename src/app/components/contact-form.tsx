@@ -347,7 +347,7 @@ export function ContactForm() {
                         <section>
                           <h4 className="font-bold text-gray-900 mb-2">개인정보 보호책임자</h4>
                           <div className="bg-gray-100 p-3 rounded-lg space-y-1">
-                            <p><strong>성명 :</strong> 김주희 사무장</p>
+                            <p><strong>성명 :</strong> 김주휘 사무장</p>
                             <p><strong>전화번호 :</strong> 070-8064-6525 (평일 : 오전 9:00 ~ 오후 6:00)</p>
                             <p><strong>이메일 :</strong> sinegienter@gmail.com</p>
                           </div>
