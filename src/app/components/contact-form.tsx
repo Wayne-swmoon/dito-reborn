@@ -136,7 +136,7 @@ export function ContactForm() {
                   </div>
                   <div>
                     <div className="mb-1">이메일 상담</div>
-                    <div className="text-primary">sinegienter@gmail.com</div>
+                    <div className="text-primary">helprebornmylife@gmail.com</div>
                     <div className="text-sm text-gray-400 mt-1">24시간 접수 가능</div>
                   </div>
                 </div>
@@ -349,7 +349,7 @@ export function ContactForm() {
                           <div className="bg-gray-100 p-3 rounded-lg space-y-1">
                             <p><strong>성명 :</strong> 김주휘 사무장</p>
                             <p><strong>전화번호 :</strong> 070-8064-6525 (평일 : 오전 9:00 ~ 오후 6:00)</p>
-                            <p><strong>이메일 :</strong> sinegienter@gmail.com</p>
+                            <p><strong>이메일 :</strong> helprebornmylife@gmail.com</p>
                           </div>
                         </section>
 

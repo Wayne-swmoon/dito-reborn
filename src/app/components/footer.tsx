@@ -20,7 +20,7 @@ export function Footer() {
             <div className="space-y-2 text-sm text-gray-400">
               {/* 푸터 번호 통일 */}
               <p>전화: <a href="tel:070-8064-6525" className="text-primary font-medium hover:underline">070-8064-6525</a></p>
-              <p>이메일: sinegienter@gmail.com</p>
+              <p>이메일: helprebornmylife@gmail.com</p>
               <p>평일 09:00 - 18:00 (주말 및 공휴일 휴무)</p>
             </div>
           </div>
