@@ -52,11 +52,13 @@ export function ContactForm() {
     setIsSubmitting(true);
 
     try {
+      // 1. Firebase 데이터 저장
       await addDoc(collection(db, "consultations"), {
         ...formData,
         createdAt: serverTimestamp(),
       });
 
+      // 2. EmailJS 메일 발송
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
@@ -69,6 +71,15 @@ export function ContactForm() {
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
+
+      // 3. ✨ GA4 상담 신청 완료 이벤트 발송
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", "consultation_submit", {
+          event_category: "consultation",
+          event_label: "무료상담신청",
+          value: 1
+        });
+      }
 
       alert("상담 신청이 성공적으로 접수되었습니다. 담당자가 곧 연락드리겠습니다!");
       
@@ -94,6 +105,16 @@ export function ContactForm() {
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  // ✨ 전화 클릭 이벤트 핸들러
+  const handlePhoneClick = () => {
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag("event", "phone_call_click", {
+        event_category: "contact",
+        event_label: "전화상담버튼"
+      });
+    }
   };
 
   return (
@@ -125,7 +146,9 @@ export function ContactForm() {
                   </div>
                   <div>
                     <div className="mb-1">전화 상담</div>
-                    <div className="text-2xl text-primary font-semibold"><a href="tel:070-8064-6525">070-8064-6525</a></div>
+                    <div className="text-2xl text-primary font-semibold">
+                      <a href="tel:070-8064-6525" onClick={handlePhoneClick}>070-8064-6525</a>
+                    </div>
                     <div className="text-sm text-gray-400 mt-1">평일 09:00 - 18:00 (주말, 공휴일 휴무)</div>
                   </div>
                 </div>
@@ -286,7 +309,6 @@ export function ContactForm() {
                     <DialogHeader>
                       <DialogTitle className="font-bold text-xl text-gray-900 border-b pb-4">개인정보 처리방침</DialogTitle>
                     </DialogHeader>
-                    {/* 스크롤이 확실하게 동작하도록 고정 높이 h-[400px]와 w-full 부여 */}
                     <ScrollArea className="h-[400px] w-full pr-4 text-[13px] leading-relaxed text-gray-600 mt-2">
                       <div className="space-y-6 pb-6">
                         <section>
