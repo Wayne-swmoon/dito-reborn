@@ -25,17 +25,21 @@ export function MobileStickyActions() {
   // 부드러운 스크롤 이동 함수
   const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const contactSection = document.getElementById('contact');
+    // HTML 표준에 따라, 폼 구역의 ID가 'contact'여야 이 코드가 작동해!
+    const contactSection = document.getElementById('contact'); 
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden px-4 pb-6 pointer-events-none">
-      {/* 1. 지역 특화 실시간 상담 티커 */}
+    // [UI 개선] px-4 pb-6 -> p-4 pb-[max(1rem,env(safe-area-inset-bottom))] 로 변경하여 아이폰 하단 홈바 간섭 방지
+    <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden p-4 pb-[max(1rem,env(safe-area-inset-bottom))] pointer-events-none">
+      
+      {/* [위치 고정] 1. 지역 특화 실시간 상담 티커 */}
       <div className="flex justify-center mb-3">
-        <div className="bg-slate-900/90 backdrop-blur-md text-white px-4 py-2 rounded-full border border-white/10 shadow-lg flex items-center gap-2 animate-bounce pointer-events-auto">
+        {/* [UI 개선] bg-slate-900/90 backdrop-blur-md -> rgba(26,26,26,0.85) 불투명도 적용으로 답답함 해소 */}
+        <div className="bg-[#1a1a1a]/85 backdrop-blur-sm text-white px-4 py-2 rounded-full border border-white/10 shadow-lg flex items-center gap-2 animate-bounce pointer-events-auto">
           <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
           <p className="text-[11px] font-medium tracking-tight">
             {tickerData[tickerIndex]}
@@ -46,20 +50,26 @@ export function MobileStickyActions() {
 
       {/* 2. 하단 고정 버튼 그룹 */}
       <div className="flex gap-2 pointer-events-auto">
+        {/* [왼쪽 버튼] 전화상담: 시크하고 세련된 다크 블랙 배경 */}
         <a
           href="tel:070-8064-6525"
-          className="flex-1 flex items-center justify-center gap-2 bg-white text-slate-900 border-2 border-slate-900 py-4 rounded-2xl font-black text-base shadow-xl active:scale-95 transition-transform"
+          className="flex-1 flex items-center justify-center gap-2 bg-[#222222] text-white py-4 rounded-2xl font-black text-base shadow-xl active:scale-95 transition-transform"
         >
-          <Phone className="w-5 h-5" />
+          {/* [아이콘 색상 수정] */}
+          <Phone className="w-5 h-5 text-white" />
           전화상담
         </a>
         
+        {/* [오른쪽 버튼] 무료상담 신청: 시선을 끄는 카카오 노란색 적용, 텍스트 유지 */}
         <a
           href="#contact"
           onClick={scrollToContact}
-          className="flex-[1.5] flex items-center justify-center gap-2 bg-emerald-500 text-white py-4 rounded-2xl font-black text-base shadow-xl shadow-emerald-500/30 active:scale-95 transition-transform"
+          // [UI 개선] bg-emerald-500 text-white -> bg-[#FEE500] text-[#3C1E1E] 로 변경 (카카오색 + 다크브라운 텍스트)
+          // shadow-emerald-500/30 -> shadow-black/10 으로 변경 (노란색에 맞게 그림자 수정)
+          className="flex-[1.5] flex items-center justify-center gap-2 bg-[#FEE500] text-[#3C1E1E] py-4 rounded-2xl font-black text-base shadow-xl shadow-black/10 active:scale-95 transition-transform"
         >
-          <MessageCircle className="w-5 h-5 fill-white" />
+          {/* [아이콘 색상 및 스타일 수정] fill-white 제거 -> text-[#3C1E1E] 적용 */}
+          <MessageCircle className="w-5 h-5 text-[#3C1E1E]" />
           무료상담 신청
         </a>
       </div>
