@@ -121,7 +121,7 @@ export function ContactForm() {
     <section id="contact" className="py-20 bg-gradient-to-br from-[#1f2833] via-[#2d3a42] to-[#1a2128] text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl mb-4 font-bold">
+          <h2 className="text-3xl lg:text-4xl mb-4">
             무료 상담 신청
           </h2>
           <p className="text-lg text-gray-300">
@@ -136,17 +136,17 @@ export function ContactForm() {
           {/* Contact Info */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl mb-6 font-bold">
+              <h3 className="text-2xl mb-6">
                 상담 안내
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
                     <div className="mb-1">전화 상담</div>
-                    <div className="text-2xl text-emerald-400 font-bold">
+                    <div className="text-2xl text-primary font-semibold">
                       <a href="tel:070-8064-6525" onClick={handlePhoneClick}>070-8064-6525</a>
                     </div>
                     <div className="text-sm text-gray-400 mt-1">평일 09:00 - 18:00 (주말, 공휴일 휴무)</div>
@@ -154,23 +154,23 @@ export function ContactForm() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
                     <div className="mb-1">이메일 상담</div>
-                    <div className="text-white">helprebornmylife@gmail.com</div>
+                    <div className="text-primary">helprebornmylife@gmail.com</div>
                     <div className="text-sm text-gray-400 mt-1">24시간 접수 가능</div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
                     <MessageSquare className="w-6 h-6" />
                   </div>
                   <div>
                     <div className="mb-1">출장 상담서비스 안내</div>
-                    <div className="text-white">원하는 곳까지 직접 찾아가는 서비스</div>
+                    <div className="text-primary">원하는 곳까지 직접 찾아가는 서비스</div>
                     <div className="text-sm text-gray-400 mt-1">출장비용 발생. 상담 시 협의</div>
                   </div>
                 </div>
@@ -178,7 +178,7 @@ export function ContactForm() {
             </div>
 
             <div className="p-6 bg-white/10 rounded-xl backdrop-blur-sm border border-white/20">
-              <h4 className="mb-4 font-bold">상담 시 준비사항</h4>
+              <h4 className="mb-4">상담 시 준비사항</h4>
               <ul className="space-y-2 text-sm text-gray-300">
                 <li>• 현재 채무 총액 (대략적인 금액)</li>
                 <li>• 월 소득 및 지출 내역</li>
@@ -192,22 +192,10 @@ export function ContactForm() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white text-gray-900 rounded-3xl p-6 sm:p-8 shadow-2xl relative mt-8 lg:mt-0 border border-gray-100">
-            
-            {/* 🚀 1. 실시간 알림 캡슐을 상단으로 분리 */}
-            <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-[90%] max-w-sm z-10">
-              <div className="bg-gray-900 text-white text-[13px] sm:text-sm py-2.5 px-4 rounded-full flex items-center justify-center gap-2 shadow-lg border border-gray-700">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                </span>
-                <span>5분 전 거제시 문OO님 실시간 카톡 상담 대기 중 &gt;</span>
-              </div>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-6 mt-4">
+          <div className="bg-white text-gray-900 rounded-2xl p-8 shadow-xl">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-bold mb-2 text-gray-700">
+                <label htmlFor="name" className="block text-sm font-bold mb-2">
                   이름 <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -219,14 +207,14 @@ export function ContactForm() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full pl-10 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="홍길동"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-bold mb-2 text-gray-700">
+                <label htmlFor="phone" className="block text-sm font-bold mb-2">
                   연락처 <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -238,14 +226,14 @@ export function ContactForm() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full pl-10 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="010-1234-5678"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-bold mb-2 text-gray-700">
+                <label htmlFor="email" className="block text-sm font-bold mb-2">
                   이메일
                 </label>
                 <div className="relative">
@@ -256,14 +244,14 @@ export function ContactForm() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="example@email.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="debtAmount" className="block text-sm font-bold mb-2 text-gray-700">
+                <label htmlFor="debtAmount" className="block text-sm font-bold mb-2">
                   현재 채무 총액 (선택)
                 </label>
                 <select
@@ -271,7 +259,7 @@ export function ContactForm() {
                   name="debtAmount"
                   value={formData.debtAmount}
                   onChange={handleChange}
-                  className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   <option value="">선택하세요</option>
                   <option value="1000-3000">1천만원 ~ 3천만원</option>
@@ -283,7 +271,7 @@ export function ContactForm() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-bold mb-2 text-gray-700">
+                <label htmlFor="message" className="block text-sm font-bold mb-2">
                   상담 내용
                 </label>
                 <textarea
@@ -292,22 +280,22 @@ export function ContactForm() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                   placeholder="상담받고 싶은 내용을 자유롭게 작성주세요"
                 />
               </div>
 
               {/* 개인정보 동의 영역 */}
-              <div className="bg-gray-50 p-4 rounded-xl border-2 border-gray-100 hover:border-emerald-500/30 transition-colors flex items-center justify-between">
+              <div className="bg-gray-50 p-4 rounded-lg border-2 border-gray-200 hover:border-primary/50 transition-colors flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <Checkbox 
                     id="terms" 
                     checked={agreed} 
                     onCheckedChange={(v) => setAgreed(v as boolean)} 
-                    className="w-5 h-5 border-2 border-gray-300 data-[state=checked]:border-emerald-500 data-[state=checked]:bg-emerald-500"
+                    className="w-5 h-5 border-2 border-gray-400 data-[state=checked]:border-primary"
                   />
                   <Label htmlFor="terms" className="text-sm font-bold text-gray-800 cursor-pointer select-none">
-                    개인정보 수집 및 이용 동의 <span className="text-emerald-600">(필수)</span>
+                    개인정보 수집 및 이용 동의 <span className="text-primary">(필수)</span>
                   </Label>
                 </div>
                 
@@ -402,20 +390,18 @@ export function ContactForm() {
                 </Dialog>
               </div>
 
-              {/* 🚀 2 & 3. 제출 전용 버튼 (에메랄드 그린 컬러 적용) */}
+              {/* 제출 버튼 */}
               <button
                 type="submit"
                 disabled={isSubmitting || !agreed}
-                className={`w-full py-4.5 text-lg font-bold rounded-xl transition-all duration-200 flex justify-center items-center ${
-                  agreed && !isSubmitting 
-                    ? "bg-emerald-500 text-white shadow-[0_4px_14px_0_rgba(16,185,129,0.39)] hover:bg-emerald-600 hover:shadow-[0_6px_20px_rgba(16,185,129,0.23)] transform hover:-translate-y-[1px]" 
-                    : "bg-gray-100 text-gray-400 border border-gray-200 cursor-not-allowed"
+                className={`w-full py-4 text-white font-bold rounded-lg transition-colors shadow-lg ${
+                  agreed && !isSubmitting ? "bg-primary hover:bg-primary/90" : "bg-gray-400 cursor-not-allowed"
                 }`}
               >
                 {isSubmitting ? "접수 중..." : "무료 상담 신청하기"}
               </button>
 
-              <p className="text-xs text-gray-400 text-center">
+              <p className="text-xs text-gray-500 text-center">
                 개인정보는 상담 목적으로만 사용되며, 관련 법령에 따라 안전하게 관리됩니다
               </p>
             </form>
