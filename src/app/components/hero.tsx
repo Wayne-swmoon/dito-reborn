@@ -69,7 +69,7 @@ export function Hero() {
       {/* ⚡ [핵심] 하단 고정 스티키 바: 중복 요소를 제거하고 오렌지/옐로우 딱 두 개만 구성 */}
       <div className="fixed bottom-0 left-0 right-0 z-[100] flex lg:hidden bg-white shadow-[0_-5px_20px_rgba(0,0,0,0.2)] p-3 gap-3">
         <a 
-          href="tel:051-123-4567" 
+          href="tel:070-8064-6525" 
           className="flex-1 flex items-center justify-center py-4 bg-[#FF6B00] text-white rounded-xl font-black text-lg active:scale-95 transition-transform"
         >
           <Phone className="w-5 h-5 mr-2" /> 전화상담
