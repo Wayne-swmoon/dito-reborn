@@ -4,8 +4,8 @@
 
 @layer base {
   html, body {
-    /* 1. 애플 시스템 폰트, 2. 안드로이드/윈도우 표준 폰트 순서로 배치 */
-    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, "Malgun Gothic", "맑은 고딕", sans-serif !important;
+    /* ✨ 1. 프리텐다드를 최우선 순위로 배치! (아이폰/맥북에서도 무조건 적용됨) */
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif !important;
     
     /* 글자 렌더링을 더 선명하게 처리 */
     -webkit-font-smoothing: antialiased;
@@ -14,11 +14,15 @@
     
     /* 모바일에서 텍스트 크기 자동 조절 방지 */
     -webkit-text-size-adjust: 100%;
+
+    /* ✨ 2. 한국어 가독성의 핵심: 단어 단위로 줄바꿈! (개인회 / 생 -> 개인회생) */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   /* 가독성을 위해 기본 줄간격과 자간 미세 조정 */
   body {
-    line-height: 1.5;
+    line-height: 1.6; /* 글이 많은 법률 사이트라 1.5보다 1.6이 눈이 훨씬 편해! */
     letter-spacing: -0.02em;
     color: #1a1a1a;
   }
@@ -28,4 +32,9 @@
 .text-highlight {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #bbf7d0 40%);
   font-weight: 700;
+}
+
+/* 다른 코드들 다 지나고 맨 아랫줄에 추가! */
+* {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif !important;
 }

@@ -6,6 +6,8 @@ import { Stats } from "./components/stats";
 import { Features } from "./components/features";
 import { Testimonials } from "./components/testimonials";
 import { FAQ } from "./components/faq";
+// ✨ 1. 프로필 섹션 불러오기
+import { ProfileSection } from "./components/profile";
 import { ContactForm } from "./components/contact-form";
 import { Footer } from "./components/footer";
 import { SelfDiagnosis } from "./components/self-diagnosis";
@@ -20,8 +22,12 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={
-          /* !important 역할을 하는 스타일 강제 적용 */
-          <div className="min-h-screen bg-white pb-24 lg:pb-0" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", dotum, "돋움", sans-serif' }}>
+          /* [UI 컬러 적용 및 폰트 가독성 최적화] 
+             1. bg-[#fffffb]: 메인 배경색을 따뜻한 아이보리로 변경
+             2. text-[#1e1423]: 기본 글자색을 다크 퍼플/블랙으로 변경하여 가독성 및 고급스러움 확보 
+             3. 옛날 하드코딩 폰트를 지우고 tracking-tight, wordBreak 적용
+          */
+          <div className="min-h-screen bg-[#fffffb] text-[#1e1423] pb-24 lg:pb-0 tracking-tight" style={{ wordBreak: 'keep-all' }}>
             <Hero />
             <DebtReductionChart />
             <Stats />
@@ -38,6 +44,9 @@ export default function App() {
             <Features />
             <Testimonials />
             <FAQ />
+            
+            {/* ✨ 2. 상담 신청 직전에 신뢰도 끌어올리는 프로필 섹션 배치! */}
+            <ProfileSection />
             
             {/* 버튼 클릭 시 이 위치로 오게 함 */}
             <section id="contact">
