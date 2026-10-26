@@ -872,7 +872,7 @@ function result(){let s=0,m=0;const cat={};Q.forEach(it=>{const mx=Math.max(...i
 }
 document.getElementById('startBtn').onclick=()=>{renderQ();root.scrollIntoView({behavior:'smooth',block:'start'});};
 
-/* forms (demo: no backend connected) */
+/* forms: 실제 접수(rebornSubmit)와 연결 */
 const toast=document.getElementById('toast');let tt;
 function say(m){toast.textContent=m;toast.hidden=false;clearTimeout(tt);tt=setTimeout(()=>toast.hidden=true,3600);}
 const telOk=v=>v.replace(/\D/g,'').length>=9;
@@ -882,14 +882,76 @@ document.getElementById('mainForm').addEventListener('submit',e=>{e.preventDefau
  if(!n){msg.classList.add('err');msg.textContent='이름을 입력해 주세요. 가명도 괜찮습니다.';return;}
  if(!telOk(t)){msg.classList.add('err');msg.textContent='연락처를 숫자로 입력해 주세요. 예) 010-1234-5678';return;}
  if(!a){msg.classList.add('err');msg.textContent='상담을 위해 개인정보 수집·이용 동의가 필요합니다.';return;}
- msg.textContent='시안 페이지라 접수 시스템은 아직 연결되지 않았습니다. 실제 사이트에서는 이 단계에서 상담 신청이 접수됩니다.';});
+ if(typeof window.rebornSubmit!=='function'){msg.textContent='접수 기능을 불러오는 중입니다. 잠시 후 다시 눌러 주세요.';return;}
+ const btn=e.target.querySelector('button[type=submit]'),label=btn.textContent;btn.disabled=true;btn.textContent='보내는 중…';msg.textContent='상담 신청을 보내고 있습니다.';
+ window.rebornSubmit({name:n,phone:t,interests:document.getElementById('f-type').value,callTime:document.getElementById('f-time').value.trim()})
+ .then(()=>{msg.textContent='상담 신청이 접수되었습니다. 김주휘 사무장이 곧 연락드리겠습니다.';e.target.reset();})
+ .catch(err=>{console.error(err);msg.classList.add('err');msg.textContent='접수 중 오류가 났습니다. 010-5094-3679로 전화 주세요.';})
+ .finally(()=>{btn.disabled=false;btn.textContent=label;});});
 document.getElementById('quickForm').addEventListener('submit',e=>{e.preventDefault();
  const n=document.getElementById('q-name').value.trim(),t=document.getElementById('q-tel').value.trim();
  if(!n||!telOk(t)){say('이름과 연락처를 입력해 주세요.');return;}
  if(!document.getElementById('q-agree').checked){say('개인정보 수집 동의가 필요합니다.');return;}
- say('시안 페이지라 접수 시스템은 아직 연결되지 않았습니다.');});
+ if(typeof window.rebornSubmit!=='function'){say('접수 기능을 불러오는 중입니다. 잠시 후 다시 눌러 주세요.');return;}
+ const btn=e.target.querySelector('button[type=submit]'),label=btn.textContent;btn.disabled=true;btn.textContent='보내는 중…';
+ window.rebornSubmit({name:n,phone:t,interests:document.getElementById('q-type').value})
+ .then(()=>{say('상담 신청이 접수되었습니다. 김주휘 사무장이 곧 연락드리겠습니다.');e.target.reset();})
+ .catch(err=>{console.error(err);say('접수 중 오류가 났습니다. 010-5094-3679로 전화 주세요.');})
+ .finally(()=>{btn.disabled=false;btn.textContent=label;});});
 })();
 </script>
 
+<script type="module">
+// 상담 신청 접수: 기존 사이트와 같은 Firebase(consultations 컬렉션) 저장 + EmailJS 메일 발송.
+// 빌드 없이 동작하도록 공식 CDN(gstatic)과 EmailJS REST API를 쓰고, 처음 신청할 때만 불러옵니다.
+const FIREBASE = {
+  apiKey: "AIzaSyA1rQkB8UfMYzDStJ4Cl6iyhS2ri1BfWzU",
+  authDomain: "dito-reborn-2f2db.firebaseapp.com",
+  projectId: "dito-reborn-2f2db",
+  storageBucket: "dito-reborn-2f2db.firebasestorage.app",
+  messagingSenderId: "802210911754",
+  appId: "1:802210911754:web:61d343451b56133a0331f3"
+};
+const EMAILJS = { service: "service_mis4a0t", template: "template_lqossxa", publicKey: "Xs8pRzZ0pwaPDIrNA" };
+const FB = "https://www.gstatic.com/firebasejs/10.12.2/";
+let dbP = null;
+function getDb() {
+  if (!dbP) {
+    dbP = Promise.all([import(/* @vite-ignore */ FB + "firebase-app.js"), import(/* @vite-ignore */ FB + "firebase-firestore.js")])
+      .then(([a, f]) => ({ db: f.getFirestore(a.initializeApp(FIREBASE)), f }));
+    dbP.catch(() => { dbP = null; });
+  }
+  return dbP;
+}
+window.rebornSubmit = async (d) => {
+  const lines = [d.interests && "궁금한 제도: " + d.interests, d.callTime && "통화 가능 시간: " + d.callTime, d.message && "상황 설명: " + d.message].filter(Boolean);
+  const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), ms))]);
+  // 1) 메일 발송(EmailJS) — 사무장에게 바로 알림이 가는 경로
+  const mail = withTimeout(fetch("https://api.emailjs.com/api/v1.0/email/send", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ service_id: EMAILJS.service, template_id: EMAILJS.template, user_id: EMAILJS.publicKey,
+      template_params: { from_name: d.name, phone: d.phone, email: "미입력", debt_amount: d.debtAmount || "미입력",
+        message: lines.length ? lines.join("\n") : "이름과 연락처만 남긴 상담 신청입니다. 빠르게 연락해 주세요!" } })
+  }).then(async (r) => { if (!r.ok) throw new Error("EmailJS " + r.status + " " + (await r.text())); }), 15000);
+  // 2) 기록 저장(Firebase) — 규칙이 막혀 있어도 메일이 가면 접수는 성공으로 처리
+  const save = withTimeout(getDb().then(({ db, f }) => f.addDoc(f.collection(db, "consultations"), {
+    name: d.name, phone: d.phone, email: "미입력", debtAmount: d.debtAmount || "",
+    message: lines.join("\n"), type: "상담신청", createdAt: f.serverTimestamp()
+  })), 15000);
+  const [m, s] = await Promise.allSettled([mail, save]);
+  if (m.status === "rejected") console.warn("메일 발송 실패:", m.reason);
+  if (s.status === "rejected") console.warn("Firebase 저장 실패:", s.reason && (s.reason.code || s.reason));
+  if (m.status === "rejected" && s.status === "rejected") throw new Error("메일 발송과 저장 모두 실패");
+  if (typeof window.gtag === "function") window.gtag("event", "consultation_submit", { event_category: "consultation", event_label: "무료상담신청_템플릿1", value: 1 });
+};
+document.addEventListener("click", (e) => {
+  if (e.target.closest('a[href^="tel:"]') && typeof window.gtag === "function") window.gtag("event", "phone_call_click", { event_category: "contact" });
+});
+const contact = document.getElementById("contact");
+if (contact && "IntersectionObserver" in window) {
+  const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { getDb(); io.disconnect(); } }, { rootMargin: "600px 0px" });
+  io.observe(contact);
+}
+</script>
 </body>
 </html>
