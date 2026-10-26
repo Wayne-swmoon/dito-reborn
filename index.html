@@ -413,6 +413,36 @@ button,input,select,textarea{font-family:inherit}
 .pv-ok{background:var(--accent-ink);border:0;color:#fff}
 .pv-open{border:0;background:none;padding:2px 4px;font:inherit;font-size:13px;color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer;white-space:nowrap}
 .agree-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+/* header phone pill (from template 1) */
+.call{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-weight:600;font-size:15px;white-space:nowrap;font-variant-numeric:tabular-nums;box-shadow:0 6px 18px var(--accent-soft);flex:none}
+.call svg{width:15px;height:15px}
+@media (max-width:900px){.call{margin-left:auto}}
+@media (max-width:480px){.call{height:40px;padding:0 14px;font-size:14px;gap:6px}.call svg{width:14px;height:14px}.brand{gap:8px}.brand img{height:22px}.brand span{font-size:12.5px;line-height:1.2;white-space:normal;max-width:6.6em;padding-left:8px}}
+/* fixed consult bar (from template 1) */
+.qbar{position:fixed;left:0;right:0;bottom:0;z-index:45;background:rgba(255,255,255,.97);border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(0,0,0,.08);padding-bottom:env(safe-area-inset-bottom,0px);backdrop-filter:blur(8px)}
+.qbar-in{display:flex;align-items:center;gap:18px;padding-block:12px}
+.qbar-txt{flex:none;min-width:0}
+.qbar-txt b{display:block;font-size:19px;font-weight:600;letter-spacing:-.03em;line-height:1.25;color:var(--ink)}
+.qbar-txt b em{font-style:normal;color:var(--accent-ink);background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+.qbar-txt small{font-size:12.5px;color:var(--ink-3)}
+.qbar-form{display:flex;gap:8px;flex:1;justify-content:flex-end;align-items:center;min-width:0}
+.qbar-form select,.qbar-form input[type=text],.qbar-form input[type=tel]{height:46px;border:1px solid var(--line-2);border-radius:10px;padding:0 12px;font-size:15px;background:#fff;color:var(--ink);width:140px;min-width:0}
+.qbar-form select:focus,.qbar-form input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.qbar-sub{display:flex;flex-direction:column;gap:2px;align-items:flex-start}
+.qbar-sub .btn{height:46px;padding:0 20px;font-size:15.5px}
+.qbar .ag{display:flex;align-items:center;gap:2px;font-size:11.5px;color:var(--ink-3);white-space:nowrap}
+.qbar .ag input{accent-color:var(--accent);margin:0 4px 0 0;vertical-align:-1px}
+.qbar .pv-open{font-size:11.5px;padding:0 2px}
+.qbar-mob{display:none;gap:8px;margin-left:auto}
+.qbar-mob .btn{height:44px;padding:0 16px;font-size:15px}
+.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;font-size:14px;z-index:70;max-width:calc(100% - 32px);text-align:center}
+body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.theme-pick{bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+@media (max-width:1080px){.qbar-form select{display:none}}
+@media (max-width:880px){.qbar-form{display:none}.qbar-mob{display:flex}body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}.theme-pick{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
+@media (max-width:440px){.qbar-txt small{display:none}.qbar-txt b{font-size:16px}.qbar-in{gap:10px}.qbar-mob .btn{padding:0 12px;font-size:14px}}
+/* mobile: the motion card comes first */
+@media (max-width:860px){.hero>.reel{order:-1;margin-top:0}.hero{padding-top:20px}}
 @media (prefers-reduced-motion:reduce){
   .js .sec-title .ln>span{transform:none;transition:none}
   .mq-track{animation:none}
@@ -427,7 +457,7 @@ button,input,select,textarea{font-family:inherit}
     <nav class="nav" aria-label="주요 메뉴">
       <a href="#numbers">숫자로 보기</a><a href="#fields">제도 안내</a><a href="#method">진행 방식</a><a href="#visit">출장 상담</a><a href="#check">자가진단</a><a href="#cases">사례</a><a href="#guide">상담 안내</a>
     </nav>
-    <a class="btn btn-acc" href="#contact">무료 상담</a>
+    <a class="call" href="tel:01050943679" aria-label="전화 상담 010-5094-3679"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span>010-5094-3679</span></a>
   </div>
 </header>
 
@@ -727,7 +757,31 @@ document.addEventListener('click',function(e){var o=e.target.closest('[data-pv-f
  if(e.target.closest('[data-pv-agree]')){var c=document.getElementById(target);if(c){c.checked=true;c.dispatchEvent(new Event('change',{bubbles:true}));}close();return;}
  if(e.target.closest('[data-pv-close]')||e.target===d)close();});})();
 </script>
-<div class="mobile-bar"><a class="btn btn-line" href="tel:01050943679">전화 상담</a><a class="btn btn-acc" href="#contact">무료 상담 신청</a></div>
+<div class="qbar" role="region" aria-label="빠른 상담 신청">
+  <div class="wrap qbar-in">
+    <div class="qbar-txt"><b>채무 최대 <em>90% 탕감</em> 가능</b><small>지금 신청하시면 추심 대응 방법부터 안내해 드립니다</small></div>
+    <form id="quickForm" class="qbar-form" novalidate>
+      <select id="q-type" aria-label="상담 분야"><option>개인회생</option><option>개인파산</option><option>출장 상담</option><option>잘 모르겠어요</option></select>
+      <input id="q-name" type="text" placeholder="이름" aria-label="이름" autocomplete="name">
+      <input id="q-tel" type="tel" inputmode="numeric" placeholder="연락처" aria-label="연락처" autocomplete="tel">
+      <div class="qbar-sub"><button class="btn btn-acc" type="submit">무료상담신청</button><span class="ag"><label><input type="checkbox" id="q-agree">개인정보 수집 동의(필수)</label><button type="button" class="pv-open" data-pv-for="q-agree">내용보기</button></span></div>
+    </form>
+    <div class="qbar-mob"><a class="btn btn-line" href="tel:01050943679">전화상담</a><a class="btn btn-acc" href="#contact">무료상담</a></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script>
+(function(){var f=document.getElementById('quickForm');if(!f)return;var t=document.getElementById('toast'),tt;
+function say(m){t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true;},4200);}
+f.addEventListener('submit',function(e){e.preventDefault();var n=document.getElementById('q-name').value.trim(),p=document.getElementById('q-tel').value.trim();
+ if(!n){say('이름을 입력해 주세요. 가명도 괜찮습니다.');return;}
+ if(p.replace(/\D/g,'').length<9){say('연락처를 숫자로 입력해 주세요. 예) 010-1234-5678');return;}
+ if(!document.getElementById('q-agree').checked){say('개인정보 수집·이용 동의가 필요합니다. 내용보기에서 확인하실 수 있어요.');return;}
+ if(typeof window.rebornSubmit!=='function'){say('템플릿이라 접수 시스템은 아직 연결되지 않았습니다.');return;}
+ var b=f.querySelector('button[type=submit]');b.disabled=true;b.textContent='보내는 중…';
+ window.rebornSubmit({name:n,phone:p,interests:document.getElementById('q-type').value}).then(function(){say('상담 신청이 접수되었습니다. 김주휘 사무장이 곧 연락드리겠습니다.');f.reset();})
+ .catch(function(err){console.error(err);say('접수 중 오류가 났습니다. 010-5094-3679로 전화 주세요.');}).then(function(){b.disabled=false;b.textContent='무료상담신청';});});})();
+</script>
 
 <div class="theme-pick" id="themePick" hidden>
   <div class="tp-panel" id="tpPanel" hidden>
