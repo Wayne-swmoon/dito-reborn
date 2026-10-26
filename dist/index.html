@@ -976,20 +976,24 @@ function getDb() {
   return dbP;
 }
 window.rebornSubmit = async (d) => {
-  const { db, f } = await getDb();
-  await f.addDoc(f.collection(db, "consultations"), {
-    name: d.name, phone: d.phone, interests: d.interests || "", debtAmount: d.debtAmount || "",
-    callTime: d.callTime || "", message: d.message || "", type: "상담신청", site: location.hostname,
-    createdAt: f.serverTimestamp()
-  });
   const lines = [d.interests && "궁금한 제도: " + d.interests, d.callTime && "통화 가능 시간: " + d.callTime, d.message && "상황 설명: " + d.message].filter(Boolean);
-  const r = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+  const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), ms))]);
+  // 1) 메일 발송(EmailJS) — 사무장에게 바로 알림이 가는 경로
+  const mail = withTimeout(fetch("https://api.emailjs.com/api/v1.0/email/send", {
     method: "POST", headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ service_id: EMAILJS.service, template_id: EMAILJS.template, user_id: EMAILJS.publicKey,
       template_params: { from_name: d.name, phone: d.phone, email: "미입력", debt_amount: d.debtAmount || "미입력",
         message: lines.length ? lines.join("\n") : "이름과 연락처만 남긴 상담 신청입니다. 빠르게 연락해 주세요!" } })
-  });
-  if (!r.ok) console.warn("EmailJS 발송 실패", r.status, await r.text());
+  }).then(async (r) => { if (!r.ok) throw new Error("EmailJS " + r.status + " " + (await r.text())); }), 15000);
+  // 2) 기록 저장(Firebase) — 규칙이 막혀 있어도 메일이 가면 접수는 성공으로 처리
+  const save = withTimeout(getDb().then(({ db, f }) => f.addDoc(f.collection(db, "consultations"), {
+    name: d.name, phone: d.phone, email: "미입력", debtAmount: d.debtAmount || "",
+    message: lines.join("\n"), type: "상담신청", createdAt: f.serverTimestamp()
+  })), 15000);
+  const [m, s] = await Promise.allSettled([mail, save]);
+  if (m.status === "rejected") console.warn("메일 발송 실패:", m.reason);
+  if (s.status === "rejected") console.warn("Firebase 저장 실패:", s.reason && (s.reason.code || s.reason));
+  if (m.status === "rejected" && s.status === "rejected") throw new Error("메일 발송과 저장 모두 실패");
   if (typeof window.gtag === "function") window.gtag("event", "consultation_submit", { event_category: "consultation", event_label: "무료상담신청_템플릿3", value: 1 });
 };
 document.addEventListener("click", (e) => {
