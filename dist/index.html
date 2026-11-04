@@ -462,6 +462,10 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 @font-face{font-family:"BusanDandiGothic";font-weight:600 900;font-style:normal;font-display:swap;src:url("https://cdn.jsdelivr.net/gh/Project-Noonnu/2610132210@l/l/%EB%B6%80%EC%82%B0%EB%8B%A8%EB%94%94%EA%B3%A0%EB%94%95B.woff2") format("woff2")}
 html.font-dandi{--f:"BusanDandiGothic","Paperlogy","Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif}
 html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dandi select,html.font-dandi textarea{font-family:var(--f)}
+/* 전화번호·"인가·면책"·"6개월~1년" 같은 묶음 단어가 줄 중간에서 끊기지 않게 */
+.nb{white-space:nowrap}
+/* 작은 폰(380px 이하): 상단 로고 글씨·전화 버튼이 화면 밖으로 밀리지 않게 */
+@media (max-width:380px){.brand span{font-size:13px;padding-left:7px}.brand img{height:20px}.hd .wrap{gap:8px}.call{padding:0 10px;font-size:14px;gap:5px}.call svg{width:13px;height:13px}}
 .font-tag{justify-self:start;display:inline-flex;align-items:center;gap:6px;margin-top:16px;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--accent);background:#fff;color:var(--accent-ink);font:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:background .15s,color .15s}
 .font-tag:hover{background:var(--accent-soft)}
 .font-tag[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
@@ -1082,5 +1086,19 @@ if (contact && "IntersectionObserver" in window) {
   io.observe(contact);
 }
 </script>
-  </body>
+  <script>
+/* 묶음 단어 끊김 방지: 가운뎃점·물결·하이픈·슬래시·괄호로 이어진 짧은 단어(전화번호 포함)를 한 덩어리로 */
+(function(){var RE=/[^\s]*[\u00B7~\/\-()%][^\s]*/g,SKIP=/^(SCRIPT|STYLE|TEXTAREA|OPTION|SELECT|svg|text)$/;
+function ok(t){return t.length>=4&&t.length<=16&&/[\uAC00-\uD7A3\d]/.test(t)&&/[\uAC00-\uD7A3\d][\u00B7~\/\-(][\uAC00-\uD7A3\d(]/.test(t)}
+function run(root){var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),list=[],n;
+while(n=w.nextNode()){var e=n.parentElement;if(!e||e.closest('.nb,.marquee,[class*="mq"],input,a[href^="mailto"]')||SKIP.test(e.tagName))continue;RE.lastIndex=0;if(RE.test(n.data))list.push(n);}
+list.forEach(function(t){if(!t.parentNode)return;try{var d=t.data,f=document.createDocumentFragment(),last=0,m,hit=false;RE.lastIndex=0;
+while(m=RE.exec(d)){if(!ok(m[0]))continue;hit=true;if(m.index>last)f.appendChild(document.createTextNode(d.slice(last,m.index)));var s=document.createElement('span');s.className='nb';s.textContent=m[0];f.appendChild(s);last=m.index+m[0].length;}
+if(!hit)return;if(last<d.length)f.appendChild(document.createTextNode(d.slice(last)));t.parentNode.replaceChild(f,t);}catch(err){}});}
+function go(){run(document.body);}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
+var tm;new MutationObserver(function(ms){if(ms.every(function(m){return m.target.closest&&m.target.closest('.nb,.reel,.marquee,[class*="mq"]')}))return;if(!tm)tm=setTimeout(function(){tm=0;go();},150);}).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+</body>
 </html>
