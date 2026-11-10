@@ -71,7 +71,7 @@
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:76px}
-body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:calc(16px + var(--fs-m));line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:calc(16px + var(--fs-m));line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
 h1,h2,h3,p{margin:0}
 h1,h2,h3{font-weight:600;letter-spacing:-.04em;line-height:1.15;text-wrap:balance}
@@ -182,6 +182,17 @@ button,input,select,textarea{font-family:inherit}
 .hero2 .hero-fields{margin-top:14px;padding:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;gap:1px;background:var(--line)}
 .hero2 .hero-fields li{background:#fff;padding:18px 20px!important;border:0!important}
 .hero2 .hero-foot{margin-top:10px}
+
+/* full-bleed hero */
+.hero2{padding-block:0 clamp(40px,6vw,72px)}
+.hcard{border-radius:0;min-height:clamp(600px,calc(100svh - 72px - 100px),780px)}
+.hcard{--gx:max(20px,calc((100vw - 1200px) / 2 + 20px))}
+.h-in{padding-left:var(--gx);padding-right:clamp(24px,4vw,56px)}
+.h-dots{left:var(--gx)}
+.hcard::before{right:max(-24px,calc((100vw - 1200px) / 2 - 60px))}
+.hero2 .hero-fields{margin-top:20px}
+@media (min-width:900px){.hcard{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)}.h-pic{margin-right:var(--gx)}.h-cap{right:0}}
+@media (max-width:899px){.hcard{min-height:0;max-height:none}.h-in{padding-right:var(--gx);padding-top:44px}.h-dots{left:50%}.hero2 .hero-fields{margin-top:16px}}
 .lw-note{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;padding:22px 26px;border:1px solid rgba(255,255,255,.12);border-left:3px solid var(--accent-hi);border-radius:16px;background:rgba(255,255,255,.04)}
 .lw-note p{flex:1 1 420px;font-size:calc(15px + var(--fs-m));line-height:1.75;color:rgba(255,255,255,.72)}
 .lw-note b{color:#fff}
@@ -539,7 +550,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 
 <nav class="rail" id="rail" aria-label="섹션 바로가기"><a href="#numbers" data-sec="numbers"><span>숫자로 보기</span><i></i></a><a href="#fields" data-sec="fields"><span>제도 안내</span><i></i></a><a href="#method" data-sec="method"><span>진행 방식</span><i></i></a><a href="#visit" data-sec="visit"><span>출장 상담</span><i></i></a><a href="#check" data-sec="check"><span>자가진단</span><i></i></a><a href="#cases" data-sec="cases"><span>사례</span><i></i></a><a href="#guide" data-sec="guide"><span>상담 안내</span><i></i></a><a href="#contact" data-sec="contact"><span>상담 신청</span><i></i></a></nav>
 <main id="top">
-<section class="wrap hero2">
+<section class="hero2">
   <div class="hcard" id="lw" aria-roledescription="carousel" aria-label="담당 변호사 소개">
     <div class="h-in">
       <p class="h-kick">법무법인JS · 부산·경남·울산</p>
@@ -558,6 +569,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
     </div>
     <div class="h-dots lw-tabs" role="tablist" aria-label="변호사 선택"><button type="button" role="tab" id="lw-t0" aria-controls="lw-p0" aria-selected="true" tabindex="0" aria-label="신보관 변호사"><img src="/img/lawyers/shin-bogwan.webp" alt="" width="373" height="560" loading="lazy"></button><button type="button" role="tab" id="lw-t1" aria-controls="lw-p1" aria-selected="false" tabindex="-1" aria-label="강재신 변호사"><img src="/img/lawyers/kang-jaesin.webp" alt="" width="373" height="560" loading="lazy"></button><button type="button" role="tab" id="lw-t2" aria-controls="lw-p2" aria-selected="false" tabindex="-1" aria-label="유민욱 변호사"><img src="/img/lawyers/yoo-minwook.webp" alt="" width="373" height="560" loading="lazy"></button><button type="button" role="tab" id="lw-t3" aria-controls="lw-p3" aria-selected="false" tabindex="-1" aria-label="최윤석 변호사"><img src="/img/lawyers/choi-yunseok.webp" alt="" width="373" height="560" loading="lazy"></button><button type="button" role="tab" id="lw-t4" aria-controls="lw-p4" aria-selected="false" tabindex="-1" aria-label="우종진 변호사"><img src="/img/lawyers/woo-jongjin.webp" alt="" width="373" height="560" loading="lazy"></button><button type="button" role="tab" id="lw-t5" aria-controls="lw-p5" aria-selected="false" tabindex="-1" aria-label="최원진 변호사"><img src="/img/lawyers/choi-wonjin.webp" alt="" width="373" height="560" loading="lazy"></button></div>
   </div>
+  <div class="wrap">
   <ul class="hero-fields">
       <li><b>90<small>%</small></b><span>원금 최대 탕감</span></li>
       <li><b>97.8<small>%</small></b><span>인가·면책 성공률</span></li>
@@ -565,6 +577,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
       <li><b>즉시</b><span>인가 결정 후 추심 중단</span></li>
     </ul>
   <p class="hero-foot">성공률은 2024~2025년 인가·면책 기준입니다.</p>
+  </div>
 </section>
 
 <section class="wrap" aria-label="사례 영상">
