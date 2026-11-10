@@ -129,57 +129,65 @@ button,input,select,textarea{font-family:inherit}
 .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
 .hero-foot{margin-top:16px;font-size:calc(12.5px + var(--fs-s));color:var(--ink-4)}
 
-/* lawyers (hero, one at a time) */
-.lw{width:100%;max-width:440px;justify-self:end;display:flex;flex-direction:column;gap:12px}
-.lw-card{position:relative;border-radius:24px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 30px 60px -36px rgba(0,0,0,.45);touch-action:pan-y}
-.lw-photo{position:relative;aspect-ratio:6/5;overflow:hidden;background:radial-gradient(120% 90% at 50% 100%,var(--accent-soft) 0%,transparent 62%),linear-gradient(180deg,#F3F2EE 0%,var(--photo-bg) 100%)}
-.lw-photo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(0deg,rgba(255,255,255,.9),rgba(255,255,255,0));pointer-events:none}
-.lw-imgs img{position:absolute;left:50%;bottom:-2%;height:104%;width:auto;max-width:none;transform:translateX(-50%);opacity:0;visibility:hidden}
-.lw-imgs img.on{opacity:1;visibility:visible;transform:translateX(-50%)}
-.lw-tag{position:absolute;left:14px;top:14px;z-index:2;display:flex;align-items:baseline;gap:5px;font-size:calc(12px + var(--fs-s));font-weight:600;color:var(--ink-3);background:rgba(255,255,255,.88);border-radius:999px;padding:5px 12px;backdrop-filter:blur(4px)}
-.lw-tag b{font-size:14px;color:var(--accent-ink);font-variant-numeric:tabular-nums}
-.lw-tag span{color:var(--ink-4)}
-.lw-tag em{font-style:normal}
-.lw-pause{position:absolute;right:14px;top:12px;z-index:3;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.85);color:var(--ink-2);display:grid;place-items:center;cursor:pointer}
-.lw-pause svg{width:15px;height:15px;fill:currentColor}
-.lw-pause:focus-visible,.lw-tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.lw-body{position:relative;padding:2px 22px 20px;min-height:162px}
-.lw-role{display:inline-block;font-size:calc(12.5px + var(--fs-s));font-weight:600;color:var(--accent-ink);background:var(--accent-soft);border-radius:999px;padding:3px 11px}
-.lw-name{margin-top:6px;font-size:28px;font-weight:700;letter-spacing:-.04em;line-height:1.2;color:var(--ink)}
-.lw-name small{margin-left:6px;font-size:.55em;font-weight:600;color:var(--ink-3);letter-spacing:-.02em}
-.lw-cv{margin:10px 0 0;padding:10px 0 0;list-style:none;border-top:1px solid var(--line);display:grid;gap:4px;font-size:calc(14px + var(--fs-s));color:var(--ink-2);line-height:1.55}
-.lw-cv li{position:relative;padding-left:14px}
-.lw-cv li::before{content:"";position:absolute;left:0;top:.68em;width:6px;height:2px;background:var(--accent)}
-.lw-bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--line)}
-.lw-bar i{display:block;width:100%;height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left center}
-.lw-tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
-.lw-tabs button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:6px 2px 6px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;font:inherit;color:var(--ink-3);transition:border-color .2s,color .2s,background .2s}
-.lw-tabs img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:50% 8%;background:var(--photo-bg)}
-.lw-tabs span{font-size:calc(12px + var(--fs-s));font-weight:600;white-space:nowrap}
-.lw-tabs button:hover{border-color:var(--line-2);color:var(--ink)}
-.lw-tabs button[aria-selected=true]{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
+/* hero: dark card, lawyers one at a time (법무법인JS 시안 2 구조) */
+.hero2{padding-block:18px clamp(40px,6vw,72px)}
+.hcard{position:relative;overflow:hidden;border-radius:24px;color:#fff;display:grid;min-height:600px;background:radial-gradient(120% 140% at 85% 30%,#17605A 0%,#0B2D2B 55%,#061716 100%)}
+.hcard::before{content:"JS";position:absolute;right:-24px;bottom:-70px;font-size:380px;font-weight:800;line-height:1;color:rgba(255,255,255,.035);letter-spacing:-.05em;pointer-events:none}
+.h-in{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding:clamp(36px,6vw,76px) clamp(24px,5vw,68px) 0}
+.h-kick{font-size:calc(14px + var(--fs-s));color:rgba(255,255,255,.72)}
+.h-title{font-size:clamp(40px,5.4vw,66px);font-weight:700;line-height:1.12;letter-spacing:-.045em}
+.h-title em{font-style:normal;color:var(--accent-hi)}
+.h-big{font-size:clamp(24px,2.6vw,32px);font-weight:600;letter-spacing:-.04em;line-height:1.2}
+.h-big b{color:var(--accent-hi)}
+.h-lead{max-width:34em;font-size:calc(15.5px + var(--fs-m));line-height:1.8;color:rgba(255,255,255,.74)}
+.hcard .cta{margin-top:6px}
+.h-glass{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.3);color:#fff}
+.h-glass:hover{background:rgba(255,255,255,.14)}
+.h-prog{display:flex;align-items:center;gap:14px;width:100%;max-width:380px;margin-top:8px;font-weight:600;font-size:15px;color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums}
+.h-prog i{flex:1;height:2px;background:rgba(255,255,255,.2);position:relative;overflow:hidden}
+.h-prog i b{position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left center}
+.h-prog span b{color:#fff;font-size:18px}
+.lw-pause{width:34px;height:34px;flex:none;border:1px solid rgba(255,255,255,.3);border-radius:50%;background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer}
+.lw-pause svg{width:13px;height:13px;fill:currentColor}
+.h-pic{position:relative;height:400px;margin-top:20px;touch-action:pan-y}
+.lw-imgs img{position:absolute;bottom:0;left:50%;height:100%;width:auto;max-width:none;transform:translateX(-50%);opacity:0;visibility:hidden}
+.lw-imgs img.on{opacity:1;visibility:visible}
+.h-cap{position:absolute;right:16px;bottom:16px;z-index:2;text-align:right;background:rgba(6,23,22,.58);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:12px 16px;border-radius:14px;max-width:calc(100% - 32px)}
+.h-cap-k{font-size:11.5px;font-weight:600;letter-spacing:.06em;color:var(--accent-hi)}
+.lw-info small{display:block;margin-top:4px;font-size:calc(12.5px + var(--fs-s));line-height:1.55;color:rgba(255,255,255,.8)}
+.lw-info p{margin-top:4px}
+.lw-info b{font-size:20px;letter-spacing:-.03em}
+.lw-info span{margin-left:6px;font-size:calc(13px + var(--fs-s));color:rgba(255,255,255,.72)}
+.h-dots{position:absolute;left:clamp(24px,5vw,68px);bottom:26px;z-index:2;display:flex;gap:8px}
+.h-dots button{width:42px;height:42px;border-radius:50%;border:2px solid rgba(255,255,255,.25);padding:0;overflow:hidden;background:#1c4a46;cursor:pointer;transition:border-color .2s,transform .2s}
+.h-dots button:hover{transform:translateY(-2px)}
+.h-dots img{width:100%;height:100%;object-fit:cover;object-position:50% 6%}
+.h-dots button[aria-selected=true]{border-color:var(--accent-hi)}
+.hcard :focus-visible{outline:2px solid var(--accent-hi);outline-offset:2px}
+@media (min-width:900px){
+  .hcard{grid-template-columns:1.08fr .92fr;min-height:640px}
+  .h-in{padding-bottom:116px;justify-content:center}
+  .h-pic{height:auto;margin:0}
+  .lw-imgs img{height:93%}
+}
+@media (max-width:899px){
+  .h-in{gap:14px}
+  .h-pic{height:380px}
+  .hcard .cta{display:flex;flex-wrap:nowrap;gap:8px;width:100%}
+  .hcard .cta .btn{flex:1 1 0;min-width:0;padding-inline:12px;white-space:nowrap}
+  .h-cap{bottom:76px;right:12px}
+  .h-dots{left:50%;transform:translateX(-50%);bottom:16px;gap:6px}
+  .h-dots button{width:38px;height:38px}
+}
+.hero2 .hero-fields{margin-top:14px;padding:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;gap:1px;background:var(--line)}
+.hero2 .hero-fields li{background:#fff;padding:18px 20px!important;border:0!important}
+.hero2 .hero-foot{margin-top:10px}
 .lw-note{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;padding:22px 26px;border:1px solid rgba(255,255,255,.12);border-left:3px solid var(--accent-hi);border-radius:16px;background:rgba(255,255,255,.04)}
 .lw-note p{flex:1 1 420px;font-size:calc(15px + var(--fs-m));line-height:1.75;color:rgba(255,255,255,.72)}
 .lw-note b{color:#fff}
 .lw-link{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--accent-hi);text-decoration:none;white-space:nowrap}
 .lw-link svg{width:16px;height:16px}
-@media (max-width:860px){
-  .lw-card{display:grid;grid-template-columns:42% minmax(0,1fr);align-items:stretch}
-  .lw-photo{aspect-ratio:auto;min-height:232px}
-  .lw-photo::after{display:none}
-  .lw-imgs img{height:100%;bottom:0}
-  .lw-tag{left:8px;top:8px;padding:3px 9px;font-size:11px}.lw-tag b{font-size:12px}.lw-tag em{display:none}
-  .lw-pause{right:auto;left:8px;top:auto;bottom:10px;width:30px;height:30px}
-  .lw-body{padding:16px 16px 18px;min-height:0;display:flex;flex-direction:column;justify-content:center}
-  .lw-name{font-size:24px}
-  .lw-cv{font-size:calc(13px + var(--fs-s));gap:3px}
-  .lw-tabs{gap:4px}
-  .lw-tabs button{padding:5px 0;border-radius:999px}
-  .lw-tabs span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .lw-tabs img{width:36px;height:36px}
-}
-@media (max-width:380px){.lw-card{grid-template-columns:40% minmax(0,1fr)}.lw-name{font-size:22px}.lw-role{font-size:11.5px}}
-@media (max-width:860px){.hero{grid-template-columns:minmax(0,1fr)}.lw{justify-self:stretch;max-width:520px}.hero-fields{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:14px}.hero-fields li:nth-child(3){padding-left:0;border-left:0}}
+@media (max-width:860px){.hero{grid-template-columns:minmax(0,1fr)}.hero-fields{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:14px}.hero-fields li:nth-child(3){padding-left:0;border-left:0}}
 
 /* film banner */
 .film{position:relative;border-radius:24px;overflow:hidden;background:#FBF3E2;aspect-ratio:16/9;max-width:100%;box-shadow:0 30px 60px -40px rgba(0,0,0,.4)}
@@ -453,7 +461,7 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 @media (max-width:880px){.qbar-form{display:none}.qbar-mob{display:flex}body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}.theme-pick{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
 @media (max-width:440px){.qbar-txt small{display:none}.qbar-txt b{font-size:calc(16px + var(--fs-m))}.qbar-in{gap:10px}.qbar-mob .btn{padding:0 12px;font-size:calc(14px + var(--fs-s))}}
 /* mobile: the motion card comes first */
-@media (max-width:860px){.hero>.lw{order:-1;margin-top:0}.hero{padding-top:20px}}
+
 @media (prefers-reduced-motion:reduce){
   .js .sec-title .ln>span{transform:none;transition:none}
   .mq-track{animation:none}
@@ -490,36 +498,32 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 </header>
 
 <main id="top">
-<section class="wrap hero">
-  <div>
-    <p class="eyebrow">법무법인JS · 부산·경남·울산</p>
-    <h1 class="name">개인회생·파산<br>전문센터</h1>
-    <p class="big-line">15년, <b>5,000</b>건+</p>
-    <p class="lead">혼자 감당하기 벅찬 빚, 법원이 인정한 제도로 줄일 수 있습니다. 전담 변호사 및 담당자가 첫 상담부터 인가·면책까지 1:1로 맡고, 가족과 직장 모르게 조용히 진행하고, 원하시면 계신 곳까지 찾아갑니다.</p>
-    <ul class="hero-fields">
+<section class="wrap hero2">
+  <div class="hcard" id="lw" aria-roledescription="carousel" aria-label="담당 변호사 소개">
+    <div class="h-in">
+      <p class="h-kick">법무법인JS · 부산·경남·울산</p>
+      <h1 class="h-title"><em>개인회생·파산</em><br>전문센터</h1>
+      <p class="h-big">15년, <b>5,000</b>건+</p>
+      <p class="h-lead">혼자 감당하기 벅찬 빚, 법원이 인정한 제도로 줄일 수 있습니다. 전담 변호사 및 담당자가 첫 상담부터 인가·면책까지 1:1로 맡고, 가족과 직장 모르게 조용히 진행하고, 원하시면 계신 곳까지 찾아갑니다.</p>
+      <div class="cta">
+      <a class="btn btn-acc" href="#contact">무료 상담 신청 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn h-glass" href="#check">1분 자가진단</a>
+    </div>
+      <div class="h-prog"><i><b id="lwBar"></b></i><span><b id="lwNo">01</b> / 06</span><button class="lw-pause" id="lwPause" type="button" aria-label="자동 넘김 멈춤"><svg viewBox="0 0 24 24" id="lwIcon"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button></div>
+    </div>
+    <div class="h-pic lw-card">
+      <div class="lw-imgs"><img src="/img/lawyers/shin-bogwan.webp" alt="신보관 변호사" width="373" height="560" decoding="async" fetchpriority="high" class="on"><img src="/img/lawyers/kang-jaesin.webp" alt="강재신 변호사" width="373" height="560" decoding="async" loading="lazy"><img src="/img/lawyers/yoo-minwook.webp" alt="유민욱 변호사" width="373" height="560" decoding="async" loading="lazy"><img src="/img/lawyers/choi-yunseok.webp" alt="최윤석 변호사" width="373" height="560" decoding="async" loading="lazy"><img src="/img/lawyers/woo-jongjin.webp" alt="우종진 변호사" width="373" height="560" decoding="async" loading="lazy"><img src="/img/lawyers/choi-wonjin.webp" alt="최원진 변호사" width="373" height="560" decoding="async" loading="lazy"></div>
+      <div class="h-cap" aria-live="polite"><p class="h-cap-k">담당 변호사</p><div class="lw-info on" role="tabpanel" id="lw-p0" aria-labelledby="lw-t0"><small>서울대학교 경영학과<br>부산대학교 법학전문대학원</small><p><b>신보관</b><span>변호사 · 개인정보 보호책임자</span></p></div><div class="lw-info" role="tabpanel" id="lw-p1" aria-labelledby="lw-t1" hidden><small>서강대학교 경영학과<br>(前) 우리노무법인</small><p><b>강재신</b><span>변호사 · 공인노무사</span></p></div><div class="lw-info" role="tabpanel" id="lw-p2" aria-labelledby="lw-t2" hidden><small>(前) BNK부산은행 여신·외환 실무<br>대한변호사협회 금융변호사회 회원</small><p><b>유민욱</b><span>변호사</span></p></div><div class="lw-info" role="tabpanel" id="lw-p3" aria-labelledby="lw-t3" hidden><small>부산대학교 법학과 박사과정 수료(해상법)<br>(前) 부산경상대학교 초빙교수</small><p><b>최윤석</b><span>변호사</span></p></div><div class="lw-info" role="tabpanel" id="lw-p4" aria-labelledby="lw-t4" hidden><small>(前) 부산지방법원 실무수습<br>(前) 부산지방법원 국선변호인</small><p><b>우종진</b><span>변호사</span></p></div><div class="lw-info" role="tabpanel" id="lw-p5" aria-labelledby="lw-t5" hidden><small>부산시 전세사기피해지원센터 변호사<br>부산지방변호사회 중소기업고문변호단 위원</small><p><b>최원진</b><span>변호사 · 광고책임변호사</span></p></div></div>
+    </div>
+    <div class="h-dots lw-tabs" role="tablist" aria-label="변호사 선택"><button type="button" role="tab" id="lw-t0" aria-controls="lw-p0" aria-selected="true" tabindex="0" aria-label="신보관 변호사"><img src="/img/lawyers/shin-bogwan.webp" alt="" width="373" height="560" loading="lazy"></button><button type="button" role="tab" id="lw-t1" aria-controls="lw-p1" aria-selected="false" tabindex="-1" aria-label="강재신 변호사"><img src="/img/lawyers/kang-jaesin.webp" alt="" width="373" height="560" loading="lazy"></button><button type="button" role="tab" id="lw-t2" aria-controls="lw-p2" aria-selected="false" tabindex="-1" aria-label="유민욱 변호사"><img src="/img/lawyers/yoo-minwook.webp" alt="" width="373" height="560" loading="lazy"></button><button type="button" role="tab" id="lw-t3" aria-controls="lw-p3" aria-selected="false" tabindex="-1" aria-label="최윤석 변호사"><img src="/img/lawyers/choi-yunseok.webp" alt="" width="373" height="560" loading="lazy"></button><button type="button" role="tab" id="lw-t4" aria-controls="lw-p4" aria-selected="false" tabindex="-1" aria-label="우종진 변호사"><img src="/img/lawyers/woo-jongjin.webp" alt="" width="373" height="560" loading="lazy"></button><button type="button" role="tab" id="lw-t5" aria-controls="lw-p5" aria-selected="false" tabindex="-1" aria-label="최원진 변호사"><img src="/img/lawyers/choi-wonjin.webp" alt="" width="373" height="560" loading="lazy"></button></div>
+  </div>
+  <ul class="hero-fields">
       <li><b>90<small>%</small></b><span>원금 최대 탕감</span></li>
       <li><b>97.8<small>%</small></b><span>인가·면책 성공률</span></li>
       <li><b>70<small>%</small></b><span>평균 감면율</span></li>
       <li><b>즉시</b><span>인가 결정 후 추심 중단</span></li>
     </ul>
-    <div class="cta">
-      <a class="btn btn-acc" href="#contact">무료 상담 신청 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn btn-line" href="#check">1분 자가진단</a>
-    </div>
-    <p class="hero-foot">성공률은 2024~2025년 인가·면책 기준입니다.</p>
-  </div>
-  <aside class="lw" id="lw" aria-roledescription="carousel" aria-label="담당 변호사 소개">
-    <div class="lw-card">
-      <div class="lw-photo">
-        <p class="lw-tag"><em>법무법인JS 담당 변호사</em> <b id="lwNo">01</b><span>/ 06</span></p>
-        <button class="lw-pause" id="lwPause" type="button" aria-label="자동 넘김 멈춤"><svg viewBox="0 0 24 24" id="lwIcon"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button>
-        <div class="lw-imgs"><img src="/img/lawyers/shin-bogwan.webp" alt="신보관 변호사" width="373" height="560" decoding="async" fetchpriority="high" class="on"><img src="/img/lawyers/kang-jaesin.webp" alt="강재신 변호사" width="373" height="560" decoding="async" loading="lazy" class=""><img src="/img/lawyers/yoo-minwook.webp" alt="유민욱 변호사" width="373" height="560" decoding="async" loading="lazy" class=""><img src="/img/lawyers/choi-yunseok.webp" alt="최윤석 변호사" width="373" height="560" decoding="async" loading="lazy" class=""><img src="/img/lawyers/woo-jongjin.webp" alt="우종진 변호사" width="373" height="560" decoding="async" loading="lazy" class=""><img src="/img/lawyers/choi-wonjin.webp" alt="최원진 변호사" width="373" height="560" decoding="async" loading="lazy" class=""></div>
-      </div>
-      <div class="lw-body" aria-live="polite"><div class="lw-info on" role="tabpanel" id="lw-p0" aria-labelledby="lw-t0"><p class="lw-role">변호사 · 개인정보 보호책임자</p><p class="lw-name">신보관<small>변호사</small></p><ul class="lw-cv"><li>서울대학교 경영학과</li><li>부산대학교 법학전문대학원</li><li>(前) 법무법인 해인</li></ul></div><div class="lw-info" role="tabpanel" id="lw-p1" aria-labelledby="lw-t1" hidden><p class="lw-role">변호사 · 공인노무사</p><p class="lw-name">강재신<small>변호사</small></p><ul class="lw-cv"><li>서강대학교 경영학과</li><li>동아대학교 법학전문대학원</li><li>(前) 우리노무법인</li></ul></div><div class="lw-info" role="tabpanel" id="lw-p2" aria-labelledby="lw-t2" hidden><p class="lw-role">변호사</p><p class="lw-name">유민욱<small>변호사</small></p><ul class="lw-cv"><li>(前) BNK부산은행 여신·외환 실무</li><li>대한변호사협회 금융변호사회 회원</li><li>부산대학교 법학전문대학원</li></ul></div><div class="lw-info" role="tabpanel" id="lw-p3" aria-labelledby="lw-t3" hidden><p class="lw-role">변호사</p><p class="lw-name">최윤석<small>변호사</small></p><ul class="lw-cv"><li>부산대학교 법학과 박사과정 수료(해상법)</li><li>(前) 부산경상대학교 초빙교수</li><li>부산지방법원·동부지원 국선변호인</li></ul></div><div class="lw-info" role="tabpanel" id="lw-p4" aria-labelledby="lw-t4" hidden><p class="lw-role">변호사</p><p class="lw-name">우종진<small>변호사</small></p><ul class="lw-cv"><li>(前) 부산지방법원 실무수습</li><li>(前) 부산지방법원 국선변호인</li><li>부산대학교 법학전문대학원</li></ul></div><div class="lw-info" role="tabpanel" id="lw-p5" aria-labelledby="lw-t5" hidden><p class="lw-role">변호사 · 광고책임변호사</p><p class="lw-name">최원진<small>변호사</small></p><ul class="lw-cv"><li>부산시 전세사기피해지원센터 변호사</li><li>부산지방변호사회 중소기업고문변호단 위원</li><li>고려대학교 법학과</li></ul></div></div>
-      <div class="lw-bar"><i id="lwBar"></i></div>
-    </div>
-    <div class="lw-tabs" role="tablist" aria-label="변호사 선택"><button type="button" role="tab" id="lw-t0" aria-controls="lw-p0" aria-selected="true" tabindex="0"><img src="/img/lawyers/shin-bogwan.webp" alt="" width="373" height="560" loading="lazy"><span>신보관</span></button><button type="button" role="tab" id="lw-t1" aria-controls="lw-p1" aria-selected="false" tabindex="-1"><img src="/img/lawyers/kang-jaesin.webp" alt="" width="373" height="560" loading="lazy"><span>강재신</span></button><button type="button" role="tab" id="lw-t2" aria-controls="lw-p2" aria-selected="false" tabindex="-1"><img src="/img/lawyers/yoo-minwook.webp" alt="" width="373" height="560" loading="lazy"><span>유민욱</span></button><button type="button" role="tab" id="lw-t3" aria-controls="lw-p3" aria-selected="false" tabindex="-1"><img src="/img/lawyers/choi-yunseok.webp" alt="" width="373" height="560" loading="lazy"><span>최윤석</span></button><button type="button" role="tab" id="lw-t4" aria-controls="lw-p4" aria-selected="false" tabindex="-1"><img src="/img/lawyers/woo-jongjin.webp" alt="" width="373" height="560" loading="lazy"><span>우종진</span></button><button type="button" role="tab" id="lw-t5" aria-controls="lw-p5" aria-selected="false" tabindex="-1"><img src="/img/lawyers/choi-wonjin.webp" alt="" width="373" height="560" loading="lazy"><span>최원진</span></button></div>
-  </aside>
+  <p class="hero-foot">성공률은 2024~2025년 인가·면책 기준입니다.</p>
 </section>
 
 <section class="wrap" aria-label="사례 영상">
@@ -871,14 +875,14 @@ applyTheme(THEMES.filter(function(t){return t.k===saved;})[0]||THEMES[0]);
 /* ---------- lawyers: one at a time ---------- */
 (function(){var root=document.getElementById('lw');if(!root)return;
 var imgs=root.querySelectorAll('.lw-imgs img'),infos=root.querySelectorAll('.lw-info'),tabs=root.querySelectorAll('.lw-tabs [role=tab]'),no=document.getElementById('lwNo'),bar=document.getElementById('lwBar'),btn=document.getElementById('lwPause'),icon=document.getElementById('lwIcon');
-var n=imgs.length,cur=0,DUR=reduced?7000:5200,t=null,anim=null,user=false,hover=false,off=false;
+var n=imgs.length,cur=0,DUR=reduced?7000:5000,t=null,anim=null,user=false,hover=false,off=false;
 function show(i,focus){cur=(i+n)%n;
  imgs.forEach(function(e,k){e.classList.toggle('on',k===cur);});
  infos.forEach(function(e,k){var on=k===cur;e.hidden=!on;e.classList.toggle('on',on);});
  tabs.forEach(function(e,k){var on=k===cur;e.setAttribute('aria-selected',on);e.tabIndex=on?0:-1;});
  if(focus)tabs[cur].focus();
  no.textContent=(cur<9?'0':'')+(cur+1);
- if(!reduced){var im=imgs[cur];im.animate&&im.animate([{opacity:0,transform:'translateY(14px) scale(1.03)'},{opacity:1,transform:'none'}],{duration:620,easing:EASE});
+ if(!reduced){var im=imgs[cur];im.animate&&im.animate([{opacity:0,transform:'translateX(-50%) translateY(16px) scale(1.03)'},{opacity:1,transform:'translateX(-50%)'}],{duration:700,easing:EASE});
   infos[cur].animate&&infos[cur].animate([{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'none'}],{duration:480,easing:EASE});}
  restart();}
 function blocked(){return user||hover||off||document.hidden;}
