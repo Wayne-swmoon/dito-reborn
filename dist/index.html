@@ -389,6 +389,45 @@ button,input,select,textarea{font-family:inherit}
 .form-msg{grid-column:1/-1;font-size:calc(14px + var(--fs-s));border-radius:12px;padding:12px 14px;background:var(--accent-soft);color:var(--accent-ink)}
 .form-msg.err{background:#FDEEEE;color:#B42318}
 @media (max-width:860px){.contact{grid-template-columns:1fr}.form{grid-template-columns:1fr}}
+/* ---------- focus: section numbers, progress, rail, reveal ---------- */
+.sec-label{display:flex;align-items:center;gap:12px}
+.sec-no{display:inline-flex;align-items:center;gap:10px;font-variant-numeric:tabular-nums;letter-spacing:.02em;color:var(--accent-ink)}
+.sec-no::after{content:"";width:28px;height:1px;background:currentColor;opacity:.5}
+.sec-dark .sec-no{color:var(--accent-hi)}
+.sec-title{position:relative}
+.hd-prog{position:absolute;left:0;right:0;bottom:-1px;height:2px;pointer-events:none}
+.hd-prog i{display:block;height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left center}
+.nav a.on{color:var(--accent-ink);font-weight:600}
+.rail{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:40;display:none;flex-direction:column;gap:6px;opacity:0;transition:opacity .3s}
+.rail.show{opacity:1}
+.rail a{display:flex;align-items:center;justify-content:flex-end;gap:10px;height:22px;text-decoration:none;color:var(--ink-3)}
+.rail i{width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.35;transition:all .25s var(--ease)}
+.rail span{font-size:12.5px;font-weight:600;white-space:nowrap;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.92);box-shadow:0 4px 14px -6px rgba(0,0,0,.25);opacity:0;transform:translateX(6px);transition:all .25s var(--ease)}
+.rail a:hover span,.rail a.on span{opacity:1;transform:none}
+.rail a.on{color:var(--accent-ink)}
+.rail a.on i{opacity:1;height:22px;border-radius:4px}
+.rail.dk a{color:rgba(255,255,255,.7)}.rail.dk a.on{color:var(--accent-hi)}.rail.dk span{background:rgba(20,23,22,.85);color:#fff}
+@media (min-width:1320px){.rail{display:flex}}
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--d,0) * 70ms)}
+.js .rv.in{opacity:1;transform:none}
+.sec{position:relative}
+.sec.focus .sec-title::before{content:"";position:absolute;left:-18px;top:.18em;bottom:.18em;width:3px;border-radius:3px;background:var(--accent);transform-origin:top;animation:barIn .7s var(--ease) both}
+.sec-dark.focus .sec-title::before{background:var(--accent-hi)}
+@keyframes barIn{from{transform:scaleY(0)}to{transform:none}}
+@media (max-width:1240px){.sec.focus .sec-title::before{display:none}}
+/* contact: manager */
+.mgr{margin:0 0 28px;display:grid;grid-template-columns:132px minmax(0,1fr);gap:20px;align-items:end;padding:20px 22px 0;border-radius:20px;background:#fff;border:1px solid var(--line);overflow:hidden}
+.mgr-pic{position:relative;height:168px;align-self:end}
+.mgr-pic::before{content:"";position:absolute;left:6px;right:6px;bottom:0;height:78%;border-radius:999px 999px 0 0;background:var(--accent-soft)}
+.mgr-pic img{position:absolute;left:50%;bottom:0;height:100%;width:auto;max-width:none;transform:translateX(-50%)}
+.mgr figcaption{padding-bottom:20px}
+.mgr small{font-size:calc(12.5px + var(--fs-s));font-weight:600;color:var(--accent-ink)}
+.mgr b{display:block;margin-top:2px;font-size:24px;letter-spacing:-.03em}
+.mgr b span{margin-left:6px;font-size:14px;font-weight:600;color:var(--ink-3)}
+.mgr p{margin-top:8px;font-size:calc(14px + var(--fs-s));line-height:1.7;color:var(--ink-2)}
+@media (max-width:520px){.mgr{grid-template-columns:116px minmax(0,1fr);gap:14px;padding:16px 16px 0;align-items:stretch}.mgr-pic{height:auto;min-height:170px}.mgr figcaption{padding-block:4px 16px}.mgr b{font-size:21px}.mgr p{font-size:13.5px;line-height:1.6}}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.sec.focus .sec-title::before{animation:none}}
+
 
 /* footer */
 .ft{border-top:1px solid var(--line);padding-block:44px;font-size:calc(13.5px + var(--fs-s));color:var(--ink-3)}
@@ -495,8 +534,10 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
     </nav>
     <a class="call" href="tel:01050943679" aria-label="전화 상담 010-5094-3679"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span>010-5094-3679</span></a>
   </div>
+  <div class="hd-prog" aria-hidden="true"><i id="hdProg"></i></div>
 </header>
 
+<nav class="rail" id="rail" aria-label="섹션 바로가기"><a href="#numbers" data-sec="numbers"><span>숫자로 보기</span><i></i></a><a href="#fields" data-sec="fields"><span>제도 안내</span><i></i></a><a href="#method" data-sec="method"><span>진행 방식</span><i></i></a><a href="#visit" data-sec="visit"><span>출장 상담</span><i></i></a><a href="#check" data-sec="check"><span>자가진단</span><i></i></a><a href="#cases" data-sec="cases"><span>사례</span><i></i></a><a href="#guide" data-sec="guide"><span>상담 안내</span><i></i></a><a href="#contact" data-sec="contact"><span>상담 신청</span><i></i></a></nav>
 <main id="top">
 <section class="wrap hero2">
   <div class="hcard" id="lw" aria-roledescription="carousel" aria-label="담당 변호사 소개">
@@ -543,7 +584,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 
 <section class="sec" id="numbers">
   <div class="wrap">
-    <p class="sec-label">BY THE NUMBERS</p>
+    <p class="sec-label"><span class="sec-no">01</span>BY THE NUMBERS</p>
     <h2 class="sec-title"><span class="ln"><span>숫자로 보는 15년</span></span></h2>
     <p class="sec-desc">부산·경남·울산에서 개인회생·파산을 15년 넘게 맡아 왔습니다. 상담은 무료이고, 수임료는 나눠 낼 수 있습니다.</p>
     <div class="stats">
@@ -577,7 +618,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 
 <section class="sec sec-gray" id="fields">
   <div class="wrap">
-    <p class="sec-label">TWO WAYS OUT</p>
+    <p class="sec-label"><span class="sec-no">02</span>TWO WAYS OUT</p>
     <h2 class="sec-title"><span class="ln"><span>소득이 있느냐 없느냐,</span></span><span class="ln"><span>길은 두 가지입니다</span></span></h2>
     <p class="sec-desc">어느 쪽이 맞는지는 소득과 재산을 보고 정합니다. 복잡한 법률 용어 대신 핵심만 비교해 드립니다.</p>
     <div class="fields">
@@ -616,7 +657,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 
 <section class="sec sec-dark" id="method">
   <div class="wrap">
-    <p class="sec-label">HOW WE WORK</p>
+    <p class="sec-label"><span class="sec-no">03</span>HOW WE WORK</p>
     <h2 class="sec-title"><span class="ln"><span>5,000건 넘게</span></span><span class="ln"><span>다듬어 온 진행 방식</span></span></h2>
     <p class="sec-desc">처음 상담하는 분도 끝까지 마음 놓고 따라오게 하는 것이 목표입니다.</p>
     <div class="steps">
@@ -635,7 +676,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 
 <section class="sec" id="visit">
   <div class="wrap">
-    <p class="sec-label">ON-SITE · 출장 상담서비스</p>
+    <p class="sec-label"><span class="sec-no">04</span>ON-SITE · 출장 상담서비스</p>
     <h2 class="sec-title"><span class="ln"><span>사무실까지 오기 어렵다면</span></span><span class="ln"><span>전담 매니저가 찾아갑니다</span></span></h2>
     <article class="field visit-f">
       <div>
@@ -661,7 +702,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 <section class="sec sec-gray" id="check">
   <div class="wrap check">
     <div>
-      <p class="sec-label">SELF CHECK</p>
+      <p class="sec-label"><span class="sec-no">05</span>SELF CHECK</p>
       <h2 class="sec-title"><span class="ln"><span>회생일까, 파산일까</span></span><span class="ln"><span>1분이면 됩니다</span></span></h2>
       <p class="sec-desc">연령, 채무, 소득, 재산, 법적 이력까지 15문항입니다. 답은 이 화면에서만 계산되고 어디에도 보내지지 않습니다.</p>
     </div>
@@ -671,7 +712,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 
 <section class="sec" id="cases">
   <div class="wrap">
-    <p class="sec-label">CASES</p>
+    <p class="sec-label"><span class="sec-no">06</span>CASES</p>
     <h2 class="sec-title"><span class="ln"><span>먼저 걸어간 분들의</span></span><span class="ln"><span>숫자와 말</span></span></h2>
     <p class="sec-desc">홈페이지 성공 사례를 그대로 옮겼습니다. 내 상황과 비슷한 사례를 골라 보세요.</p>
     <div class="sat">
@@ -693,7 +734,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 
 <section class="sec sec-gray" aria-label="상담 지역">
   <div class="wrap">
-    <p class="sec-label">AREA</p>
+    <p class="sec-label"><span class="sec-no">07</span>AREA</p>
     <h2 class="sec-title"><span class="ln"><span>부산·경남·울산</span></span><span class="ln"><span>어디서든 상담합니다</span></span></h2>
     <p class="sec-desc">사무실은 부산 연제구 법원남로9번길 10, 4층(거제동, 천우빌딩)에 있습니다. 동해선 거제역 10번 출구에서 가깝습니다. 오시기 어렵다면 원하는 곳까지 직접 찾아갑니다. 출장비용은 상담 때 협의합니다.</p>
   </div>
@@ -705,7 +746,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 
 <section class="sec" id="guide">
   <div class="wrap">
-    <p class="sec-label">BEFORE YOU CALL</p>
+    <p class="sec-label"><span class="sec-no">08</span>BEFORE YOU CALL</p>
     <h2 class="sec-title"><span class="ln"><span>상담 전에</span></span><span class="ln"><span>알아 두시면 좋은 것</span></span></h2>
     <div class="guide">
       <div>
@@ -728,11 +769,15 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 
 <section class="sec sec-gray" id="contact">
   <div class="wrap">
-    <p class="sec-label">CONTACT</p>
+    <p class="sec-label"><span class="sec-no">09</span>CONTACT</p>
     <h2 class="sec-title"><span class="ln"><span>무료 상담 신청</span></span></h2>
-    <p class="sec-desc">이름과 연락처만 남기셔도 됩니다. 가장 급한 추심 대응과 탕감 가능액부터 확인해 드립니다.</p>
+    <p class="sec-desc">이름과 연락처만 남기셔도 됩니다. 급한 추심 대응과 탕감 가능액부터 확인해 드립니다.</p>
     <div class="contact">
       <div class="ct-info">
+        <figure class="mgr">
+          <div class="mgr-pic"><img src="/img/manager-cutout.webp" alt="김주휘 전담 매니저" width="760" height="949" loading="lazy"></div>
+          <figcaption><small>상담 접수 · 서류 안내</small><b>김주휘<span>전담 매니저</span></b><p>남겨 주신 내용은 전담 매니저가 먼저 확인하고 24시간 안에 연락드립니다. 사건의 검토와 처리는 법무법인JS 변호사가 합니다.</p></figcaption>
+        </figure>
         <dl>
           <div><dt>전화</dt><dd>010-5094-3679<button class="copy" type="button" data-copy="010-5094-3679">복사</button></dd></div>
           <div><dt>이메일</dt><dd class="sm">helprebornmylife@gmail.com<button class="copy" type="button" data-copy="helprebornmylife@gmail.com">복사</button></dd></div>
@@ -913,6 +958,29 @@ if('IntersectionObserver' in window){
  document.querySelectorAll('.sec-title,[data-count]').forEach(function(el){io.observe(el);});
 }else document.querySelectorAll('.sec-title').forEach(function(el){el.classList.add('in');});
 
+
+/* ---------- focus: progress bar, active section, rail, staggered reveal ---------- */
+(function(){var bar=document.getElementById('hdProg'),rail=document.getElementById('rail'),hero=document.querySelector('.hero2');
+var secs=[].slice.call(document.querySelectorAll('main .sec')),links={};
+[].forEach.call(document.querySelectorAll('.nav a[href^="#"],#rail a'),function(a){var id=a.getAttribute('href').slice(1);(links[id]=links[id]||[]).push(a);});
+var ticking=false;function onScroll(){if(ticking)return;ticking=true;requestAnimationFrame(function(){ticking=false;
+ var h=document.documentElement,max=h.scrollHeight-h.clientHeight,y=h.scrollTop||document.body.scrollTop;
+ if(bar)bar.style.transform='scaleX('+(max>0?Math.min(1,y/max):0)+')';
+ if(rail)rail.classList.toggle('show',hero?hero.getBoundingClientRect().bottom<0:y>400);
+ var mid=innerHeight*.42,cur=null;secs.forEach(function(sc){var r=sc.getBoundingClientRect();if(r.top<=mid&&r.bottom>mid)cur=sc;});
+ secs.forEach(function(sc){sc.classList.toggle('focus',sc===cur);});
+ var id=cur&&cur.id;Object.keys(links).forEach(function(k){links[k].forEach(function(a){a.classList.toggle('on',k===id);if(k===id)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});});
+ if(rail)rail.classList.toggle('dk',!!(cur&&cur.classList.contains('sec-dark')));
+});}
+addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+if(reduced||!('IntersectionObserver' in window))return;
+var groups=[];secs.forEach(function(sc){[].forEach.call(sc.querySelectorAll('.wrap *'),function(el){
+ if(el.closest('form,.chips,.lw-tabs,.mq-track,.flip,.rv,[data-norv]'))return;var cs=getComputedStyle(el);
+ if((cs.display==='grid'||cs.display==='flex')&&el.children.length>=2&&el.children.length<=12&&el.offsetHeight>80&&!groups.some(function(g){return g.contains(el)||el.contains(g);}))groups.push(el);});});
+var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+groups.forEach(function(g){[].forEach.call(g.children,function(c,i){if(c.tagName==='SCRIPT'||c.tagName==='STYLE')return;c.classList.add('rv');c.style.setProperty('--d',Math.min(i,8));ro.observe(c);});});
+setTimeout(function(){[].forEach.call(document.querySelectorAll('.rv:not(.in)'),function(c){var r=c.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)c.classList.add('in');});},2500);
+})();
 /* ---------- keyword flip: only while visible ---------- */
 document.querySelectorAll('.flip-track').forEach(function(tr){var n=tr.children.length,idx=0,timer=null;
  function go(i,anim){tr.getAnimations&&tr.getAnimations().forEach(function(a){a.cancel();});tr.style.transition=anim&&!reduced?'transform .52s cubic-bezier(.2,.8,.2,1)':'none';tr.style.transform='translateY('+(-i*1.25)+'em)';}
