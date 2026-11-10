@@ -17,8 +17,8 @@
     <meta name="google-site-verification" content="kEla4GQfdlVkzCo4Tjdv4XiFCJUItbDuDbBWfdgvWTM" />
 
     <title>개인회생·파산 전문센터 | 법무법인JS · 부산·경남·울산 채무해결</title>
-    <meta name="description" content="법무법인JS 개인회생·파산 전문센터. 여성 사무장이 1:1로 상담하고, 원하는 곳까지 찾아가는 출장 상담도 합니다. 부산·경남·울산 전 지역, 원금 최대 90% 탕감, 추심 중단 상담. 상담 010-5094-3679" />
-    <meta name="keywords" content="법무법인JS, 개인회생파산전문센터, 부산개인회생, 창원개인회생, 울산개인회생, 개인파산, 출장상담, 여성사무장, 채무탕감, 추심중단" />
+    <meta name="description" content="법무법인JS 개인회생·파산 전문센터. 전담 변호사와 담당자가 1:1로 상담하고, 원하는 곳까지 찾아가는 출장 상담도 합니다. 부산·경남·울산 전 지역, 원금 최대 90% 탕감, 추심 중단 상담. 상담 010-5094-3679" />
+    <meta name="keywords" content="법무법인JS, 개인회생파산전문센터, 부산개인회생, 창원개인회생, 울산개인회생, 개인파산, 출장상담, 채무탕감, 추심중단" />
     <meta name="author" content="법무법인JS 개인회생·파산 전문센터" />
     <meta name="theme-color" content="#0D6E6B" />
 
@@ -30,23 +30,23 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://rebornmylife.kr/" />
     <meta property="og:title" content="개인회생·파산 전문센터 | 법무법인JS" />
-    <meta property="og:description" content="여성 사무장 1:1 상담, 원하는 곳까지 찾아가는 출장 상담. 부산·경남·울산 개인회생·파산." />
+    <meta property="og:description" content="1:1 맞춤형 상담, 원하는 곳까지 찾아가는 출장 상담. 부산·경남·울산 개인회생·파산." />
     <meta property="og:image" content="https://rebornmylife.kr/og-image-js.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="법무법인JS 개인회생·파산 전문센터, 김주휘 사무장" />
+    <meta property="og:image:alt" content="법무법인JS 개인회생·파산 전문센터" />
     <meta property="og:site_name" content="개인회생·파산 전문센터" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="개인회생·파산 전문센터 | 법무법인JS" />
-    <meta name="twitter:description" content="혼자 고민하지 마세요. 여성 사무장이 1:1로 듣고, 원하는 곳까지 찾아갑니다." />
+    <meta name="twitter:description" content="혼자 고민하지 마세요. 전담 변호사와 담당자가 1:1로 듣고, 원하는 곳까지 찾아갑니다." />
     <meta name="twitter:image" content="https://rebornmylife.kr/og-image-js.jpg" />
   </head>
   <body>
 <style>
 @font-face{font-family:"Paperlogy";font-weight:400;font-style:normal;font-display:swap;src:url(/fonts/Paperlogy-4Regular.woff2) format("woff2")}
 @font-face{font-family:"Paperlogy";font-weight:600;font-style:normal;font-display:swap;src:url(/fonts/Paperlogy-6SemiBold.woff2) format("woff2")}
-/* Layout: white editorial page, one accent (switchable). Hero copy + 4:5 motion reel → film banner → numbers + growing chart + timeline
+/* Layout: white editorial page, one accent (switchable). Hero copy + lawyer card (one at a time) → film banner → numbers + growing chart + timeline
    → two big "field" rows with flipping keywords → dark method band → self check → cases with marquees and tabs → area marquee → guide/FAQ → contact. */
 :root{
   --accent:#0D6E6B;       /* 딥 틸 (기본) — 테마 피커로 교체 */
@@ -129,40 +129,57 @@ button,input,select,textarea{font-family:inherit}
 .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
 .hero-foot{margin-top:16px;font-size:calc(12.5px + var(--fs-s));color:var(--ink-4)}
 
-/* reel */
-.reel{position:relative;margin:0;width:100%;max-width:440px;aspect-ratio:4/5;justify-self:end;border-radius:24px;overflow:hidden;background:var(--dark);color:#fff;container-type:inline-size;box-shadow:0 30px 60px -36px rgba(0,0,0,.45)}
-.reel-stage{position:absolute;inset:0}
-.scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:10cqw 9cqw;visibility:hidden}
-.scene.on{visibility:visible}
-.scene.dark{background:var(--dark)}
-.scene.acc{background:var(--accent);color:var(--on-accent)}
-.scene.light{background:#fff;color:var(--ink)}
-.scene.photo{padding:0;justify-content:flex-end;background:var(--photo-bg)}
-.scene.photo img{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto}
-.scene.photo .cap{position:relative;z-index:1;margin:0 6cqw 8cqw;background:rgba(255,255,255,.94);color:var(--ink);border-radius:4cqw;padding:4cqw 5cqw}
-.cap b{display:block;font-size:6.2cqw;font-weight:600;letter-spacing:-.03em}
-.cap span{font-size:max(12px,3.6cqw);color:var(--ink-3)}
-.sc-label{display:flex;align-items:center;gap:.45em;font-weight:600;font-size:7.2cqw;line-height:1.2;letter-spacing:-.02em}
-.sc-label::before{content:"";width:.9em;height:.14em;background:var(--accent-hi)}
-.scene.acc .sc-label::before{background:var(--on-accent)}
-.scene.light .sc-label::before{background:var(--accent)}
-.sc-num{margin-top:2.5cqw;font-weight:600;font-size:24cqw;line-height:.95;letter-spacing:-.05em;white-space:nowrap;font-variant-numeric:tabular-nums}
-.sc-num.long{font-size:19cqw}
-.sc-num small{margin-left:.06em;font-size:.3em;letter-spacing:-.02em}
-.scene.dark .sc-num small{color:var(--accent-hi)}
-.scene.light .sc-num{color:var(--accent-ink)}
-.scene.light .sc-num small{color:var(--ink)}
-.sc-huge{font-weight:600;font-size:34cqw;line-height:.92;letter-spacing:-.05em;white-space:nowrap}
-.sc-sub{margin-top:3.5cqw;font-size:5cqw;opacity:.7}
-.reel-tag{position:absolute;left:6cqw;top:5.4cqw;z-index:2;font-size:max(11px,3.1cqw);font-weight:600;letter-spacing:.08em;color:rgba(255,255,255,.7)}
-.reel[data-k=light] .reel-tag,.reel[data-k=photo] .reel-tag{color:rgba(17,17,17,.6)}
-.reel[data-k=acc] .reel-tag{color:var(--on-accent);opacity:.75}
-.reel-btn{position:absolute;right:4cqw;top:4cqw;z-index:3;width:max(34px,9.5cqw);height:max(34px,9.5cqw);border:0;border-radius:50%;background:rgba(17,17,17,.5);color:#fff;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(6px)}
-.reel-btn svg{width:42%;height:42%;fill:currentColor}
-.reel-bar{position:absolute;left:0;right:0;bottom:0;z-index:2;height:4px;background:rgba(255,255,255,.2)}
-.reel-bar i{display:block;width:100%;height:100%;background:var(--accent-hi);transform:scaleX(0);transform-origin:left center}
-.reel[data-k=acc] .reel-bar i{background:var(--on-accent)}
-@media (max-width:860px){.hero{grid-template-columns:minmax(0,1fr)}.reel{justify-self:stretch;max-width:460px}.hero-fields{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:14px}.hero-fields li:nth-child(3){padding-left:0;border-left:0}}
+/* lawyers (hero, one at a time) */
+.lw{width:100%;max-width:440px;justify-self:end;display:flex;flex-direction:column;gap:12px}
+.lw-card{position:relative;border-radius:24px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 30px 60px -36px rgba(0,0,0,.45);touch-action:pan-y}
+.lw-photo{position:relative;aspect-ratio:6/5;overflow:hidden;background:radial-gradient(120% 90% at 50% 100%,var(--accent-soft) 0%,transparent 62%),linear-gradient(180deg,#F3F2EE 0%,var(--photo-bg) 100%)}
+.lw-photo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(0deg,rgba(255,255,255,.9),rgba(255,255,255,0));pointer-events:none}
+.lw-imgs img{position:absolute;left:50%;bottom:-2%;height:104%;width:auto;max-width:none;transform:translateX(-50%);opacity:0;visibility:hidden}
+.lw-imgs img.on{opacity:1;visibility:visible;transform:translateX(-50%)}
+.lw-tag{position:absolute;left:14px;top:14px;z-index:2;display:flex;align-items:baseline;gap:5px;font-size:calc(12px + var(--fs-s));font-weight:600;color:var(--ink-3);background:rgba(255,255,255,.88);border-radius:999px;padding:5px 12px;backdrop-filter:blur(4px)}
+.lw-tag b{font-size:14px;color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.lw-tag span{color:var(--ink-4)}
+.lw-tag em{font-style:normal}
+.lw-pause{position:absolute;right:14px;top:12px;z-index:3;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.85);color:var(--ink-2);display:grid;place-items:center;cursor:pointer}
+.lw-pause svg{width:15px;height:15px;fill:currentColor}
+.lw-pause:focus-visible,.lw-tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.lw-body{position:relative;padding:2px 22px 20px;min-height:162px}
+.lw-role{display:inline-block;font-size:calc(12.5px + var(--fs-s));font-weight:600;color:var(--accent-ink);background:var(--accent-soft);border-radius:999px;padding:3px 11px}
+.lw-name{margin-top:6px;font-size:28px;font-weight:700;letter-spacing:-.04em;line-height:1.2;color:var(--ink)}
+.lw-name small{margin-left:6px;font-size:.55em;font-weight:600;color:var(--ink-3);letter-spacing:-.02em}
+.lw-cv{margin:10px 0 0;padding:10px 0 0;list-style:none;border-top:1px solid var(--line);display:grid;gap:4px;font-size:calc(14px + var(--fs-s));color:var(--ink-2);line-height:1.55}
+.lw-cv li{position:relative;padding-left:14px}
+.lw-cv li::before{content:"";position:absolute;left:0;top:.68em;width:6px;height:2px;background:var(--accent)}
+.lw-bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--line)}
+.lw-bar i{display:block;width:100%;height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left center}
+.lw-tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.lw-tabs button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:6px 2px 6px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;font:inherit;color:var(--ink-3);transition:border-color .2s,color .2s,background .2s}
+.lw-tabs img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:50% 8%;background:var(--photo-bg)}
+.lw-tabs span{font-size:calc(12px + var(--fs-s));font-weight:600;white-space:nowrap}
+.lw-tabs button:hover{border-color:var(--line-2);color:var(--ink)}
+.lw-tabs button[aria-selected=true]{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
+.lw-note{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;padding:22px 26px;border:1px solid rgba(255,255,255,.12);border-left:3px solid var(--accent-hi);border-radius:16px;background:rgba(255,255,255,.04)}
+.lw-note p{flex:1 1 420px;font-size:calc(15px + var(--fs-m));line-height:1.75;color:rgba(255,255,255,.72)}
+.lw-note b{color:#fff}
+.lw-link{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--accent-hi);text-decoration:none;white-space:nowrap}
+.lw-link svg{width:16px;height:16px}
+@media (max-width:860px){
+  .lw-card{display:grid;grid-template-columns:42% minmax(0,1fr);align-items:stretch}
+  .lw-photo{aspect-ratio:auto;min-height:232px}
+  .lw-photo::after{display:none}
+  .lw-imgs img{height:100%;bottom:0}
+  .lw-tag{left:8px;top:8px;padding:3px 9px;font-size:11px}.lw-tag b{font-size:12px}.lw-tag em{display:none}
+  .lw-pause{right:auto;left:8px;top:auto;bottom:10px;width:30px;height:30px}
+  .lw-body{padding:16px 16px 18px;min-height:0;display:flex;flex-direction:column;justify-content:center}
+  .lw-name{font-size:24px}
+  .lw-cv{font-size:calc(13px + var(--fs-s));gap:3px}
+  .lw-tabs{gap:4px}
+  .lw-tabs button{padding:5px 0;border-radius:999px}
+  .lw-tabs span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .lw-tabs img{width:36px;height:36px}
+}
+@media (max-width:380px){.lw-card{grid-template-columns:40% minmax(0,1fr)}.lw-name{font-size:22px}.lw-role{font-size:11.5px}}
+@media (max-width:860px){.hero{grid-template-columns:minmax(0,1fr)}.lw{justify-self:stretch;max-width:520px}.hero-fields{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:14px}.hero-fields li:nth-child(3){padding-left:0;border-left:0}}
 
 /* film banner */
 .film{position:relative;border-radius:24px;overflow:hidden;background:#FBF3E2;aspect-ratio:16/9;max-width:100%;box-shadow:0 30px 60px -40px rgba(0,0,0,.4)}
@@ -231,7 +248,7 @@ button,input,select,textarea{font-family:inherit}
 .field-hours small{margin-left:6px;font-size:calc(14px + var(--fs-s));color:var(--ink-3);letter-spacing:0}
 .flip{margin-top:26px;height:1.25em;overflow:hidden;font-weight:600;font-size:clamp(26px,3vw,40px);line-height:1.25;letter-spacing:-.03em;color:var(--ink-2)}
 .flip-track{display:block}
-.flip-track span{display:block;height:1.25em;white-space:nowrap}
+.flip-track span{display:block;height:1.25em;line-height:1.25em;white-space:nowrap}
 .flip-track span::before{content:"#";margin-right:.18em;color:var(--ink-4)}
 .field-desc{font-size:17px;line-height:1.8;color:var(--ink-2)}
 .course{margin-top:24px;border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;justify-content:space-between;gap:12px;font-weight:600;flex-wrap:wrap}
@@ -250,18 +267,8 @@ button,input,select,textarea{font-family:inherit}
 .step .no{font-weight:600;font-size:44px;line-height:1;color:var(--accent-hi);letter-spacing:-.03em}
 .step h3{margin-top:22px;font-size:21px;line-height:1.35;color:#fff}
 .step p{margin-top:12px;font-size:calc(15px + var(--fs-m));line-height:1.75;color:rgba(255,255,255,.66)}
-.voice{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:24px;margin-top:24px;align-items:stretch}
-.person{border-radius:20px;overflow:hidden;position:relative;background:var(--photo-bg);min-height:320px}
-.person img{position:absolute;left:50%;bottom:0;transform:translateX(-50%);height:100%;width:auto;max-width:none}
-.person .cap{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(255,255,255,.95);color:var(--ink);border-radius:14px;padding:14px 16px}
-.person .cap b{font-size:18px}
-.person .cap span{font-size:calc(13px + var(--fs-s))}
-.say{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-left:3px solid var(--accent-hi);border-radius:16px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
-.say q{quotes:none;font-size:clamp(calc(18px + var(--fs-c)),2vw,22px);line-height:1.7;color:#fff;font-weight:600;letter-spacing:-.02em}
-.say ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:calc(14.5px + var(--fs-s))}
-.say li::before{content:"—";color:var(--accent-hi);margin-right:8px}
 @media (max-width:1024px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:640px){.steps{grid-template-columns:1fr}.voice{grid-template-columns:1fr}}
+@media (max-width:640px){.steps{grid-template-columns:1fr}}
 
 /* self check */
 .check{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:start}
@@ -446,7 +453,7 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 @media (max-width:880px){.qbar-form{display:none}.qbar-mob{display:flex}body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}.theme-pick{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
 @media (max-width:440px){.qbar-txt small{display:none}.qbar-txt b{font-size:calc(16px + var(--fs-m))}.qbar-in{gap:10px}.qbar-mob .btn{padding:0 12px;font-size:calc(14px + var(--fs-s))}}
 /* mobile: the motion card comes first */
-@media (max-width:860px){.hero>.reel{order:-1;margin-top:0}.hero{padding-top:20px}}
+@media (max-width:860px){.hero>.lw{order:-1;margin-top:0}.hero{padding-top:20px}}
 @media (prefers-reduced-motion:reduce){
   .js .sec-title .ln>span{transform:none;transition:none}
   .mq-track{animation:none}
@@ -488,25 +495,31 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
     <p class="eyebrow">법무법인JS · 부산·경남·울산</p>
     <h1 class="name">개인회생·파산<br>전문센터</h1>
     <p class="big-line">15년, <b>5,000</b>건+</p>
-    <p class="lead">혼자 감당하기 벅찬 빚, 법원이 인정한 제도로 줄일 수 있습니다. 여성 사무장이 첫 상담부터 인가·면책까지 1:1로 맡고, 가족과 직장 모르게 조용히 진행하고, 원하시면 계신 곳까지 찾아갑니다.</p>
+    <p class="lead">혼자 감당하기 벅찬 빚, 법원이 인정한 제도로 줄일 수 있습니다. 전담 변호사 및 담당자가 첫 상담부터 인가·면책까지 1:1로 맡고, 가족과 직장 모르게 조용히 진행하고, 원하시면 계신 곳까지 찾아갑니다.</p>
     <ul class="hero-fields">
       <li><b>90<small>%</small></b><span>원금 최대 탕감</span></li>
       <li><b>97.8<small>%</small></b><span>인가·면책 성공률</span></li>
       <li><b>70<small>%</small></b><span>평균 감면율</span></li>
-      <li><b>1~2<small>주</small></b><span>추심 중단까지</span></li>
+      <li><b>즉시</b><span>인가 결정 후 추심 중단</span></li>
     </ul>
     <div class="cta">
       <a class="btn btn-acc" href="#contact">무료 상담 신청 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <a class="btn btn-line" href="#check">1분 자가진단</a>
     </div>
-    <p class="hero-foot">성공률은 2024~2025년 인가·면책 기준, 추심 중단은 금지명령 결정까지의 통상 기간입니다.</p>
+    <p class="hero-foot">성공률은 2024~2025년 인가·면책 기준입니다.</p>
   </div>
-  <figure class="reel" id="reel" data-k="acc" aria-label="센터 소개 슬라이드">
-    <div class="reel-stage" id="reelStage"></div>
-    <span class="reel-tag">REBORN MY LIFE | 부산·경남·울산</span>
-    <button class="reel-btn" id="reelBtn" type="button" aria-label="슬라이드 일시정지"><svg viewBox="0 0 24 24" id="reelIcon"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button>
-    <div class="reel-bar"><i id="reelBar"></i></div>
-  </figure>
+  <aside class="lw" id="lw" aria-roledescription="carousel" aria-label="담당 변호사 소개">
+    <div class="lw-card">
+      <div class="lw-photo">
+        <p class="lw-tag"><em>법무법인JS 담당 변호사</em> <b id="lwNo">01</b><span>/ 06</span></p>
+        <button class="lw-pause" id="lwPause" type="button" aria-label="자동 넘김 멈춤"><svg viewBox="0 0 24 24" id="lwIcon"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button>
+        <div class="lw-imgs"><img src="/img/lawyers/shin-bogwan.webp" alt="신보관 변호사" width="373" height="560" decoding="async" fetchpriority="high" class="on"><img src="/img/lawyers/kang-jaesin.webp" alt="강재신 변호사" width="373" height="560" decoding="async" loading="lazy" class=""><img src="/img/lawyers/yoo-minwook.webp" alt="유민욱 변호사" width="373" height="560" decoding="async" loading="lazy" class=""><img src="/img/lawyers/choi-yunseok.webp" alt="최윤석 변호사" width="373" height="560" decoding="async" loading="lazy" class=""><img src="/img/lawyers/woo-jongjin.webp" alt="우종진 변호사" width="373" height="560" decoding="async" loading="lazy" class=""><img src="/img/lawyers/choi-wonjin.webp" alt="최원진 변호사" width="373" height="560" decoding="async" loading="lazy" class=""></div>
+      </div>
+      <div class="lw-body" aria-live="polite"><div class="lw-info on" role="tabpanel" id="lw-p0" aria-labelledby="lw-t0"><p class="lw-role">변호사 · 개인정보 보호책임자</p><p class="lw-name">신보관<small>변호사</small></p><ul class="lw-cv"><li>서울대학교 경영학과</li><li>부산대학교 법학전문대학원</li><li>(前) 법무법인 해인</li></ul></div><div class="lw-info" role="tabpanel" id="lw-p1" aria-labelledby="lw-t1" hidden><p class="lw-role">변호사 · 공인노무사</p><p class="lw-name">강재신<small>변호사</small></p><ul class="lw-cv"><li>서강대학교 경영학과</li><li>동아대학교 법학전문대학원</li><li>(前) 우리노무법인</li></ul></div><div class="lw-info" role="tabpanel" id="lw-p2" aria-labelledby="lw-t2" hidden><p class="lw-role">변호사</p><p class="lw-name">유민욱<small>변호사</small></p><ul class="lw-cv"><li>(前) BNK부산은행 여신·외환 실무</li><li>대한변호사협회 금융변호사회 회원</li><li>부산대학교 법학전문대학원</li></ul></div><div class="lw-info" role="tabpanel" id="lw-p3" aria-labelledby="lw-t3" hidden><p class="lw-role">변호사</p><p class="lw-name">최윤석<small>변호사</small></p><ul class="lw-cv"><li>부산대학교 법학과 박사과정 수료(해상법)</li><li>(前) 부산경상대학교 초빙교수</li><li>부산지방법원·동부지원 국선변호인</li></ul></div><div class="lw-info" role="tabpanel" id="lw-p4" aria-labelledby="lw-t4" hidden><p class="lw-role">변호사</p><p class="lw-name">우종진<small>변호사</small></p><ul class="lw-cv"><li>(前) 부산지방법원 실무수습</li><li>(前) 부산지방법원 국선변호인</li><li>부산대학교 법학전문대학원</li></ul></div><div class="lw-info" role="tabpanel" id="lw-p5" aria-labelledby="lw-t5" hidden><p class="lw-role">변호사 · 광고책임변호사</p><p class="lw-name">최원진<small>변호사</small></p><ul class="lw-cv"><li>부산시 전세사기피해지원센터 변호사</li><li>부산지방변호사회 중소기업고문변호단 위원</li><li>고려대학교 법학과</li></ul></div></div>
+      <div class="lw-bar"><i id="lwBar"></i></div>
+    </div>
+    <div class="lw-tabs" role="tablist" aria-label="변호사 선택"><button type="button" role="tab" id="lw-t0" aria-controls="lw-p0" aria-selected="true" tabindex="0"><img src="/img/lawyers/shin-bogwan.webp" alt="" width="373" height="560" loading="lazy"><span>신보관</span></button><button type="button" role="tab" id="lw-t1" aria-controls="lw-p1" aria-selected="false" tabindex="-1"><img src="/img/lawyers/kang-jaesin.webp" alt="" width="373" height="560" loading="lazy"><span>강재신</span></button><button type="button" role="tab" id="lw-t2" aria-controls="lw-p2" aria-selected="false" tabindex="-1"><img src="/img/lawyers/yoo-minwook.webp" alt="" width="373" height="560" loading="lazy"><span>유민욱</span></button><button type="button" role="tab" id="lw-t3" aria-controls="lw-p3" aria-selected="false" tabindex="-1"><img src="/img/lawyers/choi-yunseok.webp" alt="" width="373" height="560" loading="lazy"><span>최윤석</span></button><button type="button" role="tab" id="lw-t4" aria-controls="lw-p4" aria-selected="false" tabindex="-1"><img src="/img/lawyers/woo-jongjin.webp" alt="" width="373" height="560" loading="lazy"><span>우종진</span></button><button type="button" role="tab" id="lw-t5" aria-controls="lw-p5" aria-selected="false" tabindex="-1"><img src="/img/lawyers/choi-wonjin.webp" alt="" width="373" height="560" loading="lazy"><span>최원진</span></button></div>
+  </aside>
 </section>
 
 <section class="wrap" aria-label="사례 영상">
@@ -550,8 +563,8 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
     <ol class="timeline" aria-label="진행 절차">
       <li class="key"><p class="yr">1단계</p><i class="dot"></i><p>1:1 맞춤 상담</p><p>소득·재산 분석으로 회생·파산 판단</p></li>
       <li><p class="yr">2단계</p><i class="dot"></i><p>서류 준비·수임</p><p>기본 서류만 발급하시면 됩니다</p></li>
-      <li class="key"><p class="yr">3단계</p><i class="dot"></i><p>접수·금지명령</p><p>일주일 안팎으로 추심 중단</p></li>
-      <li><p class="yr">4단계</p><i class="dot"></i><p>법원 심사</p><p>보정 권고 대응, 인가·면책 결정</p></li>
+      <li class="key"><p class="yr">3단계</p><i class="dot"></i><p>접수·금지명령</p><p>개시신청과 함께 금지명령 신청</p></li>
+      <li><p class="yr">4단계</p><i class="dot"></i><p>법원 심사·인가</p><p>인가 결정 이후 즉시 추심 중단</p></li>
       <li class="key"><p class="yr">5단계</p><i class="dot"></i><p>채무 탕감 완료</p><p>회생 3~5년 변제 후, 파산은 즉시</p></li>
       <li class="next"><p class="yr">NEXT</p><i class="dot"></i><p>다시 쓰는 내 인생</p><p>신용 회복과 새 출발</p></li>
     </ol>
@@ -603,17 +616,15 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
     <h2 class="sec-title"><span class="ln"><span>5,000건 넘게</span></span><span class="ln"><span>다듬어 온 진행 방식</span></span></h2>
     <p class="sec-desc">처음 상담하는 분도 끝까지 마음 놓고 따라오게 하는 것이 목표입니다.</p>
     <div class="steps">
-      <div class="step"><p class="no">01</p><h3>여성 사무장이<br>1:1로 듣습니다</h3><p>말하기 어려운 사정부터 천천히 듣고, 소득과 재산을 함께 정리해 회생·파산 중 맞는 길을 찾습니다.</p></div>
+      <div class="step"><p class="no">01</p><h3>1:1 맞춤형 상담을<br>진행합니다</h3><p>말하기 어려운 사정부터 천천히 듣고, 소득과 재산을 함께 정리해 회생·파산 중 맞는 길을 찾습니다.</p></div>
       <div class="step"><p class="no">02</p><h3>법무법인JS<br>변호사가 맡습니다</h3><p>법무법인JS 변호사가 법원 제출 전 서류와 변제계획을 검토하고 절차를 대리합니다.</p></div>
       <div class="step"><p class="no">03</p><h3>서류와 보정은<br>전담 매니저가</h3><p>복잡한 서류 준비부터 법원 보정 권고 대응까지 전담 매니저가 하나씩 챙깁니다.</p></div>
       <div class="step"><p class="no">04</p><h3>가족·직장 모르게<br>비밀을 지킵니다</h3><p>모든 상담 내용과 개인정보는 변호사법에 따라 보호됩니다. 수임료는 나눠 낼 수 있습니다.</p></div>
     </div>
-    <div class="voice">
-      <div class="person"><img src="/img/manager-cutout.webp" alt="김주휘 사무장" loading="lazy"><div class="cap"><b>김주휘 사무장</b><span>부산·경남·울산 1:1 채무 진단 전담</span></div></div>
-      <div class="say">
-        <q>“혼자 감당하기 벅찬 빚의 무게, 이제 제가 덜어드리겠습니다. 지독한 독촉의 고통에서 벗어나 새로운 내일을 시작하실 수 있도록, 책임 사무장의 이름을 걸고 끝까지 함께하겠습니다.”</q>
-        <ul><li>현) 법무법인JS 개인회생·파산 사무장</li><li>부산·경남·울산 전 지역 1:1 맞춤형 채무 진단 전담</li><li>신속한 금지명령 및 인가 결정 사례 다수</li></ul>
-      </div>
+    <div class="lw-note">
+      <p><b>사건은 법무법인JS 변호사가 맡습니다.</b> 개인회생·파산 신청서와 변제계획은 담당 변호사가 검토하고 법원 절차를 대리합니다. 서류 준비와 진행 안내는 전담 매니저가 돕습니다.</p>
+      <a href="#top" class="lw-link">담당 변호사 6명 보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+    </div>
     </div>
   </div>
 </section>
@@ -621,7 +632,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 <section class="sec" id="visit">
   <div class="wrap">
     <p class="sec-label">ON-SITE · 출장 상담서비스</p>
-    <h2 class="sec-title"><span class="ln"><span>사무실까지 오기 어렵다면</span></span><span class="ln"><span>여성 사무장이 찾아갑니다</span></span></h2>
+    <h2 class="sec-title"><span class="ln"><span>사무실까지 오기 어렵다면</span></span><span class="ln"><span>전담 매니저가 찾아갑니다</span></span></h2>
     <article class="field visit-f">
       <div>
         <p class="field-no">출장 상담서비스 안내</p>
@@ -630,12 +641,12 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
         <p class="flip" aria-hidden="true"><span class="flip-track"><span>집 근처</span><span>직장 근처</span><span>병원·요양 중</span><span>조용한 카페</span><span>집 근처</span></span></p>
       </div>
       <div>
-        <p class="field-desc">원하는 곳까지 직접 찾아가는 서비스입니다. 몸이 불편하거나 시간을 내기 어려운 분, 사무실보다 편한 곳에서 이야기하고 싶은 분께 김주휘 사무장이 직접 찾아갑니다.</p>
+        <p class="field-desc">원하는 곳까지 직접 찾아가는 서비스입니다. 몸이 불편하거나 시간을 내기 어려운 분, 사무실보다 편한 곳에서 이야기하고 싶은 분께 전담 매니저가 직접 찾아갑니다.</p>
         <div class="course">출장비용<span>발생 · 상담 시 협의</span></div>
         <div class="care3">
           <div><b>01</b><h4>꺼내기 힘든 사정도 편하게</h4><p>가족 모르게 생긴 빚, 생활비로 시작된 돌려막기처럼 말하기 어려운 이야기를 차분히 듣고 함께 정리합니다.</p></div>
           <div><b>02</b><h4>가계 사정을 세세하게</h4><p>생활비와 부양가족, 매달 꼭 나가는 돈까지 살펴 무리 없는 변제 계획을 세웁니다.</p></div>
-          <div><b>03</b><h4>처음부터 끝까지 한 사람이</h4><p>담당이 바뀌지 않고, 법원 결정까지 진행 상황을 사무장이 직접 알려드립니다.</p></div>
+          <div><b>03</b><h4>처음부터 끝까지 한 사람이</h4><p>담당이 바뀌지 않고, 법원 결정까지 진행 상황을 전담 매니저가 직접 알려드립니다.</p></div>
         </div>
         <a class="btn btn-acc" href="#contact">출장 상담 요청하기</a>
       </div>
@@ -661,8 +672,8 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
     <p class="sec-desc">홈페이지 성공 사례를 그대로 옮겼습니다. 내 상황과 비슷한 사례를 골라 보세요.</p>
     <div class="sat">
       <div><b><span data-count="97.8" data-dec="1">97.8</span><small>%</small></b><p>인가·면책 성공률. 2024~2025년 기준</p></div>
-      <div><b><span data-count="90">90</span><small>%</small></b><p>사례 중 가장 높은 회생 감면율. 50대 주부 L씨, 월 15만 원 × 36개월</p></div>
-      <div><b><span data-count="3">3</span><small>개월</small></b><p>가장 빠른 인가. 사회초년생 C씨, 취준생 H씨</p></div>
+      <div><b><span data-count="90">90</span><small>%</small></b><p>원금 최대 탕감 사례(회생). 50대 주부 L씨, 월 15만 원 × 36개월</p></div>
+      <div><b><span data-count="3">3</span><small>개월</small></b><p>인가까지 걸린 기간. 사회초년생 C씨, 취준생 H씨 사례</p></div>
     </div>
   </div>
   <div class="mq-box">
@@ -680,7 +691,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
   <div class="wrap">
     <p class="sec-label">AREA</p>
     <h2 class="sec-title"><span class="ln"><span>부산·경남·울산</span></span><span class="ln"><span>어디서든 상담합니다</span></span></h2>
-    <p class="sec-desc">사무실은 부산 연제구 법원남로9번길 10 천우빌딩 3·4층(동해선 거제역 10번 출구)에 있습니다. 오시기 어렵다면 원하는 곳까지 직접 찾아갑니다. 출장비용은 상담 때 협의합니다.</p>
+    <p class="sec-desc">사무실은 부산 연제구 법원남로9번길 10, 4층(거제동, 천우빌딩)에 있습니다. 동해선 거제역 10번 출구에서 가깝습니다. 오시기 어렵다면 원하는 곳까지 직접 찾아갑니다. 출장비용은 상담 때 협의합니다.</p>
   </div>
   <div class="mq-box">
     <div class="marquee"><div class="mq-track" style="--dur:60s" id="mqC"></div></div>
@@ -696,8 +707,8 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
       <div>
         <div class="g-box">
           <h3>상담 방식</h3>
-          <div class="g-row"><b>전화 상담</b><span>평일 09:00 - 18:00<small>번호를 남기시면 24시간 안에 사무장이 직접 전화드립니다</small></span></div>
-          <div class="g-row"><b>방문 상담</b><span>부산 연제구 법원남로9번길 10<small>천우빌딩 3·4층 · 동해선 거제역 10번 출구</small></span></div>
+          <div class="g-row"><b>전화 상담</b><span>평일 09:00 - 18:00<small>번호를 남기시면 24시간 안에 전담 매니저가 직접 전화드립니다</small></span></div>
+          <div class="g-row"><b>방문 상담</b><span>부산 연제구 법원남로9번길 10, 4층(거제동, 천우빌딩)<small>동해선 거제역 10번 출구</small></span></div>
           <div class="g-row"><b>출장 상담</b><span>원하는 곳까지 직접 찾아갑니다<small>출장비용 발생 · 상담 시 협의</small></span></div>
         </div>
         <div class="g-box" style="margin-top:28px">
@@ -722,7 +733,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
           <div><dt>전화</dt><dd>010-5094-3679<button class="copy" type="button" data-copy="010-5094-3679">복사</button></dd></div>
           <div><dt>이메일</dt><dd class="sm">helprebornmylife@gmail.com<button class="copy" type="button" data-copy="helprebornmylife@gmail.com">복사</button></dd></div>
           <div><dt>상담 시간</dt><dd class="sm">평일 09:00 - 18:00 (주말·공휴일 휴무)</dd></div>
-          <div><dt>주소</dt><dd class="sm">부산광역시 연제구 법원남로9번길 10, 천우빌딩 3·4층 (동해선 거제역 10번 출구)</dd></div>
+          <div><dt>주소</dt><dd class="sm">부산 연제구 법원남로9번길 10, 4층(거제동, 천우빌딩)</dd></div>
           <div><dt>공식 사무실</dt><dd class="sm">전화 051-751-6777 · 팩스 051-711-3882</dd></div>
           <div><dt>출장 상담</dt><dd class="sm">원하는 곳까지 직접 찾아갑니다 · 출장비용 상담 시 협의</dd></div>
         </dl>
@@ -748,8 +759,9 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 <footer class="ft">
   <div class="wrap">
     <b>법무법인JS 개인회생·파산 전문센터</b>
-    <p>법무법인JS · 사업자등록번호 888-81-02824 · 개인정보보호책임자 김주휘 사무장</p>
-    <p>부산광역시 연제구 법원남로9번길 10, 천우빌딩 3·4층 (동해선 거제역 10번 출구) · 상담 010-5094-3679 · 사무실 051-751-6777 · 팩스 051-711-3882 · helprebornmylife@gmail.com</p>
+    <p>법무법인JS · 사업자등록번호 888-81-02824 · 광고책임변호사 최원진 · 개인정보보호책임자 신보관 변호사</p>
+    <p>담당 변호사 신보관 · 강재신 · 유민욱 · 최윤석 · 우종진 · 최원진</p>
+    <p>부산 연제구 법원남로9번길 10, 4층(거제동, 천우빌딩) · 상담 010-5094-3679 · 사무실 051-751-6777 · 팩스 051-711-3882 · helprebornmylife@gmail.com</p>
     <p>모든 상담 내용은 변호사법에 의거하여 비밀이 보장됩니다. © 2026 법무법인JS 개인회생·파산 전문센터</p>
     <button type="button" class="font-tag" id="fontTag" aria-pressed="false" title="누르면 글씨체가 바뀝니다">#부산개인회생 <small>글씨 바꾸기</small></button>
   </div>
@@ -771,7 +783,7 @@ if(window.gtag)gtag('event','font_toggle',{font:on?'busan_dandi':'paperlogy'});}
       <p>수집한 개인정보를 다음의 목적을 위해 활용합니다.</p>
       <ol><li>서비스 이용에 따른 본인식별, 실명확인, 가입의사 확인</li><li>고지사항 전달, 의사소통 경로 확보</li><li>불량회원 부정 이용 방지 및 비인가 사용 방지</li></ol>
       <h3>개인정보 보호책임자</h3>
-      <dl><dt>성명</dt><dd>김주휘 사무장</dd><dt>전화번호</dt><dd>010-5094-3679 (평일 : 오전 9:00 ~ 오후 6:00)</dd><dt>이메일</dt><dd>helprebornmylife@gmail.com</dd></dl>
+      <dl><dt>성명</dt><dd>신보관 변호사</dd><dt>전화번호</dt><dd>051-501-3888 (평일 오전 9:00 ~ 오후 6:00)</dd><dt>이메일</dt><dd>helprebornmylife@gmail.com</dd></dl>
     </div>
     <div class="pv-ft"><button type="button" class="pv-cancel" data-pv-close>닫기</button><button type="button" class="pv-ok" data-pv-agree>동의하고 닫기</button></div>
   </div>
@@ -806,7 +818,7 @@ f.addEventListener('submit',function(e){e.preventDefault();var n=document.getEle
  if(!document.getElementById('q-agree').checked){say('개인정보 수집·이용 동의가 필요합니다. 내용보기에서 확인하실 수 있어요.');return;}
  if(typeof window.rebornSubmit!=='function'){say('템플릿이라 접수 시스템은 아직 연결되지 않았습니다.');return;}
  var b=f.querySelector('button[type=submit]');b.disabled=true;b.textContent='보내는 중…';
- window.rebornSubmit({name:n,phone:p,interests:document.getElementById('q-type').value}).then(function(){say('상담 신청이 접수되었습니다. 김주휘 사무장이 곧 연락드리겠습니다.');f.reset();})
+ window.rebornSubmit({name:n,phone:p,interests:document.getElementById('q-type').value}).then(function(){say('상담 신청이 접수되었습니다. 전담 매니저가 곧 연락드리겠습니다.');f.reset();})
  .catch(function(err){console.error(err);say('접수 중 오류가 났습니다. 010-5094-3679로 전화 주세요.');}).then(function(){b.disabled=false;b.textContent='무료상담신청';});});})();
 </script>
 
@@ -856,44 +868,37 @@ tpBtn.addEventListener('click',function(){tpPanel.hidden=!tpPanel.hidden;tpBtn.s
 var saved=null;
 applyTheme(THEMES.filter(function(t){return t.k===saved;})[0]||THEMES[0]);
 
-/* ---------- reel: scenes with count-up, scale-in, progress bar ---------- */
-var SCENES=[
- {k:'acc',label:'원금 탕감',num:90,unit:'%까지',d:1000},
- {k:'dark',label:'성공 사례',num:5000,unit:'건+',d:900},
- {k:'dark',label:'인가·면책 성공률',num:97.8,dec:1,unit:'%',d:900},
- {k:'dark',label:'평균 감면율',num:70,unit:'%',d:850},
- {k:'dark',huge:'15년',sub:'개인회생·파산만',d:900},
- {k:'light',label:'추심 중단까지',huge2:'1~2',unit:'주',d:1300},
- {k:'dark',label:'첫 상담 비용',num:0,unit:'원',d:1000},
- {k:'acc',huge:'출장',sub:'원하는 곳까지 찾아갑니다',d:1100},
- {k:'photo',d:2600}];
-var rSlow=reduced?1.35:1,rStage=document.getElementById('reelStage'),rEl=document.getElementById('reel'),rBtn=document.getElementById('reelBtn'),rBar=document.getElementById('reelBar'),rIcon=document.getElementById('reelIcon');
-rStage.innerHTML=SCENES.map(function(s){
- if(s.k==='photo')return '<div class="scene photo"><img src="/img/manager-cutout.webp" alt="" width="760" height="950"><div class="cap sc-in"><b>김주휘 사무장</b><span>여성 사무장이 1:1로 상담합니다</span></div></div>';
- if(s.huge)return '<div class="scene '+s.k+'"><div class="sc-in"><p class="sc-huge">'+s.huge+'</p><p class="sc-sub">'+s.sub+'</p></div></div>';
- var n=s.huge2?s.huge2:nf(s.num,s.dec);
- return '<div class="scene '+s.k+'"><div class="sc-in"><p class="sc-label">'+s.label+'</p><p class="sc-num'+(String(n).length>=5?' long':'')+'"><span class="n">'+n+'</span><small>'+s.unit+'</small></p></div></div>';}).join('');
-var rScenes=rStage.querySelectorAll('.scene'),rLoop=SCENES.reduce(function(t,s){return t+s.d*rSlow;},0);
-var rCur=-1,rTmr=null,rDue=0,rLeft=0,rUserPaused=false,rAutoPaused=false,rFontsOk=false,rBarAnim=null,rRaf=0;
-function rCount(el,to,dec,dur){cancelAnimationFrame(rRaf);var t0=performance.now();(function step(now){var p=Math.min(1,(now-t0)/dur);el.textContent=nf(to*(1-Math.pow(1-p,3)),dec);if(p<1)rRaf=requestAnimationFrame(step);})(t0);}
-function rShow(i){rCur=i;rScenes.forEach(function(el,j){el.classList.toggle('on',j===i);});
- var s=SCENES[i],el=rScenes[i],inner=el.querySelector('.sc-in');rEl.setAttribute('data-k',s.k);
- if(typeof s.num==='number'&&s.num>0)rCount(el.querySelector('.n'),s.num,s.dec,Math.min(520,s.d*.6));
- if(reduced)inner.animate([{opacity:0},{opacity:1}],{duration:260,easing:'ease-out'});
- else{if(s.k==='photo')el.querySelector('img').animate([{transform:'scale(1.08)'},{transform:'scale(1)'}],{duration:s.d+400,easing:'ease-out'});
-  inner.animate([{transform:'scale(1.07)',opacity:.2},{transform:'scale(1)',opacity:1}],{duration:480,easing:EASE});}
- if(i===0){if(rBarAnim)rBarAnim.cancel();rBarAnim=rBar.animate([{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{duration:rLoop,easing:'linear',fill:'forwards'});}}
-function rSchedule(ms){clearTimeout(rTmr);rDue=performance.now()+ms;rTmr=setTimeout(function(){rTmr=null;rShow((rCur+1)%SCENES.length);rSchedule(SCENES[rCur].d*rSlow);},ms);}
-function rBlocked(){return rUserPaused||rAutoPaused||document.hidden;}
-function rPause(){if(rTmr){rLeft=Math.max(0,rDue-performance.now());clearTimeout(rTmr);rTmr=null;}if(rBarAnim)rBarAnim.pause();}
-function rResume(){if(rCur<0){if(!rFontsOk||rAutoPaused||document.hidden)return;rShow(0);rLeft=SCENES[0].d*rSlow;if(rUserPaused){rBarAnim.pause();return;}}
- if(rBlocked()||rTmr)return;if(rBarAnim)rBarAnim.play();rSchedule(rLeft);}
-rBtn.addEventListener('click',function(){rUserPaused=!rUserPaused;rBtn.setAttribute('aria-label',rUserPaused?'슬라이드 재생':'슬라이드 일시정지');
- rIcon.innerHTML=rUserPaused?'<path d="M8 5l11 7-11 7z"/>':'<path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/>';if(rUserPaused)rPause();else rResume();});
-function rFontsReady(){if(!rFontsOk){rFontsOk=true;rResume();}}
-(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(rFontsReady);setTimeout(rFontsReady,2500);
-if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){rAutoPaused=!e.isIntersecting;if(rAutoPaused)rPause();else rResume();});}).observe(rEl);
-document.addEventListener('visibilitychange',function(){if(document.hidden)rPause();else rResume();});
+/* ---------- lawyers: one at a time ---------- */
+(function(){var root=document.getElementById('lw');if(!root)return;
+var imgs=root.querySelectorAll('.lw-imgs img'),infos=root.querySelectorAll('.lw-info'),tabs=root.querySelectorAll('.lw-tabs [role=tab]'),no=document.getElementById('lwNo'),bar=document.getElementById('lwBar'),btn=document.getElementById('lwPause'),icon=document.getElementById('lwIcon');
+var n=imgs.length,cur=0,DUR=reduced?7000:5200,t=null,anim=null,user=false,hover=false,off=false;
+function show(i,focus){cur=(i+n)%n;
+ imgs.forEach(function(e,k){e.classList.toggle('on',k===cur);});
+ infos.forEach(function(e,k){var on=k===cur;e.hidden=!on;e.classList.toggle('on',on);});
+ tabs.forEach(function(e,k){var on=k===cur;e.setAttribute('aria-selected',on);e.tabIndex=on?0:-1;});
+ if(focus)tabs[cur].focus();
+ no.textContent=(cur<9?'0':'')+(cur+1);
+ if(!reduced){var im=imgs[cur];im.animate&&im.animate([{opacity:0,transform:'translateY(14px) scale(1.03)'},{opacity:1,transform:'none'}],{duration:620,easing:EASE});
+  infos[cur].animate&&infos[cur].animate([{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'none'}],{duration:480,easing:EASE});}
+ restart();}
+function blocked(){return user||hover||off||document.hidden;}
+function restart(){clearTimeout(t);if(anim)anim.cancel();if(blocked())return;
+ anim=bar.animate?bar.animate([{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{duration:DUR,easing:'linear',fill:'forwards'}):null;
+ t=setTimeout(function(){show(cur+1);},DUR);}
+function pause(){clearTimeout(t);if(anim)anim.pause();}
+function resume(){if(blocked())return;restart();}
+tabs.forEach(function(b,k){b.addEventListener('click',function(){show(k);});
+ b.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'||e.key==='ArrowDown'?1:e.key==='ArrowLeft'||e.key==='ArrowUp'?-1:0;if(e.key==='Home'){e.preventDefault();show(0,true);}else if(e.key==='End'){e.preventDefault();show(n-1,true);}else if(d){e.preventDefault();show(cur+d,true);}});});
+btn.addEventListener('click',function(){user=!user;btn.setAttribute('aria-label',user?'자동 넘김 다시 시작':'자동 넘김 멈춤');icon.innerHTML=user?'<path d="M8 5l11 7-11 7z"/>':'<path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/>';if(user)pause();else resume();});
+root.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse'){hover=true;pause();}});
+root.addEventListener('pointerleave',function(){if(hover){hover=false;resume();}});
+root.addEventListener('focusin',function(){hover=true;pause();});
+root.addEventListener('focusout',function(e){if(!root.contains(e.relatedTarget)){hover=false;resume();}});
+var sx=null;root.querySelector('.lw-card').addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+root.querySelector('.lw-card').addEventListener('touchend',function(e){if(sx==null)return;var dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>40)show(cur+(dx<0?1:-1));},{passive:true});
+if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){off=!e.isIntersecting;if(off)pause();else resume();});}).observe(root);
+document.addEventListener('visibilitychange',function(){if(document.hidden)pause();else resume();});
+restart();})();
 
 /* ---------- section titles slide up, numbers count up ---------- */
 if('IntersectionObserver' in window){
@@ -906,11 +911,12 @@ if('IntersectionObserver' in window){
 
 /* ---------- keyword flip: only while visible ---------- */
 document.querySelectorAll('.flip-track').forEach(function(tr){var n=tr.children.length,idx=0,timer=null;
- function tick(){idx++;if(reduced){tr.style.transform='translateY('+(-idx*1.25)+'em)';tr.animate([{opacity:0},{opacity:1}],{duration:300});if(idx===n-1){idx=0;tr.style.transform='translateY(0)';}return;}
-  var a=tr.animate([{transform:'translateY('+(-(idx-1)*1.25)+'em)'},{transform:'translateY('+(-idx*1.25)+'em)'}],{duration:520,easing:EASE,fill:'forwards'});
-  if(idx===n-1)a.onfinish=function(){idx=0;tr.animate([{transform:'translateY(0)'}],{duration:0,fill:'forwards'});};}
+ function go(i,anim){tr.getAnimations&&tr.getAnimations().forEach(function(a){a.cancel();});tr.style.transition=anim&&!reduced?'transform .52s cubic-bezier(.2,.8,.2,1)':'none';tr.style.transform='translateY('+(-i*1.25)+'em)';}
+ function tick(){if(document.hidden)return;idx++;go(idx,true);if(idx>=n-1){setTimeout(function(){idx=0;go(0,false);},reduced?0:600);}}
+ function stop(){if(timer){clearInterval(timer);timer=null;}idx=0;go(0,false);}
+ document.addEventListener('visibilitychange',function(){if(document.hidden)stop();});
  if(!('IntersectionObserver' in window)){timer=setInterval(tick,2000);return;}
- new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!timer)timer=setInterval(tick,reduced?2200:1300);else if(!e.isIntersecting&&timer){clearInterval(timer);timer=null;}});}).observe(tr);});
+ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!timer)timer=setInterval(tick,reduced?2200:1400);else if(!e.isIntersecting)stop();});}).observe(tr);});
 
 /* ---------- cases data ---------- */
 var CASES=[
@@ -958,10 +964,10 @@ renderTabs();renderCases();
 var FAQ=[['개인회생과 개인파산의 가장 큰 차이점은 무엇인가요?',"가장 큰 기준은 '소득의 유무'입니다. 최저생계비 이상의 일정한 소득이 있다면 매월 빚을 나누어 갚는 '개인회생'을 진행하며 재산을 지킬 수 있습니다. 반면, 소득이 없거나 최저생계비 미만이라면 재산을 처분하는 대신 남은 빚을 전액(100%) 탕감받는 '개인파산'을 진행하게 됩니다."],
 ['개인파산을 하면 가족에게 불이익이 가나요?','아니요, 그렇지 않습니다. 개인파산 및 면책의 효력은 신청인 본인에게만 미칩니다. 따라서 가족의 재산에 압류가 들어오거나 가족의 신용등급이 하락하는 등 가족에게 가는 법적인 불이익은 전혀 없습니다. (단, 가족 명의로 재산을 빼돌린 경우는 제외)'],
 ['개인회생 신청 자격은 어떻게 되나요?','일정한 수입이 있고, 총 채무액이 무담보 채무 10억원 이하, 담보부 채무 15억원 이하인 경우 신청 가능합니다. 정규직 급여 소득자뿐만 아니라 자영업자, 일용직, 아르바이트, 프리랜서 등 소득 증빙이 가능하다면 누구나 신청할 수 있습니다.'],
-['개인회생/파산 진행 시 비용은 얼마나 드나요?','초기 1:1 맞춤 상담은 100% 무료입니다. 이후 절차 진행 시 법원 인지대, 송달료, 파산관재인 선임비(파산의 경우) 및 변호사 수임료가 발생합니다. 의뢰인의 경제적 부담을 줄여드리기 위해 수임료 자체 분할 납부 시스템을 운영하고 있습니다.'],
+['개인회생/파산 진행 시 비용은 얼마나 드나요?','첫 1:1 맞춤 상담은 비용을 받지 않습니다. 이후 절차 진행 시 법원 인지대, 송달료, 파산관재인 선임비(파산의 경우) 및 변호사 수임료가 발생합니다. 의뢰인의 경제적 부담을 줄여드리기 위해 수임료 자체 분할 납부 시스템을 운영하고 있습니다.'],
 ['개인회생 중에도 직장 생활이나 이직이 가능한가요?','네, 가능합니다. 정상적인 직장 생활, 통장 개설, 4대 보험 가입이 모두 가능하며, 직장에 회생/파산 사실이 통보되지 않으므로 안심하셔도 됩니다.'],
 ['개인회생 승인까지 시간은 얼마나 걸리나요?','법원의 관할 지역과 사건의 난이도에 따라 다르지만, 통상 신청부터 개시결정까지 3~6개월, 최종 인가결정까지 6개월~1년 정도 소요됩니다. 철저한 서류 준비로 보정명령을 최소화하여 인가 기간을 단축해 드립니다.'],
-['빚 독촉(추심)이 너무 심한데, 어떻게 막을 수 있나요?',"개인회생 신청 시 '중지/금지명령'을 함께 신청합니다. 법원에서 금지명령이 내려지면(보통 신청 후 1~2주 이내) 채권자는 더 이상 방문, 전화 독촉, 급여 압류 등의 강제집행을 할 수 없게 됩니다."]];
+['빚 독촉(추심)이 너무 심한데, 어떻게 막을 수 있나요?',"개인회생 신청 시 '중지/금지명령'을 함께 신청합니다. 법원에서 금지명령이 내려지면 채권자는 더 이상 방문, 전화 독촉, 급여 압류 등의 강제집행을 할 수 없게 됩니다."]];
 document.getElementById('faq').innerHTML=FAQ.map(function(f,i){return '<details'+(i===0?' open':'')+'><summary>'+f[0]+'</summary><p class="a">'+f[1]+'</p></details>';}).join('');
 
 /* ---------- self check (15 questions from the current site) ---------- */
@@ -1015,7 +1021,7 @@ document.getElementById('form').addEventListener('submit',function(e){e.preventD
   debtAmount:document.getElementById('c-debt').value,callTime:document.getElementById('c-time').value.trim(),message:document.getElementById('c-msg').value.trim()};
  if(typeof window.rebornSubmit!=='function'){m.textContent='템플릿이라 접수 시스템은 아직 연결되지 않았습니다. 실제 사이트에서는 이 단계에서 상담 신청이 접수됩니다.';return;}
  var btn=e.target.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='보내는 중…';m.textContent='상담 신청을 보내고 있습니다.';
- window.rebornSubmit(data).then(function(){m.textContent='상담 신청이 접수되었습니다. 김주휘 사무장이 곧 연락드리겠습니다.';e.target.reset();})
+ window.rebornSubmit(data).then(function(){m.textContent='상담 신청이 접수되었습니다. 전담 매니저가 곧 연락드리겠습니다.';e.target.reset();})
  .catch(function(err){console.error(err);m.classList.add('err');m.textContent='접수 중 오류가 났습니다. 잠시 후 다시 시도하시거나 010-5094-3679로 전화 주세요.';})
  .then(function(){btn.disabled=false;btn.textContent='상담 신청 보내기';});});
 
@@ -1097,7 +1103,7 @@ while(m=RE.exec(d)){if(!ok(m[0]))continue;hit=true;if(m.index>last)f.appendChild
 if(!hit)return;if(last<d.length)f.appendChild(document.createTextNode(d.slice(last)));t.parentNode.replaceChild(f,t);}catch(err){}});}
 function go(){run(document.body);}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
-var tm;new MutationObserver(function(ms){if(ms.every(function(m){return m.target.closest&&m.target.closest('.nb,.reel,.marquee,[class*="mq"]')}))return;if(!tm)tm=setTimeout(function(){tm=0;go();},150);}).observe(document.body,{childList:true,subtree:true});
+var tm;new MutationObserver(function(ms){if(ms.every(function(m){return m.target.closest&&m.target.closest('.nb,.lw,.marquee,[class*="mq"]')}))return;if(!tm)tm=setTimeout(function(){tm=0;go();},150);}).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
 </body>
