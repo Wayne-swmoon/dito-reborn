@@ -1,0 +1,4 @@
+/* 리본 위즈독스: 글 안 사진·도표 */
+.ph{margin:18px 0 22px}.ph img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:var(--soft)}
+.ph figcaption{margin-top:8px;font-size:13.5px;color:var(--muted);line-height:1.55}
+@media print{.ph img{max-height:9cm;width:auto;max-width:100%}}

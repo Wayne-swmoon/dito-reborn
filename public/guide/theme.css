@@ -1,0 +1,5 @@
+/* config.mjs에서 생성. 글꼴·색은 여기가 아니라 config.mjs에서 바꾼다 */
+@font-face{font-family:"Paperlogy";font-weight:100 349;font-display:swap;src:url(../fonts/Paperlogy-4Regular.woff2) format("woff2")}
+@font-face{font-family:"Paperlogy";font-weight:350 549;font-display:swap;src:url(../fonts/Paperlogy-6SemiBold.woff2) format("woff2")}
+@font-face{font-family:"Paperlogy";font-weight:550 900;font-display:swap;src:url(../fonts/Paperlogy-8ExtraBold.woff2) format("woff2")}
+:root{--font:"Paperlogy","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--ink:#1A1F1E;--sub:#3E4644;--muted:#5E6563;--line:#E3E1DA;--soft:#F4F1EA;--navy:#0B2D2B;--accent:#0D6E6B;--pale:#E6F1EF;--gold:#7BC4B8;--gold-ink:#0D6E6B;--hd:64px}

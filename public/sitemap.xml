@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://rebornmylife.kr/</loc>
-    <lastmod>2026-05-02</lastmod>
-    <priority>1.0</priority>
-  </url>
+<url><loc>https://rebornmylife.kr/</loc><lastmod>2026-11-12</lastmod><priority>1.0</priority></url>
+<url><loc>https://rebornmylife.kr/guide/</loc></url>
+<url><loc>https://rebornmylife.kr/guide/deadlines/</loc></url>
+<url><loc>https://rebornmylife.kr/guide/rehabilitation-or-bankruptcy/</loc><lastmod>2026-11-05</lastmod></url>
+<url><loc>https://rebornmylife.kr/guide/stop-collection/</loc><lastmod>2026-11-05</lastmod></url>
+<url><loc>https://rebornmylife.kr/guide/family-guarantor/</loc><lastmod>2026-11-05</lastmod></url>
+<url><loc>https://rebornmylife.kr/guide/cost-and-duration/</loc><lastmod>2026-11-05</lastmod></url>
+<url><loc>https://rebornmylife.kr/guide/debts-after-discharge/</loc><lastmod>2026-11-05</lastmod></url>
+<url><loc>https://rebornmylife.kr/guide/living-cost-2026/</loc><lastmod>2026-11-10</lastmod></url>
+<url><loc>https://rebornmylife.kr/guide/homemaker-no-income/</loc><lastmod>2026-11-10</lastmod></url>
+<url><loc>https://rebornmylife.kr/guide/which-court/</loc><lastmod>2026-11-10</lastmod></url>
+<url><loc>https://rebornmylife.kr/guide/bankruptcy-process/</loc><lastmod>2026-11-10</lastmod></url>
 </urlset>

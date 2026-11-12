@@ -1,0 +1,22 @@
+{
+ "rehabilitation-or-bankruptcy": {
+  "total": 2,
+  "miss": []
+ },
+ "stop-collection": {
+  "total": 4,
+  "miss": []
+ },
+ "family-guarantor": {
+  "total": 3,
+  "miss": []
+ },
+ "cost-and-duration": {
+  "total": 4,
+  "miss": []
+ },
+ "debts-after-discharge": {
+  "total": 3,
+  "miss": []
+ }
+}

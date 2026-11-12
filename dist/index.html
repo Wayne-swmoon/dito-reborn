@@ -17,7 +17,9 @@
     <meta name="google-site-verification" content="kEla4GQfdlVkzCo4Tjdv4XiFCJUItbDuDbBWfdgvWTM" />
 
     <title>개인회생·파산 전문센터 | 법무법인JS · 부산·경남·울산 채무해결</title>
-    <meta name="description" content="법무법인JS 개인회생·파산 전문센터. 전담 변호사와 담당자가 1:1로 상담하고, 원하는 곳까지 찾아가는 출장 상담도 합니다. 부산·경남·울산 전 지역, 원금 최대 90% 탕감, 추심 중단 상담. 상담 010-5094-3679" />
+    <link rel="canonical" href="https://rebornmylife.kr/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LegalService","@id":"https://rebornmylife.kr/#org","name":"법무법인JS 개인회생·파산 전문센터","url":"https://rebornmylife.kr/","telephone":"+82-51-715-6777","faxNumber":"+82-51-711-3882","email":"helprebornmylife@gmail.com","image":"https://rebornmylife.kr/og-image.jpg","address":{"@type":"PostalAddress","streetAddress":"법원남로9번길 10, 4층(거제동, 천우빌딩)","addressLocality":"연제구","addressRegion":"부산광역시","addressCountry":"KR"},"areaServed":["부산","울산","경남"],"openingHours":"Mo-Fr 09:00-18:00","knowsAbout":["개인회생","개인파산","면책","부산회생법원"],"parentOrganization":{"@type":"LegalService","name":"법무법인JS"},"sameAs":["https://blog.naver.com/kjhmj0603"]},{"@type":"WebSite","@id":"https://rebornmylife.kr/#web","url":"https://rebornmylife.kr/","name":"법무법인JS 개인회생·파산 전문센터","inLanguage":"ko"}]}</script>
+<meta name="description" content="법무법인JS 개인회생·파산 전문센터. 전담 변호사와 담당자가 1:1로 상담하고, 원하는 곳까지 찾아가는 출장 상담도 합니다. 부산·경남·울산 전 지역, 원금 최대 90% 탕감, 추심 중단 상담. 상담 010-5094-3679" />
     <meta name="keywords" content="법무법인JS, 개인회생파산전문센터, 부산개인회생, 창원개인회생, 울산개인회생, 개인파산, 출장상담, 채무탕감, 추심중단" />
     <meta name="author" content="법무법인JS 개인회생·파산 전문센터" />
     <meta name="theme-color" content="#0D6E6B" />
@@ -400,6 +402,29 @@ button,input,select,textarea{font-family:inherit}
 .form-msg{grid-column:1/-1;font-size:calc(14px + var(--fs-s));border-radius:12px;padding:12px 14px;background:var(--accent-soft);color:var(--accent-ink)}
 .form-msg.err{background:#FDEEEE;color:#B42318}
 @media (max-width:860px){.contact{grid-template-columns:1fr}.form{grid-template-columns:1fr}}
+
+/* docs section */
+.dq-grid{margin-top:34px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.dq{position:relative;display:flex;flex-direction:column;gap:8px;min-height:150px;padding:22px 24px 46px;border:1px solid var(--line);border-radius:18px;background:#fff;color:var(--ink);text-decoration:none;transition:border-color .2s,transform .2s var(--ease),box-shadow .2s}
+.dq small{font-size:calc(12.5px + var(--fs-s));font-weight:600;color:var(--accent-ink)}
+.dq b{font-size:calc(17.5px + var(--fs-m));line-height:1.45;letter-spacing:-.02em}
+.dq .dq-arr{position:absolute;left:24px;bottom:16px;font-style:normal;color:var(--accent-ink);font-weight:600}
+.dq:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 18px 36px -26px rgba(0,0,0,.35)}
+.dq-more{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.dq-more span{font-size:calc(14px + var(--fs-s));color:var(--ink-3)}.dq-more span a{color:var(--accent-ink)}
+@media (max-width:1024px){.dq-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.dq-grid{grid-template-columns:1fr}.dq{min-height:0}}
+/* floating: blog + consult */
+.fab{position:fixed;right:20px;bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:46;display:flex;flex-direction:column;gap:10px}
+.fab-b{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:64px;height:64px;border-radius:50%;text-decoration:none;font-weight:600;box-shadow:0 12px 28px -10px rgba(0,0,0,.4);transition:transform .2s var(--ease)}
+.fab-b:hover{transform:translateY(-3px)}
+.fab-ic{display:grid;place-items:center;height:22px;font-weight:800;font-size:19px;line-height:1}
+.fab-ic svg{width:22px;height:22px}
+.fab-t{font-size:11.5px;letter-spacing:-.02em}
+.fab-blog{background:#03C75A;color:#fff}
+.fab-talk{background:var(--accent);color:#fff}
+.fab-b:focus-visible{outline:3px solid var(--accent-soft);outline-offset:2px}
+@media (max-width:860px){.fab{right:14px;bottom:calc(80px + env(safe-area-inset-bottom,0px))}.fab-b{width:56px;height:56px}.fab-talk{display:none}}
 /* ---------- focus: section numbers, progress, rail, reveal ---------- */
 .sec-label{display:flex;align-items:center;gap:12px}
 .sec-no{display:inline-flex;align-items:center;gap:10px;font-variant-numeric:tabular-nums;letter-spacing:.02em;color:var(--accent-ink)}
@@ -543,14 +568,14 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
   <div class="wrap">
     <a class="brand" href="#top"><img src="/img/logo-lawfirm-js.webp" alt="법무법인JS" width="474" height="167"><span>개인회생·파산<br class="m-br"> 전문센터</span></a>
     <nav class="nav" aria-label="주요 메뉴">
-      <a href="#numbers">숫자로 보기</a><a href="#fields">제도 안내</a><a href="#method">진행 방식</a><a href="#visit">출장 상담</a><a href="#check">자가진단</a><a href="#cases">사례</a><a href="#guide">상담 안내</a>
+      <a href="#numbers">숫자로 보기</a><a href="#fields">제도 안내</a><a href="#method">진행 방식</a><a href="#visit">출장 상담</a><a href="#check">자가진단</a><a href="#cases">사례</a><a href="#guide">상담 안내</a><a href="#docs">채무 안내서</a>
     </nav>
     <a class="call" href="tel:01050943679" aria-label="전화 상담 010-5094-3679"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span>010-5094-3679</span></a>
   </div>
   <div class="hd-prog" aria-hidden="true"><i id="hdProg"></i></div>
 </header>
 
-<nav class="rail" id="rail" aria-label="섹션 바로가기"><a href="#numbers" data-sec="numbers"><span>숫자로 보기</span><i></i></a><a href="#fields" data-sec="fields"><span>제도 안내</span><i></i></a><a href="#method" data-sec="method"><span>진행 방식</span><i></i></a><a href="#visit" data-sec="visit"><span>출장 상담</span><i></i></a><a href="#check" data-sec="check"><span>자가진단</span><i></i></a><a href="#cases" data-sec="cases"><span>사례</span><i></i></a><a href="#guide" data-sec="guide"><span>상담 안내</span><i></i></a><a href="#contact" data-sec="contact"><span>상담 신청</span><i></i></a></nav>
+<nav class="rail" id="rail" aria-label="섹션 바로가기"><a href="#numbers" data-sec="numbers"><span>숫자로 보기</span><i></i></a><a href="#fields" data-sec="fields"><span>제도 안내</span><i></i></a><a href="#method" data-sec="method"><span>진행 방식</span><i></i></a><a href="#visit" data-sec="visit"><span>출장 상담</span><i></i></a><a href="#check" data-sec="check"><span>자가진단</span><i></i></a><a href="#cases" data-sec="cases"><span>사례</span><i></i></a><a href="#guide" data-sec="guide"><span>상담 안내</span><i></i></a><a href="#docs" data-sec="docs"><span>채무 안내서</span><i></i></a><a href="#contact" data-sec="contact"><span>상담 신청</span><i></i></a></nav>
 <main id="top">
 <section class="hero2">
   <div class="hcard" id="lw" aria-roledescription="carousel" aria-label="담당 변호사 소개">
@@ -782,9 +807,19 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
   </div>
 </section>
 
+<section class="sec" id="docs">
+  <div class="wrap">
+    <p class="sec-label"><span class="sec-no">09</span>QUESTIONS</p>
+    <h2 class="sec-title"><span class="ln"><span>궁금한 건</span></span><span class="ln"><span>채무 안내서에서 먼저</span></span></h2>
+    <p class="sec-desc">개인회생·파산을 질문과 답으로 정리했습니다. 3줄 요약, 근거 법령, 기한 모아보기까지 한곳에서 찾아보세요.</p>
+    <div class="dq-grid"><a class="dq" href="/guide/rehabilitation-or-bankruptcy/"><small>회생과 파산</small><b>개인회생과 개인파산, 나는 어느 쪽인가요?</b><i class="dq-arr" aria-hidden="true">→</i></a><a class="dq" href="/guide/stop-collection/"><small>추심</small><b>빚 독촉과 압류는 언제 멈추나요?</b><i class="dq-arr" aria-hidden="true">→</i></a><a class="dq" href="/guide/homemaker-no-income/"><small>주부·여성</small><b>소득 없는 주부도 개인회생을 할 수 있나요?</b><i class="dq-arr" aria-hidden="true">→</i></a><a class="dq" href="/guide/which-court/"><small>신청과 법원</small><b>울산·경남에 살아도 부산회생법원에 신청할 수 있나요?</b><i class="dq-arr" aria-hidden="true">→</i></a><a class="dq" href="/guide/family-guarantor/"><small>가족과 비용</small><b>파산하면 가족도 빚을 갚아야 하나요?</b><i class="dq-arr" aria-hidden="true">→</i></a><a class="dq" href="/guide/debts-after-discharge/"><small>면책</small><b>면책을 받아도 남는 빚이 있나요?</b><i class="dq-arr" aria-hidden="true">→</i></a></div>
+    <p class="dq-more"><a class="btn btn-acc" href="/guide/">채무 안내서 전체 보기 →</a><span>매주 새 질문이 더해집니다 · <a href="https://blog.naver.com/kjhmj0603" target="_blank" rel="noopener">새출발 노트 블로그</a></span></p>
+  </div>
+</section>
+
 <section class="sec sec-gray" id="contact">
   <div class="wrap">
-    <p class="sec-label"><span class="sec-no">09</span>CONTACT</p>
+    <p class="sec-label"><span class="sec-no">10</span>CONTACT</p>
     <h2 class="sec-title"><span class="ln"><span>무료 상담 신청</span></span></h2>
     <p class="sec-desc">이름과 연락처만 남기셔도 됩니다. 급한 추심 대응과 탕감 가능액부터 확인해 드립니다.</p>
     <div class="contact">
@@ -827,7 +862,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
     <p>법무법인JS · 사업자등록번호 888-81-02824 · 광고책임변호사 최원진 · 개인정보보호책임자 신보관 변호사</p>
     <p>담당 변호사 신보관 · 강재신 · 유민욱 · 최윤석 · 우종진 · 최원진</p>
     <p>부산 연제구 법원남로9번길 10, 4층(거제동, 천우빌딩) · 상담 010-5094-3679 · 사무실 051-715-6777 · 팩스 051-711-3882 · helprebornmylife@gmail.com</p>
-    <p class="ft-links"><a href="https://blog.naver.com/kjhmj0603" target="_blank" rel="noopener">새출발 노트 블로그 ↗</a></p>
+    <p class="ft-links"><a href="/guide/">채무 안내서</a> · <a href="https://blog.naver.com/kjhmj0603" target="_blank" rel="noopener">새출발 노트 블로그 ↗</a> · 홈페이지 제작 및 운영 <a href="https://wizweb.co.kr" target="_blank" rel="noopener">위즈웹</a></p>
     <p>모든 상담 내용은 변호사법에 의거하여 비밀이 보장됩니다. © 2026 법무법인JS 개인회생·파산 전문센터</p>
     <button type="button" class="font-tag" id="fontTag" aria-pressed="false" title="누르면 글씨체가 바뀝니다">#부산개인회생 <small>글씨 바꾸기</small></button>
   </div>
@@ -873,6 +908,10 @@ document.addEventListener('click',function(e){var o=e.target.closest('[data-pv-f
     </form>
     <div class="qbar-mob"><a class="btn btn-line" href="tel:01050943679">전화상담</a><a class="btn btn-acc" href="#contact">무료상담</a></div>
   </div>
+</div>
+<div class="fab" aria-label="바로가기">
+  <a class="fab-b fab-blog" href="https://blog.naver.com/kjhmj0603" target="_blank" rel="noopener" data-src-link="blog_fab"><span class="fab-ic" aria-hidden="true">N</span><span class="fab-t">블로그</span></a>
+  <a class="fab-b fab-talk" href="#contact"><span class="fab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.6 6.2L5 21l4.2-2.3c.9.2 1.8.3 2.8.3 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></svg></span><span class="fab-t">상담하기</span></a>
 </div>
 <div class="toast" id="toast" role="status" hidden></div>
 <script>
@@ -976,6 +1015,31 @@ if('IntersectionObserver' in window){
 }else document.querySelectorAll('.sec-title').forEach(function(el){el.classList.add('in');});
 
 
+
+/* ---------- 유입 경로 기록: 처음 들어온 경로를 기억해 상담 신청·전화 버튼에 함께 남김 ---------- */
+(function(){var KEY='rb_src',now=new Date();
+function get(k){try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}}
+function put(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+var q=new URLSearchParams(location.search),ref='';try{ref=document.referrer?new URL(document.referrer).hostname:''}catch(e){}
+function classify(){if(q.get('b'))return{ch:'블로그',detail:'글 '+q.get('b')};if(q.get('c'))return{ch:'클립',detail:'클립 '+q.get('c')};var us=q.get('utm_source'),um=q.get('utm_medium'),uc=q.get('utm_content')||q.get('utm_campaign')||'';
+ if(us)return{ch:({naver_blog:'블로그',naver_clip:'클립',naver_place:'플레이스',powerlink:'검색광고'})[us]||us,detail:[um,uc].filter(Boolean).join('/')};
+ if(/blog\.naver\.com/.test(ref))return{ch:'블로그',detail:ref};
+ if(/clip|naver\.me|tv\.naver/.test(ref))return{ch:'클립',detail:ref};
+ if(/map\.naver|place\.naver|pcmap/.test(ref))return{ch:'플레이스',detail:ref};
+ if(/search\.naver|m\.search|naver\.com/.test(ref))return{ch:'네이버 검색',detail:ref};
+ if(/google\./.test(ref))return{ch:'구글 검색',detail:ref};
+ if(/daum\.net|kakao/.test(ref))return{ch:'다음·카카오',detail:ref};
+ if(/bing\.|yahoo/.test(ref))return{ch:'기타 검색',detail:ref};
+ if(ref&&ref!==location.hostname)return{ch:'다른 사이트',detail:ref};
+ return{ch:'직접 방문',detail:''};}
+var cur=classify();cur.at=now.toISOString();cur.page=location.pathname;
+var tagged=q.get('utm_source')||q.get('b')||q.get('c');var first=get(KEY);if(!first||(tagged&&!first.utm)){first=cur;if(tagged)first.utm=1;put(KEY,first);}
+if(tagged&&history.replaceState){try{['b','c'].forEach(function(k){q.delete(k)});history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')+location.hash)}catch(e){}}
+window.rebornSource=function(){var f=get(KEY)||first,c=cur;
+ var fmt=function(x){return x.ch+(x.detail?' ('+x.detail+')':'')};
+ return{first:fmt(f),firstAt:f.at,last:fmt(c),text:'처음 들어온 경로: '+fmt(f)+' · '+new Date(f.at).toLocaleString('ko-KR')+(fmt(f)!==fmt(c)?'\n이번 방문 경로: '+fmt(c):'')}};
+if(window.gtag)gtag('set','user_properties',{first_source:first.ch});
+})();
 /* ---------- focus: progress bar, active section, rail, staggered reveal ---------- */
 (function(){var bar=document.getElementById('hdProg'),rail=document.getElementById('rail'),hero=document.querySelector('.hero2');
 var secs=[].slice.call(document.querySelectorAll('main .sec')),links={};
@@ -1152,7 +1216,8 @@ function getDb() {
   return dbP;
 }
 window.rebornSubmit = async (d) => {
-  const lines = [d.interests && "궁금한 제도: " + d.interests, d.callTime && "통화 가능 시간: " + d.callTime, d.message && "상황 설명: " + d.message].filter(Boolean);
+  const SRC = window.rebornSource ? window.rebornSource() : null;
+  const lines = [d.interests && "궁금한 제도: " + d.interests, d.callTime && "통화 가능 시간: " + d.callTime, d.message && "상황 설명: " + d.message, SRC && SRC.text].filter(Boolean);
   const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), ms))]);
   // 1) 메일 발송(EmailJS) — 사무장에게 바로 알림이 가는 경로
   const mail = withTimeout(fetch("https://api.emailjs.com/api/v1.0/email/send", {
@@ -1164,16 +1229,19 @@ window.rebornSubmit = async (d) => {
   // 2) 기록 저장(Firebase) — 규칙이 막혀 있어도 메일이 가면 접수는 성공으로 처리
   const save = withTimeout(getDb().then(({ db, f }) => f.addDoc(f.collection(db, "consultations"), {
     name: d.name, phone: d.phone, email: "미입력", debtAmount: d.debtAmount || "",
-    message: lines.join("\n"), type: "상담신청", createdAt: f.serverTimestamp()
+    message: lines.join("\n"), type: "상담신청", source: SRC ? SRC.first : "", sourceAt: SRC ? SRC.firstAt : "", sourceLast: SRC ? SRC.last : "", createdAt: f.serverTimestamp()
   })), 15000);
   const [m, s] = await Promise.allSettled([mail, save]);
   if (m.status === "rejected") console.warn("메일 발송 실패:", m.reason);
   if (s.status === "rejected") console.warn("Firebase 저장 실패:", s.reason && (s.reason.code || s.reason));
   if (m.status === "rejected" && s.status === "rejected") throw new Error("메일 발송과 저장 모두 실패");
-  if (typeof window.gtag === "function") window.gtag("event", "consultation_submit", { event_category: "consultation", event_label: "무료상담신청_템플릿3", value: 1 });
+  if (typeof window.gtag === "function") window.gtag("event", "consultation_submit", { event_category: "consultation", event_label: "무료상담신청_템플릿3", value: 1, first_source: SRC ? SRC.first : "" });
 };
 document.addEventListener("click", (e) => {
-  if (e.target.closest('a[href^="tel:"]') && typeof window.gtag === "function") window.gtag("event", "phone_call_click", { event_category: "contact" });
+  if (!e.target.closest('a[href^="tel:"]')) return;
+  const SRC = window.rebornSource ? window.rebornSource() : null;
+  if (typeof window.gtag === "function") window.gtag("event", "phone_call_click", { event_category: "contact", first_source: SRC ? SRC.first : "" });
+  try { getDb().then(({ db, f }) => f.addDoc(f.collection(db, "phone_clicks"), { source: SRC ? SRC.first : "", sourceAt: SRC ? SRC.firstAt : "", sourceLast: SRC ? SRC.last : "", page: location.pathname, createdAt: f.serverTimestamp() })).catch(() => {}); } catch (err) {}
 });
 const contact = document.getElementById("contact");
 if (contact && "IntersectionObserver" in window) {

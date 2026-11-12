@@ -1,0 +1,26 @@
+# 법무법인JS 개인회생·파산센터 채무 안내서
+
+> 개인회생과 개인파산의 차이, 추심, 가족, 비용, 면책을 질문과 답으로 정리했습니다.
+
+## 회생과 파산
+- [개인회생과 개인파산, 나는 어느 쪽인가요?](https://rebornmylife.kr/guide/rehabilitation-or-bankruptcy/index.md): 먼저 보는 기준은 소득입니다. 일정한 소득이 있으면 개인회생을, 갚을 능력이 없으면 개인파산을 먼저 검토합니다.
+
+## 생계비와 변제금
+- [2026년 생계비가 오르면 개인회생 변제금은 얼마나 줄어드나요?](https://rebornmylife.kr/guide/living-cost-2026/index.md): 같은 소득이라면 매달 갚는 돈이 줄어듭니다. 1인 가구 기준 생계비가 한 달 약 10만 원 올라, 36개월이면 약 370만 원을 덜 갚는 셈입니다.
+
+## 신청과 법원
+- [울산·경남에 살아도 부산회생법원에 신청할 수 있나요?](https://rebornmylife.kr/guide/which-court/index.md): 네. 부산·울산·경남에 살거나 일하는 분은 부산회생법원에 개인회생·파산을 신청할 수 있습니다. 울산·경남 분은 울산지방법원·창원지방법원에 내는 길도 있습니다.
+
+## 추심
+- [빚 독촉과 압류는 언제 멈추나요?](https://rebornmylife.kr/guide/stop-collection/index.md): 신청만으로 자동으로 멈추지는 않습니다. 법원의 중지명령이나 금지명령이 있어야 합니다.
+
+## 가족과 비용
+- [파산하면 가족도 빚을 갚아야 하나요?](https://rebornmylife.kr/guide/family-guarantor/index.md): 면책의 효력은 본인에게 미치므로 가족이 대신 갚는 것은 아닙니다. 다만 가족이 보증인이라면 달라집니다.
+- [개인회생 비용과 기간은 어느 정도인가요?](https://rebornmylife.kr/guide/cost-and-duration/index.md): 법원에 내는 비용과 수임료가 있고, 수임료는 나눠 낼 수 있습니다. 기간은 법원과 사건에 따라 다릅니다.
+
+## 주부·여성
+- [소득 없는 주부도 개인회생을 할 수 있나요?](https://rebornmylife.kr/guide/homemaker-no-income/index.md): 개인회생은 본인 이름으로 꾸준히 들어오는 소득이 있어야 합니다. 소득이 전혀 없는 전업주부라면 보통 개인파산·면책을 먼저 검토합니다.
+
+## 면책
+- [면책을 받아도 남는 빚이 있나요?](https://rebornmylife.kr/guide/debts-after-discharge/index.md): 있습니다. 채권자목록에서 빠진 청구권, 벌금, 양육비처럼 면책되지 않는 채권을 먼저 확인해야 합니다.
+- [개인파산은 어떻게 진행되고, 면책이 안 되는 경우는 언제인가요?](https://rebornmylife.kr/guide/bankruptcy-process/index.md): 개인파산은 신청 → 법원 심사(필요하면 파산관재인 조사) → 재산 정리 → 면책 결정 순서로 진행합니다. 재산을 숨기거나 도박·낭비로 빚을 키운 경우 등은 면책이 허가되지 않을 수 있습니다.
