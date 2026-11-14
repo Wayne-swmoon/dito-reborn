@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /templates/
+Disallow: /blog-img/
 
 Sitemap: https://rebornmylife.kr/sitemap.xml
