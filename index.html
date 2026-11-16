@@ -334,10 +334,12 @@ button,input,select,textarea{font-family:inherit}
 @keyframes mq{to{transform:translateX(-50%)}}
 .mq-track span{padding:18px 26px;font-weight:600;font-size:clamp(20px,2.2vw,30px);letter-spacing:-.03em;color:var(--ink-2);white-space:nowrap}
 .mq-track span::after{content:"/";margin-left:52px;color:var(--line-2);font-weight:400}
-.mq-quote .mq-track span{font-size:calc(15px + var(--fs-m));padding:12px 10px;color:var(--ink-2)}
+.mq-quote .mq-track{align-items:center}
+.mq-quote .mq-track span{font-size:clamp(17px,1.55vw,22px);font-weight:600;line-height:1;color:var(--ink)}
 .mq-quote .mq-track span::before{content:"“";color:var(--accent);font-weight:600;margin-right:6px}
 .mq-quote .mq-track span::after{content:"";margin:0}
-.mq-quote .mq-track span{border:1px solid var(--line);border-radius:999px;margin:8px 6px;padding:8px 16px;background:#fff}
+.mq-quote .mq-track span{display:inline-flex;align-items:center;height:60px;border:1px solid var(--line);border-radius:999px;margin:7px 8px;padding:0 28px;background:#fff;box-shadow:0 6px 16px -12px rgba(0,0,0,.25)}
+.mq-quote .mq-track span::before{font-size:1.35em;line-height:0;transform:translateY(.12em)}
 .mq-quote{border:0}
 .mq-box{margin-top:28px}
 .tabs{display:flex;gap:8px;margin-top:40px;flex-wrap:wrap}
@@ -345,8 +347,16 @@ button,input,select,textarea{font-family:inherit}
 .tab .count{margin-left:5px;font-size:calc(12.5px + var(--fs-s));color:var(--ink-4)}
 .tab[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
 .tab[aria-selected=true] .count{color:rgba(255,255,255,.7)}
-.quotes{columns:3;column-gap:16px;margin-top:22px}
-.qcard{break-inside:avoid;margin-bottom:16px;border:1px solid var(--line);border-radius:16px;padding:22px;background:#fff}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px;align-items:stretch}
+.qcard{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+.qcard::before{content:"";position:absolute;inset:-1px;border-radius:17px;padding:2px;background:conic-gradient(from var(--ang),transparent 0 62%,rgba(13,110,107,.25) 72%,var(--accent) 88%,#7BC4B8 96%,transparent 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .45s;pointer-events:none}
+.qcard.lit{transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(13,110,107,.55)}
+.qcard.lit::before{opacity:1;animation:qspin 2.8s linear infinite}
+.qcard.lit .hit{animation:qpulse 1.4s ease-in-out 2}
+@keyframes qspin{to{--ang:360deg}}
+@keyframes qpulse{50%{transform:scale(1.08)}}
+.qcard .hit{transform-origin:right center}
 .qcard .seg-t{font-size:calc(12.5px + var(--fs-s));font-weight:600;color:var(--accent-ink)}
 .qcard h3{margin-top:6px;font-size:18px}
 .qcard dl{margin:14px 0 0;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:calc(14px + var(--fs-s))}
@@ -354,9 +364,9 @@ button,input,select,textarea{font-family:inherit}
 .qcard dd{margin:0;text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
 .qcard dd.hit{color:var(--accent-ink)}
 .qcard q{display:block;quotes:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:calc(15px + var(--fs-m));line-height:1.75;color:var(--ink-2)}
-.qcard .src{margin-top:10px;font-size:calc(12.5px + var(--fs-s));color:var(--ink-4)}
-@media (max-width:1024px){.quotes{columns:2}}
-@media (max-width:640px){.quotes{columns:1}}
+.qcard .src{margin-top:auto;padding-top:10px;font-size:calc(12.5px + var(--fs-s));color:var(--ink-4)}
+@media (max-width:1024px){.quotes{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.quotes{grid-template-columns:1fr}.mq-quote .mq-track span{height:50px;padding:0 20px}}
 .fine{margin-top:14px;font-size:calc(12.5px + var(--fs-s));color:var(--ink-4)}
 
 /* guide + faq */
@@ -1113,6 +1123,15 @@ function renderCases(){var list=CASES.filter(function(c){return cur==='all'||c.g
  if(!reduced)qEl.querySelectorAll('.qcard').forEach(function(el,i){el.animate([{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'none'}],{duration:420,delay:i*50,easing:EASE,fill:'backwards'});});}
 tabsEl.addEventListener('click',function(e){var b=e.target.closest('.tab');if(!b)return;cur=b.dataset.k;renderTabs();renderCases();});
 renderTabs();renderCases();
+/* 사례 카드: 첫 카드부터 차례로 테두리 빛이 한 바퀴씩 (보이는 동안만, 마우스 올리면 멈춤) */
+(function(){if(reduced)return;var i=0,tm=null,vis=false,hold=false;
+ function step(){var cs=qEl.querySelectorAll('.qcard');if(!cs.length)return;cs.forEach(function(c){c.classList.remove('lit');});cs[i%cs.length].classList.add('lit');i++;}
+ function run(){clearInterval(tm);tm=null;if(vis&&!hold){step();tm=setInterval(step,2800);}}
+ qEl.addEventListener('mouseover',function(e){var c=e.target.closest('.qcard');if(!c)return;hold=true;clearInterval(tm);qEl.querySelectorAll('.qcard').forEach(function(x){x.classList.toggle('lit',x===c);});});
+ qEl.addEventListener('mouseleave',function(){hold=false;run();});
+ tabsEl.addEventListener('click',function(){i=0;setTimeout(run,450);});
+ if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting;run();},{threshold:.15}).observe(qEl);else{vis=true;run();}
+})();
 
 /* ---------- faq ---------- */
 var FAQ=[['개인회생과 개인파산의 가장 큰 차이점은 무엇인가요?',"가장 큰 기준은 '소득의 유무'입니다. 최저생계비 이상의 일정한 소득이 있다면 매월 빚을 나누어 갚는 '개인회생'을 진행하며 재산을 지킬 수 있습니다. 반면, 소득이 없거나 최저생계비 미만이라면 재산을 처분하는 대신 남은 빚을 전액(100%) 탕감받는 '개인파산'을 진행하게 됩니다."],
