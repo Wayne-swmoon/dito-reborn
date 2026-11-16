@@ -610,14 +610,14 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 
 <section class="wrap" aria-label="사례 영상">
   <div class="film" id="film">
-    <img src="/media/hero-poster.webp" alt="" loading="lazy" decoding="async">
-    <video id="filmVideo" muted playsinline loop preload="none" aria-label="개인회생 사례 영상: 빚 7,200만 원, 매달 갚는 돈 270만에서 166만으로"></video>
+    <img src="/media/film-poster.webp" alt="" loading="lazy" decoding="async">
+    <video id="filmVideo" muted playsinline loop preload="none" aria-label="개인회생 계산 예시 영상: 빚 1억 2,000만 원, 생계비를 빼고 3년 동안 갚으면 남은 빚 약 80% 면책"></video>
     <button class="film-play" id="filmPlay" type="button" aria-label="영상 재생"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg></button>
   </div>
   <div class="film-ctrl">
-    <p><b>REBORN CASE No.001</b> · 병원비로 시작된 3년, 그리고 개인회생 (56초)</p>
+    <p><b>REBORN CASE</b> · 빚 1억 2,000만 원, 남은 빚 80% 면책까지 (57초 · 이해를 돕기 위한 예시)</p>
     <div class="grp" id="filmCtrl" hidden>
-      <button type="button" id="filmSound"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 9v6h4l5 4V5L8 9z"/></svg><span>소리 켜고 처음부터</span></button>
+      <button type="button" id="filmSound" hidden><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 9v6h4l5 4V5L8 9z"/></svg><span>소리 켜고 처음부터</span></button>
       <button type="button" id="filmPause" aria-label="일시정지"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
     </div>
   </div>
@@ -1182,7 +1182,7 @@ document.getElementById('form').addEventListener('submit',function(e){e.preventD
 /* ---------- film: fetched only when it nears the screen ---------- */
 var v=document.getElementById('filmVideo'),fp=document.getElementById('filmPlay'),fc=document.getElementById('filmCtrl'),fs=document.getElementById('filmSound'),fpz=document.getElementById('filmPause');
 var conn=navigator.connection||{},lite=conn.saveData||/(^|-)2g$/.test(conn.effectiveType||''),loaded=false,userPaused=false;
-function load(){if(loaded)return;loaded=true;v.src=(innerWidth<=760||lite)?'/media/hero-640.mp4':'/media/hero-960.mp4';v.preload='auto';}
+function load(){if(loaded)return;loaded=true;v.src=(innerWidth<=760||lite)?'/media/film-540.mp4':'/media/film-1080.mp4';v.preload='auto';}
 function start(){load();var p=v.play();if(p&&p.catch)p.catch(function(){setTimeout(function(){if(v.paused)fp.hidden=false;},400);});}
 v.addEventListener('play',function(){fp.hidden=true;});
 v.addEventListener('playing',function(){v.classList.add('on');fc.hidden=false;});
