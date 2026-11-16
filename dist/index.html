@@ -444,6 +444,23 @@ button,input,select,textarea{font-family:inherit}
 .ct-more summary{cursor:pointer;font-size:calc(14px + var(--fs-s));color:rgba(244,241,234,.7)}
 .ct-more dl{margin-top:14px}
 
+
+/* 하단 고정 상담 띠: 첫 화면과 같은 짙은 청록 + 새벽 금빛 포인트 */
+.qbar{background:linear-gradient(90deg,#0A2422 0%,#0F3B37 55%,#14504B 100%)!important;border-top:2px solid #F2C879!important;box-shadow:0 -10px 34px rgba(6,23,22,.35)!important}
+.qbar::before{content:"";position:absolute;left:0;right:0;top:-2px;height:2px;background:linear-gradient(90deg,transparent,#FFE3A8,transparent);opacity:.9}
+.qbar-txt b{color:#fff!important}
+.qbar-txt b em{color:#FFE3A8!important;background:none!important}
+.qbar-txt small{color:rgba(244,241,234,.7)!important}
+.qbar-form select,.qbar-form input[type=text],.qbar-form input[type=tel]{border:2px solid rgba(123,196,184,.7)!important;background:#fff!important;color:var(--ink)!important}
+.qbar-form input[type=tel]{border-color:#F2C879!important}
+.qbar-form select:focus,.qbar-form input:focus{border-color:#FFE3A8!important;box-shadow:0 0 0 3px rgba(242,200,121,.35)!important}
+.qbar .btn-acc{background:linear-gradient(180deg,#FFD889,#F2B54A)!important;color:#2A1D05!important;border:0!important;font-weight:800;box-shadow:0 8px 20px -8px rgba(242,181,74,.8)}
+.qbar .btn-acc:hover{filter:brightness(1.05)}
+.qbar .ag{color:rgba(244,241,234,.75)!important}
+.qbar .ag input{accent-color:#F2C879!important}
+.qbar .pv-open{color:#9FD8CC!important}
+.qbar-mob .btn-line{background:rgba(255,255,255,.08)!important;border:1.5px solid rgba(255,255,255,.4)!important;color:#fff!important}
+@media (prefers-reduced-motion:no-preference){.qbar .btn-acc{animation:qglow 2.6s ease-in-out infinite}@keyframes qglow{50%{box-shadow:0 8px 26px -4px rgba(242,181,74,1)}}}
 /* 10 CONTACT — '희망의 문': 어두운 밤(청록)에서 문 안쪽으로 새는 새벽빛 */
 #contact.hope{position:relative;overflow:hidden;color:#F4F1EA;background:linear-gradient(180deg,#0A2422 0%,#0D3532 38%,#14504B 70%,#2B6B63 100%)}
 #contact.hope::before{content:"";position:absolute;left:50%;bottom:-30%;width:120%;height:90%;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 50%,rgba(255,226,170,.35),rgba(255,226,170,0) 70%);pointer-events:none}
