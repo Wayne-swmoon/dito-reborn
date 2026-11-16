@@ -413,6 +413,37 @@ button,input,select,textarea{font-family:inherit}
 .form-msg{grid-column:1/-1;font-size:calc(14px + var(--fs-s));border-radius:12px;padding:12px 14px;background:var(--accent-soft);color:var(--accent-ink)}
 .form-msg.err{background:#FDEEEE;color:#B42318}
 @media (max-width:860px){.contact{grid-template-columns:1fr}.form{grid-template-columns:1fr}}
+
+/* 첫 화면 빠른 상담: 연락처 하나만 */
+.h-in{min-width:0}
+.hq{margin-top:8px;width:100%;max-width:560px}
+.hq-t{font-size:calc(15px + var(--fs-m));color:rgba(255,255,255,.82)}.hq-t b{color:#fff}
+.hq-row{display:flex;gap:8px;margin-top:10px;padding:6px;border-radius:16px;background:rgba(255,255,255,.1);border:2px solid rgba(123,196,184,.75);box-shadow:0 0 0 6px rgba(123,196,184,.12)}
+.hq-row input{flex:1;min-width:0;width:0;height:52px;border:0;border-radius:11px;padding:0 16px;font-size:calc(18px + var(--fs-m));font-weight:600;background:#fff;color:var(--ink);outline:none}
+.hq-row input:focus{box-shadow:0 0 0 3px #7BC4B8}
+.hq-row .btn{height:52px;padding:0 22px;white-space:nowrap}
+.hq-sub{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px;font-size:calc(13px + var(--fs-s));color:rgba(255,255,255,.7)}
+.hq-sub input{accent-color:#7BC4B8;margin:0 6px 0 0;vertical-align:-2px;width:18px;height:18px}
+.hq-sub .pv-open,.hq-sub a{color:#9FD8CC}
+.hq-msg{margin-top:10px;padding:10px 14px;border-radius:10px;background:rgba(123,196,184,.18);color:#fff;font-size:calc(14px + var(--fs-s))}
+.hq-msg.err{background:rgba(224,115,92,.22)}
+@media (max-width:520px){.hq-row .btn{padding:0 14px}.hq-row input{font-size:17px;padding:0 12px}}
+/* 상담 신청: 필수 칸 강조, 나머지는 접기 */
+#contact .ff.need label{color:var(--accent-ink)}
+#contact .ff.need input{height:58px;border:2px solid var(--accent);background:#F1F8F6;font-size:calc(19px + var(--fs-m));font-weight:600;box-shadow:0 0 0 5px var(--accent-soft)}
+#contact .ff.need input::placeholder{color:#7A9A95;font-weight:400}
+#contact .need-ag{padding:12px 14px;border:2px solid var(--accent);border-radius:12px;background:#F1F8F6}
+#contact .need-ag input{width:20px;height:20px}
+#contact .form{grid-template-columns:1fr}
+#contact .form .btn{height:58px;font-size:calc(17px + var(--fs-m))}
+.more{border:1px dashed var(--line-2);border-radius:12px;padding:0 14px}
+.more summary{cursor:pointer;padding:14px 0;font-weight:600;font-size:calc(14.5px + var(--fs-s));color:var(--ink-2)}
+.more summary small{font-weight:400;color:var(--ink-3)}
+.more-in{display:grid;gap:14px;padding-bottom:16px}
+.ct-more{margin-top:18px;border-top:1px solid rgba(255,255,255,.14);padding-top:12px}
+.ct-more summary{cursor:pointer;font-size:calc(14px + var(--fs-s));color:rgba(244,241,234,.7)}
+.ct-more dl{margin-top:14px}
+
 /* 10 CONTACT — '희망의 문': 어두운 밤(청록)에서 문 안쪽으로 새는 새벽빛 */
 #contact.hope{position:relative;overflow:hidden;color:#F4F1EA;background:linear-gradient(180deg,#0A2422 0%,#0D3532 38%,#14504B 70%,#2B6B63 100%)}
 #contact.hope::before{content:"";position:absolute;left:50%;bottom:-30%;width:120%;height:90%;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 50%,rgba(255,226,170,.35),rgba(255,226,170,0) 70%);pointer-events:none}
@@ -630,11 +661,13 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
       <h1 class="h-title"><span class="h-loc">부산</span> <em>개인회생·파산</em><br>전문센터</h1>
       <p class="h-big">15년, <b>5,000</b>건+</p>
       <p class="h-lead">혼자 감당하기 벅찬 빚, 법원이 인정한 제도로 줄일 수 있습니다. 전담 변호사 및 담당자가 첫 상담부터 인가·면책까지 1:1로 맡고, 가족과 직장 모르게 조용히 진행하고, 원하시면 계신 곳까지 찾아갑니다.</p>
-      <div class="cta">
-      <a class="btn btn-acc" href="#contact">무료 상담 신청 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn h-glass" href="#check">1분 자가진단</a>
-    </div>
-      <div class="h-prog"><i><b id="lwBar"></b></i><span><b id="lwNo">01</b> / 06</span><button class="lw-pause" id="lwPause" type="button" aria-label="자동 넘김 멈춤"><svg viewBox="0 0 24 24" id="lwIcon"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button></div>
+      <form class="hq" id="heroQuick" novalidate>
+        <p class="hq-t">연락처만 남기세요. <b>매니저가 먼저 전화드립니다.</b></p>
+        <div class="hq-row"><input id="h-tel" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" aria-label="연락처"><button class="btn btn-acc" type="submit">상담 받기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+        <div class="hq-sub"><label><input type="checkbox" id="h-agree">개인정보 수집·이용 동의(필수)</label><button type="button" class="pv-open" data-pv-for="h-agree">내용보기</button><span>·</span><a href="#check">1분 자가진단</a></div>
+        <p class="hq-msg" id="hqMsg" role="status" hidden></p>
+      </form>
+<div class="h-prog"><i><b id="lwBar"></b></i><span><b id="lwNo">01</b> / 06</span><button class="lw-pause" id="lwPause" type="button" aria-label="자동 넘김 멈춤"><svg viewBox="0 0 24 24" id="lwIcon"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button></div>
     </div>
     <div class="h-pic lw-card">
       <div class="lw-imgs"><img src="/img/lawyers/shin-bogwan.webp?v=3" alt="신보관 변호사" width="373" height="560" decoding="async" fetchpriority="high" class="on"><img src="/img/lawyers/kang-jaesin.webp?v=3" alt="강재신 변호사" width="373" height="560" decoding="async" loading="lazy"><img src="/img/lawyers/yoo-minwook.webp?v=3" alt="유민욱 변호사" width="373" height="560" decoding="async" loading="lazy"><img src="/img/lawyers/choi-yunseok.webp?v=3" alt="최윤석 변호사" width="373" height="560" decoding="async" loading="lazy"><img src="/img/lawyers/woo-jongjin.webp?v=3" alt="우종진 변호사" width="373" height="560" decoding="async" loading="lazy"><img src="/img/lawyers/choi-wonjin.webp?v=3" alt="최원진 변호사" width="373" height="560" decoding="async" loading="lazy"></div>
@@ -876,25 +909,29 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
         </figure>
         <dl>
           <div><dt>전화</dt><dd>010-5094-3679<button class="copy" type="button" data-copy="010-5094-3679">복사</button></dd></div>
-          <div><dt>이메일</dt><dd class="sm">helprebornmylife@gmail.com<button class="copy" type="button" data-copy="helprebornmylife@gmail.com">복사</button></dd></div>
           <div><dt>상담 시간</dt><dd class="sm">평일 09:00 - 18:00 (주말·공휴일 휴무)</dd></div>
+        </dl>
+        <details class="ct-more"><summary>이메일 · 주소 · 공식 사무실 · 블로그</summary><dl><div><dt>이메일</dt><dd class="sm">helprebornmylife@gmail.com<button class="copy" type="button" data-copy="helprebornmylife@gmail.com">복사</button></dd></div>
+          
           <div><dt>주소</dt><dd class="sm">부산 연제구 법원남로9번길 10, 4층(거제동, 천우빌딩)</dd></div>
           <div><dt>공식 사무실</dt><dd class="sm">전화 051-715-6777 · 팩스 051-711-3882</dd></div>
           <div><dt>블로그</dt><dd class="sm"><a class="blog-link" href="https://blog.naver.com/kjhmj0603" target="_blank" rel="noopener">부산 개인회생·파산 새출발 노트 <span aria-hidden="true">↗</span></a><span class="blog-sub">회생·파산 궁금한 점을 쉬운 글로 풀어 둡니다</span></dd></div>
           <div><dt>출장 상담</dt><dd class="sm">원하는 곳까지 직접 찾아갑니다 · 출장비용 상담 시 협의</dd></div>
-        </dl>
+        </dl></details>
       </div>
       <div class="door"><div class="door-sun" aria-hidden="true"><i></i>NEW START<b>새 출발 상담 신청</b></div><form class="form" id="form" novalidate>
-        <p class="form-note">필수 항목은 이름, 연락처, 개인정보 동의뿐입니다. 나머지는 아는 만큼만 적어 주세요.</p>
-        <div class="ff"><label for="c-name"><i class="req">필수</i>이름</label><input id="c-name" autocomplete="name" placeholder="가명도 괜찮습니다"></div>
-        <div class="ff"><label for="c-tel"><i class="req">필수</i>연락처</label><input id="c-tel" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000"></div>
+        <p class="form-note">연락처만 남기시면 <b>김주휘 매니저가 24시간 안에 전화</b>드려요.</p>
+        <div class="ff full need"><label for="c-tel"><i class="req">필수</i>연락처</label><input id="c-tel" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000"></div>
+        <div class="ff full"><label for="c-name"><i class="opt-t">선택</i>이름</label><input id="c-name" autocomplete="name" placeholder="가명도 괜찮아요"></div>
+        <details class="ff full more"><summary>상황을 더 남기고 싶다면 <small>(선택)</small></summary><div class="more-in">
         <div class="ff full"><span class="lb"><i class="opt-t">선택</i>궁금한 제도</span>
           <div class="chips"><label><input type="checkbox" value="개인회생">개인회생</label><label><input type="checkbox" value="개인파산">개인파산</label><label><input type="checkbox" value="추심 중단">추심 중단</label><label><input type="checkbox" value="출장 상담">출장 상담</label><label><input type="checkbox" value="잘 모르겠어요">잘 모르겠어요</label></div></div>
         <div class="ff"><label for="c-debt"><i class="opt-t">선택</i>총 채무 규모</label><select id="c-debt"><option value="">선택 안 함</option><option>5천만 원 이하</option><option>5천만 ~ 1억 원</option><option>1억 ~ 5억 원</option><option>5억 원 이상</option></select></div>
         <div class="ff"><label for="c-time"><i class="opt-t">선택</i>통화 가능 시간</label><input id="c-time" placeholder="예) 평일 오후 2시 이후"></div>
         <div class="ff full"><label for="c-msg"><i class="opt-t">선택</i>상황 설명</label><textarea id="c-msg" placeholder="급한 일(압류, 독촉 등)이 있다면 적어 주세요"></textarea></div>
-        <div class="agree-row" style="grid-column:1/-1"><label class="agree" style="grid-column:auto"><input type="checkbox" id="c-agree"><span>개인정보 수집 및 이용 동의 (필수)</span></label><button type="button" class="pv-open" data-pv-for="c-agree">내용보기</button></div>
-        <button class="btn btn-acc" type="submit">상담 신청 보내기</button>
+        </div></details>
+        <div class="agree-row need-ag" style="grid-column:1/-1"><label class="agree" style="grid-column:auto"><input type="checkbox" id="c-agree"><span>개인정보 수집 및 이용 동의 (필수)</span></label><button type="button" class="pv-open" data-pv-for="c-agree">내용보기</button></div>
+        <button class="btn btn-acc" type="submit">연락처 남기고 상담 받기</button>
         <div class="form-msg" id="formMsg" hidden></div>
       </form></div>
     </div>
@@ -948,7 +985,7 @@ document.addEventListener('click',function(e){var o=e.target.closest('[data-pv-f
     <div class="qbar-txt"><b>채무 최대 <em>90% 탕감</em> 가능</b><small>지금 신청하시면 추심 대응 방법부터 안내해 드립니다</small></div>
     <form id="quickForm" class="qbar-form" novalidate>
       <select id="q-type" aria-label="상담 분야"><option>개인회생</option><option>개인파산</option><option>출장 상담</option><option>잘 모르겠어요</option></select>
-      <input id="q-name" type="text" placeholder="이름" aria-label="이름" autocomplete="name">
+      <input id="q-name" type="text" placeholder="이름(선택)" aria-label="이름(선택)" autocomplete="name">
       <input id="q-tel" type="tel" inputmode="numeric" placeholder="연락처" aria-label="연락처" autocomplete="tel">
       <div class="qbar-sub"><button class="btn btn-acc" type="submit">무료상담신청</button><span class="ag"><label><input type="checkbox" id="q-agree">개인정보 수집 동의(필수)</label><button type="button" class="pv-open" data-pv-for="q-agree">내용보기</button></span></div>
     </form>
@@ -964,12 +1001,11 @@ document.addEventListener('click',function(e){var o=e.target.closest('[data-pv-f
 (function(){var f=document.getElementById('quickForm');if(!f)return;var t=document.getElementById('toast'),tt;
 function say(m){t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true;},4200);}
 f.addEventListener('submit',function(e){e.preventDefault();var n=document.getElementById('q-name').value.trim(),p=document.getElementById('q-tel').value.trim();
- if(!n){say('이름을 입력해 주세요. 가명도 괜찮습니다.');return;}
  if(p.replace(/\D/g,'').length<9){say('연락처를 숫자로 입력해 주세요. 예) 010-1234-5678');return;}
  if(!document.getElementById('q-agree').checked){say('개인정보 수집·이용 동의가 필요합니다. 내용보기에서 확인하실 수 있어요.');return;}
  if(typeof window.rebornSubmit!=='function'){say('템플릿이라 접수 시스템은 아직 연결되지 않았습니다.');return;}
  var b=f.querySelector('button[type=submit]');b.disabled=true;b.textContent='보내는 중…';
- window.rebornSubmit({name:n,phone:p,interests:document.getElementById('q-type').value}).then(function(){say('상담 신청이 접수되었습니다. 전담 매니저가 곧 연락드리겠습니다.');f.reset();})
+ window.rebornSubmit({name:n||'(이름 미기재)',phone:p,interests:document.getElementById('q-type').value}).then(function(){say('상담 신청이 접수되었습니다. 전담 매니저가 곧 연락드리겠습니다.');f.reset();})
  .catch(function(err){console.error(err);say('접수 중 오류가 났습니다. 010-5094-3679로 전화 주세요.');}).then(function(){b.disabled=false;b.textContent='무료상담신청';});});})();
 </script>
 
@@ -1220,18 +1256,27 @@ rq();
 document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click',function(){var t=b.dataset.copy;
  function done(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1200);}
  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,function(){b.textContent=t;});else b.textContent=t;});});
+
+(function(){var f=document.getElementById('heroQuick');if(!f)return;var m=document.getElementById('hqMsg');
+function say(t,err){m.hidden=false;m.textContent=t;m.classList.toggle('err',!!err);}
+f.addEventListener('submit',function(e){e.preventDefault();var p=document.getElementById('h-tel').value.trim();
+ if(p.replace(/\D/g,'').length<9){say('연락처를 숫자로 적어 주세요. 예) 010-1234-5678',1);document.getElementById('h-tel').focus();return;}
+ if(!document.getElementById('h-agree').checked){say('개인정보 수집·이용 동의에 체크해 주세요.',1);return;}
+ if(typeof window.rebornSubmit!=='function'){say('잠시 후 다시 시도해 주세요. 급하시면 010-5094-3679',1);return;}
+ var b=f.querySelector('button[type=submit]');b.disabled=true;
+ window.rebornSubmit({name:'(이름 미기재)',phone:p,interests:'첫 화면 빠른 상담'}).then(function(){say('접수되었습니다. 전담 매니저가 곧 전화드립니다.');f.reset();if(window.gtag)gtag('event','hero_quick_submit');})
+ .catch(function(){say('접수 중 오류가 났습니다. 010-5094-3679로 전화 주세요.',1);}).then(function(){b.disabled=false;});});})();
 document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();var m=document.getElementById('formMsg');m.hidden=false;m.className='form-msg';
- if(!document.getElementById('c-name').value.trim()){m.classList.add('err');m.textContent='이름을 적어 주세요. 가명도 괜찮습니다.';return;}
  if(document.getElementById('c-tel').value.replace(/\D/g,'').length<9){m.classList.add('err');m.textContent='연락처를 숫자로 적어 주세요. 예) 010-1234-5678';return;}
  if(!document.getElementById('c-agree').checked){m.classList.add('err');m.textContent='상담 연락을 위해 개인정보 수집·이용 동의가 필요합니다.';return;}
- var data={name:document.getElementById('c-name').value.trim(),phone:document.getElementById('c-tel').value.trim(),
+ var data={name:document.getElementById('c-name').value.trim()||'(이름 미기재)',phone:document.getElementById('c-tel').value.trim(),
   interests:[].slice.call(document.querySelectorAll('#form .chips input:checked')).map(function(x){return x.value;}).join(', '),
   debtAmount:document.getElementById('c-debt').value,callTime:document.getElementById('c-time').value.trim(),message:document.getElementById('c-msg').value.trim()};
  if(typeof window.rebornSubmit!=='function'){m.textContent='템플릿이라 접수 시스템은 아직 연결되지 않았습니다. 실제 사이트에서는 이 단계에서 상담 신청이 접수됩니다.';return;}
  var btn=e.target.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='보내는 중…';m.textContent='상담 신청을 보내고 있습니다.';
  window.rebornSubmit(data).then(function(){m.textContent='상담 신청이 접수되었습니다. 전담 매니저가 곧 연락드리겠습니다.';e.target.reset();})
  .catch(function(err){console.error(err);m.classList.add('err');m.textContent='접수 중 오류가 났습니다. 잠시 후 다시 시도하시거나 010-5094-3679로 전화 주세요.';})
- .then(function(){btn.disabled=false;btn.textContent='상담 신청 보내기';});});
+ .then(function(){btn.disabled=false;btn.textContent='연락처 남기고 상담 받기';});});
 
 /* ---------- film: fetched only when it nears the screen ---------- */
 var v=document.getElementById('filmVideo'),fp=document.getElementById('filmPlay'),fc=document.getElementById('filmCtrl'),fs=document.getElementById('filmSound'),fpz=document.getElementById('filmPause');
