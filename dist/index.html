@@ -413,6 +413,41 @@ button,input,select,textarea{font-family:inherit}
 .form-msg{grid-column:1/-1;font-size:calc(14px + var(--fs-s));border-radius:12px;padding:12px 14px;background:var(--accent-soft);color:var(--accent-ink)}
 .form-msg.err{background:#FDEEEE;color:#B42318}
 @media (max-width:860px){.contact{grid-template-columns:1fr}.form{grid-template-columns:1fr}}
+/* 10 CONTACT — '희망의 문': 어두운 밤(청록)에서 문 안쪽으로 새는 새벽빛 */
+#contact.hope{position:relative;overflow:hidden;color:#F4F1EA;background:linear-gradient(180deg,#0A2422 0%,#0D3532 38%,#14504B 70%,#2B6B63 100%)}
+#contact.hope::before{content:"";position:absolute;left:50%;bottom:-30%;width:120%;height:90%;transform:translateX(-50%);background:radial-gradient(50% 50% at 50% 50%,rgba(255,226,170,.35),rgba(255,226,170,0) 70%);pointer-events:none}
+#contact.hope .wrap{position:relative}
+#contact.hope .sec-label{color:#F2C879}
+#contact.hope .sec-title{color:#fff}
+#contact.hope .sec-title em{font-style:normal;background:linear-gradient(90deg,#FFE3A8,#F2C879 60%,#9FD8CC);-webkit-background-clip:text;background-clip:text;color:transparent}
+#contact.hope .sec-desc{color:rgba(244,241,234,.72)}
+#contact.hope .mgr{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);backdrop-filter:blur(6px)}
+#contact.hope .mgr-pic::before{background:linear-gradient(180deg,rgba(242,200,121,.45),rgba(242,200,121,.08))}
+#contact.hope .mgr small{color:#F2C879}
+#contact.hope .mgr b{color:#fff}#contact.hope .mgr b span{color:rgba(244,241,234,.6)}
+#contact.hope .mgr p{color:rgba(244,241,234,.78)}
+#contact.hope .ct-info dt{color:rgba(244,241,234,.55)}
+#contact.hope .ct-info dd{color:#fff}
+#contact.hope .ct-info dd.sm{color:rgba(244,241,234,.82)}
+#contact.hope .copy{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22);color:#F4F1EA}
+#contact.hope .blog-link{color:#9FD8CC}#contact.hope .blog-sub{color:rgba(244,241,234,.55)}
+/* 문: 위가 둥근 아치, 안쪽에서 따뜻한 빛 */
+.door{position:relative}
+.door::before{content:"";position:absolute;inset:-26px -26px -8px;border-radius:999px 999px 34px 34px/300px 300px 34px 34px;border:1px solid rgba(255,226,170,.35);pointer-events:none}
+.door::after{content:"";position:absolute;left:8%;right:8%;bottom:-46px;height:60px;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%,rgba(255,226,170,.55),rgba(255,226,170,0) 70%);filter:blur(4px);pointer-events:none}
+#contact.hope .form{position:relative;z-index:1;border:0;border-radius:999px 999px 24px 24px/280px 280px 24px 24px;padding:clamp(96px,11vw,150px) clamp(22px,3.4vw,40px) clamp(24px,3vw,36px);color:var(--ink);
+ background:radial-gradient(70% 38% at 50% 0%,#FFF1D2 0%,rgba(255,241,210,0) 100%),linear-gradient(180deg,#FFFBF2 0%,#FFFFFF 46%);
+ box-shadow:0 0 0 1px rgba(255,226,170,.6),0 0 90px -10px rgba(255,214,150,.55),0 40px 80px -40px rgba(0,0,0,.6)}
+.door-sun{position:absolute;z-index:2;left:50%;top:clamp(26px,3.4vw,44px);transform:translateX(-50%);text-align:center;color:#8A6420;font-size:calc(13px + var(--fs-s));font-weight:600;letter-spacing:.08em;white-space:nowrap}
+.door-sun i{display:block;margin:0 auto 8px;width:46px;height:23px;border-radius:46px 46px 0 0;background:linear-gradient(180deg,#FFD27A,#F2B54A);box-shadow:0 -6px 24px rgba(242,181,74,.6)}
+.door-sun b{display:block;margin-top:2px;font-size:clamp(18px,1.7vw,22px);letter-spacing:-.02em;color:#3A2A0E}
+@media (prefers-reduced-motion:no-preference){
+ .door-sun i{animation:sunrise 4s ease-in-out infinite alternate}
+ @keyframes sunrise{from{transform:translateY(4px);box-shadow:0 -4px 16px rgba(242,181,74,.45)}to{transform:none;box-shadow:0 -10px 34px rgba(242,181,74,.75)}}
+ #contact.hope .form{animation:doorglow 5s ease-in-out infinite alternate}
+ @keyframes doorglow{to{box-shadow:0 0 0 1px rgba(255,226,170,.75),0 0 130px 0 rgba(255,214,150,.65),0 40px 80px -40px rgba(0,0,0,.6)}}}
+@media (max-width:860px){.door::before{inset:-14px -10px -6px}#contact.hope .form{border-radius:220px 220px 22px 22px/170px 170px 22px 22px;padding-top:138px}.door-sun{top:30px}}
+
 
 /* docs section */
 .dq-grid{margin-top:34px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -828,11 +863,11 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
   </div>
 </section>
 
-<section class="sec sec-gray" id="contact">
+<section class="sec hope" id="contact">
   <div class="wrap">
     <p class="sec-label"><span class="sec-no">10</span>CONTACT</p>
-    <h2 class="sec-title"><span class="ln"><span>무료 상담 신청</span></span></h2>
-    <p class="sec-desc">이름과 연락처만 남기셔도 됩니다. 급한 추심 대응과 탕감 가능액부터 확인해 드립니다.</p>
+    <h2 class="sec-title"><span class="ln"><span>새 출발의 문,</span></span><span class="ln"><span><em>여기서 열립니다</em></span></span></h2>
+    <p class="sec-desc">상담 신청은 이름과 연락처만 남기셔도 됩니다. 급한 추심 대응과 줄일 수 있는 빚의 규모부터 함께 확인합니다.</p>
     <div class="contact">
       <div class="ct-info">
         <figure class="mgr">
@@ -849,7 +884,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
           <div><dt>출장 상담</dt><dd class="sm">원하는 곳까지 직접 찾아갑니다 · 출장비용 상담 시 협의</dd></div>
         </dl>
       </div>
-      <form class="form" id="form" novalidate>
+      <div class="door"><div class="door-sun" aria-hidden="true"><i></i>NEW START<b>새 출발 상담 신청</b></div><form class="form" id="form" novalidate>
         <p class="form-note">필수 항목은 이름, 연락처, 개인정보 동의뿐입니다. 나머지는 아는 만큼만 적어 주세요.</p>
         <div class="ff"><label for="c-name"><i class="req">필수</i>이름</label><input id="c-name" autocomplete="name" placeholder="가명도 괜찮습니다"></div>
         <div class="ff"><label for="c-tel"><i class="req">필수</i>연락처</label><input id="c-tel" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000"></div>
@@ -861,7 +896,7 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
         <div class="agree-row" style="grid-column:1/-1"><label class="agree" style="grid-column:auto"><input type="checkbox" id="c-agree"><span>개인정보 수집 및 이용 동의 (필수)</span></label><button type="button" class="pv-open" data-pv-for="c-agree">내용보기</button></div>
         <button class="btn btn-acc" type="submit">상담 신청 보내기</button>
         <div class="form-msg" id="formMsg" hidden></div>
-      </form>
+      </form></div>
     </div>
   </div>
 </section>
