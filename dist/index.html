@@ -10,7 +10,9 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-NZK6WNP0TW');
+      /* 내부 방문 제외: 우리 쪽 기기에서 한 번 ?internal=1 로 들어오면 그 뒤 방문은 GA에서 '내부'로 표시(데이터 필터로 제외). ?internal=0 이면 해제 */
+      (function(){var k='rb_internal',v=null;try{var m=location.search.match(/[?&]internal=([01])/);if(m){m[1]==='1'?localStorage.setItem(k,'1'):localStorage.removeItem(k);}v=localStorage.getItem(k);}catch(e){}
+      gtag('config', 'G-NZK6WNP0TW', v?{traffic_type:'internal'}:{});})();
     </script>
 
     <meta name="naver-site-verification" content="c7b0ceb4de1a58bf2051e4104427e0c959875985" />
@@ -1023,7 +1025,6 @@ document.addEventListener('click',function(e){var o=e.target.closest('[data-pv-f
   </div>
 </div>
 <div class="fab" aria-label="바로가기">
-  <a class="fab-b fab-blog" href="https://blog.naver.com/kjhmj0603" target="_blank" rel="noopener" data-src-link="blog_fab"><span class="fab-ic" aria-hidden="true">N</span><span class="fab-t">블로그</span></a>
   <a class="fab-b fab-talk" href="#contact"><span class="fab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.6 6.2L5 21l4.2-2.3c.9.2 1.8.3 2.8.3 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></svg></span><span class="fab-t">상담하기</span></a>
 </div>
 <div class="toast" id="toast" role="status" hidden></div>

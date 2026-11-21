@@ -1,0 +1,10 @@
+/* 채무 안내서(/guide/) 하단 상담 띠 — scripts/inject-guide.py 가 넣음 */
+.rbcta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;align-items:center;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:#0D6E6B;color:#fff;box-shadow:0 -8px 24px -12px rgba(0,0,0,.35);font-family:inherit}
+.rbcta-t{flex:1;min-width:0;font-size:14px;line-height:1.35}
+.rbcta-t b{display:block;font-size:15px}
+.rbcta a{flex:none;display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 16px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap}
+.rbcta-tel{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.45)}
+.rbcta-go{background:#F2C879;color:#14302F}
+body.has-rbcta{padding-bottom:76px}
+@media (max-width:640px){.rbcta-t{display:none}.rbcta a{flex:1}}
+@media (min-width:900px){.rbcta{left:auto;right:24px;bottom:24px;border-radius:14px;max-width:560px}body.has-rbcta{padding-bottom:0}}
