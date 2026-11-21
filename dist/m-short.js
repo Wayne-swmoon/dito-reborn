@@ -7,7 +7,8 @@
   var folds=[].slice.call(main.querySelectorAll(':scope>[data-m="fold"]'));
   folds.forEach(function(sec,i){
     var inner=sec.querySelector('.wrap')||sec;inner.classList.add('m-fold-in');
-    var t=sec.getAttribute('data-m-title')||((sec.querySelector('.sec-title')||{}).textContent||'').replace(/\s+/g,' ').trim();
+    var st=sec.querySelector('.sec-title'),ln=st?[].map.call(st.querySelectorAll('.ln'),function(x){return x.textContent.trim();}):[];
+    var t=sec.getAttribute('data-m-title')||(ln.length?ln.join(' '):(st?st.textContent:'')).replace(/\s+/g,' ').trim();
     var sub=sec.getAttribute('data-m-sub')||'';
     var b=document.createElement('button');b.type='button';b.className='m-fold-btn';b.setAttribute('aria-expanded','false');
     b.innerHTML='<span><b></b>'+(sub?'<small></small>':'')+'</span><i aria-hidden="true"></i>';

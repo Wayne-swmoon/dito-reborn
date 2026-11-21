@@ -45,7 +45,7 @@
   main[data-mshort]>[data-m="fold"].m-open .m-fold-in{padding-bottom:40px}
   main[data-mshort]>[data-m="fold"] .m-fold-in>.sec-label,main[data-mshort]>[data-m="fold"] .m-fold-in>.sec-title{display:none!important}
   .m-fold-head,.m-only{display:block}
-  main[data-mshort]>.m-fold-head{padding:36px 0 6px;font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--accent-ink,#0D6E6B)}
+  main[data-mshort]>.m-fold-head{padding-inline:var(--m-gx,20px);padding:36px 0 6px;font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--accent-ink,#0D6E6B)}
 
   /* 하단 띠 */
   [data-m-bar]{transition:transform .3s ease}
