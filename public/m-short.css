@@ -1,0 +1,54 @@
+/* PC에서는 모듈이 넣은 장치를 숨김 */
+.m-fold-btn,.m-fold-head,.m-more,.m-only{display:none}
+/* 위즈웹 모듈: 모바일 짧은 길 (m-short) v1
+   PC는 그대로, 900px 이하에서만 동작.
+   쓰는 법(HTML 속성만):
+   - <main data-mshort>            : 켜기
+   - 섹션 data-m-order="1~20"      : 모바일 순서
+   - 섹션 data-m="fold"            : 제목만 보이고 '펼쳐 보기'로 열림 (더 알아보기 묶음)
+   - 섹션/요소 data-m-hide         : 모바일에서 숨김
+   - 요소 data-m-clamp="3"         : 글을 3줄로 줄이고 '더 보기'
+   - 하단 띠 data-m-bar            : 첫 화면·상담 칸이 보일 땐 숨김 */
+@media (max-width:900px){
+  main[data-mshort]{display:flex;flex-direction:column}
+  main[data-mshort]>*{order:50}
+  main[data-mshort]>[data-m-order="1"]{order:1}main[data-mshort]>[data-m-order="2"]{order:2}
+  main[data-mshort]>[data-m-order="3"]{order:3}main[data-mshort]>[data-m-order="4"]{order:4}
+  main[data-mshort]>[data-m-order="5"]{order:5}main[data-mshort]>[data-m-order="6"]{order:6}
+  main[data-mshort]>[data-m-order="7"]{order:7}main[data-mshort]>[data-m-order="8"]{order:8}
+  main[data-mshort]>[data-m-order="9"]{order:9}main[data-mshort]>[data-m-order="10"]{order:10}
+  main[data-mshort]>[data-m-order="11"]{order:11}main[data-mshort]>[data-m-order="12"]{order:12}
+  main[data-mshort]>[data-m-order="13"]{order:13}main[data-mshort]>[data-m-order="14"]{order:14}
+  main[data-mshort]>[data-m-order="15"]{order:15}main[data-mshort]>[data-m-order="20"]{order:20}
+
+  main[data-mshort] [data-m-hide],main[data-mshort]>[data-m-hide]{display:none!important}
+  main[data-mshort]>.sec{padding-block:52px}
+  main[data-mshort] .sec-title{font-size:clamp(26px,7.4vw,32px);margin-top:8px}
+  main[data-mshort] .sec-desc{margin-top:12px}
+
+  /* 글 줄이기 */
+  [data-m-clamp]{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:var(--mc,3);overflow:hidden}
+  [data-m-clamp].m-open{display:block;-webkit-line-clamp:unset}
+  .m-more{display:inline-block;margin-top:6px;padding:0;border:0;background:none;font:inherit;font-size:14px;font-weight:600;color:var(--accent-ink,#0D6E6B);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  .sec-dark .m-more,.hope .m-more{color:var(--accent-hi,#7BC4B8)}
+
+  /* 더 알아보기 묶음 (fold) */
+  main[data-mshort]>[data-m="fold"]{padding-block:0!important;background:#fff!important;border-top:1px solid var(--line,#E6E2D9)}
+  main[data-mshort]>[data-m="fold"] .m-fold-btn{display:flex;width:100%;align-items:center;justify-content:space-between;gap:12px;padding:20px 0;border:0;background:none;font:inherit;text-align:left;color:var(--ink,#111);cursor:pointer}
+  .m-fold-btn b{font-size:18px;font-weight:700;letter-spacing:-.02em}
+  .m-fold-btn small{display:block;margin-top:2px;font-size:13px;font-weight:500;color:var(--ink-3,#666)}
+  .m-fold-btn i{flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--line-2,#d8d3c8);position:relative}
+  .m-fold-btn i::before,.m-fold-btn i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;background:currentColor;transition:transform .2s}
+  .m-fold-btn i::after{transform:rotate(90deg)}
+  [data-m="fold"].m-open .m-fold-btn i::after{transform:rotate(0)}
+  main[data-mshort]>[data-m="fold"]:not(.m-open) .m-fold-in>:not(.m-fold-btn){display:none!important}
+  main[data-mshort]>[data-m="fold"].m-open .m-fold-in{padding-bottom:40px}
+  main[data-mshort]>[data-m="fold"] .m-fold-in>.sec-label,main[data-mshort]>[data-m="fold"] .m-fold-in>.sec-title{display:none!important}
+  .m-fold-head,.m-only{display:block}
+  main[data-mshort]>.m-fold-head{padding:36px 0 6px;font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--accent-ink,#0D6E6B)}
+
+  /* 하단 띠 */
+  [data-m-bar]{transition:transform .3s ease}
+  body.m-bar-off [data-m-bar]{transform:translateY(110%)}
+}
+@media (max-width:900px) and (prefers-reduced-motion:reduce){[data-m-bar]{transition:none}}
