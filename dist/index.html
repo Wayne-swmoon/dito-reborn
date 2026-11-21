@@ -711,9 +711,23 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
   main[data-mshort]>#visit{padding-top:0}
   main[data-mshort]>.sec:not([data-m="fold"]) .sec-label{display:none}
   main[data-mshort] .sec-title{margin-top:0}
+  /* 누르기 편하게: 손가락 크기(44px) 맞춤 */
+  .hq-sub{flex-wrap:wrap;row-gap:0}
+  .hq-sub label,#contact .agree{display:inline-flex;align-items:center;min-height:44px;gap:8px;cursor:pointer}
+  .hq-sub input[type=checkbox],#contact .agree input[type=checkbox]{width:22px;height:22px;margin:0;flex:none}
+  .hq-sub .pv-open,#contact .pv-open{min-height:44px;padding:0 8px}
+  .hq-sub>span{display:none}
+  .hq-sub a[href="#check"]{display:flex;align-items:center;justify-content:center;width:100%;min-height:46px;margin-top:6px;border:1.5px solid rgba(255,255,255,.35);border-radius:12px;font-weight:700;color:#fff;text-decoration:none}
+  .hq-sub a[href="#check"]::after{content:" →"}
+  .lw-tabs button{width:44px;height:44px}
+  .lw-pause{width:44px;height:44px}
+  #contact .copy{min-height:40px;padding:0 12px}
+  #contact .ct-more summary{min-height:44px;display:flex;align-items:center}
+  .ft a{display:inline-block;padding-block:8px}
+  .h-cap-k{font-size:13px}
 }
 </style>
-<link rel="stylesheet" href="/m-short.css?v=3">
+<link rel="stylesheet" href="/m-short.css?v=4">
 
 <header class="hd" id="hd">
   <div class="wrap">

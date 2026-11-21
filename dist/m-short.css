@@ -29,7 +29,7 @@
   /* 글 줄이기 */
   [data-m-clamp]{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:var(--mc,3);overflow:hidden}
   [data-m-clamp].m-open{display:block;-webkit-line-clamp:unset}
-  .m-more{display:inline-block;margin-top:6px;padding:0;border:0;background:none;font:inherit;font-size:14px;font-weight:600;color:var(--accent-ink,#0D6E6B);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  .m-more{display:inline-flex;align-items:center;min-height:44px;min-width:64px;margin-top:0;padding:0 12px 0 0;border:0;background:none;font:inherit;font-size:14px;font-weight:600;color:var(--accent-ink,#0D6E6B);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
   .sec-dark .m-more,.hope .m-more{color:var(--accent-hi,#7BC4B8)}
 
   /* 더 알아보기 묶음 (fold) */
