@@ -10,6 +10,8 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+      /* 블로그 배너(?b=글번호)·클립(?c=번호) 링크를 GA가 알아보도록 UTM으로 바꿔 둠 (11/25 — 전엔 '직접 방문'으로 잡힘) */
+      (function(){try{var q=new URLSearchParams(location.search),b=q.get('b'),c=q.get('c');if(!q.get('utm_source')&&(b||c)){q.set('utm_source',b?'naver_blog':'naver_clip');q.set('utm_medium',b?'blog':'clip');q.set('utm_campaign',(b?'post':'clip')+String(b||c).padStart(2,'0'));history.replaceState(null,'',location.pathname+'?'+q.toString()+location.hash);}}catch(e){}})();
       /* 내부 방문 제외: 우리 쪽 기기에서 한 번 ?internal=1 로 들어오면 그 뒤 방문은 GA에서 '내부'로 표시(데이터 필터로 제외). ?internal=0 이면 해제 */
       (function(){var k='rb_internal',v=null;try{var m=location.search.match(/[?&]internal=([01])/);if(m){m[1]==='1'?localStorage.setItem(k,'1'):localStorage.removeItem(k);}v=localStorage.getItem(k);}catch(e){}
       gtag('config', 'G-NZK6WNP0TW', v?{traffic_type:'internal'}:{});})();
