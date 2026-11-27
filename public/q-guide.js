@@ -1,4 +1,4 @@
-/* 위즈웹 모듈: 한 줄 질문 안내 (q-guide) v2 — 2026-11-27
+/* 위즈웹 모듈: 한 줄 질문 안내 (q-guide) v3 — 2026-11-27
    방문자가 질문 하나를 누르면 → 그 줄 아래로 미리 정한 짧은 답(대화처럼) + 안내서 쪽 링크 + 그 질문이 담긴 상담 접수(연락처만).
    AI가 즉석에서 답하지 않음: 답 문장은 모두 사이트 데이터(window.QGUIDE)에서만 나온다.
    붙이기: <div data-qguide></div> + window.QGUIDE = {...} + <script src="/q-guide.js" defer>
@@ -14,6 +14,9 @@
      fill                  {msg:"#c-msg"} — 질문을 누르면 사이트 본 상담 폼 '상황 설명' 칸에도 적어 둠(비었을 때만)
      track                 ["#form", ...] — 폼 단계 측정: form_start · form_try · form_leave(마지막 칸)
      open                  처음부터 펼쳐 둘 질문 번호(0부터) · 없으면 모두 닫힘
+     qa                    true 면 번호 대신 Q · 답 앞에 A (자주 묻는 질문 모양)
+     typing                true 면 답 전에 입력 중 점 0.5초 (기본 끔)
+     offset                질문을 눌렀을 때 위에서 띄울 거리(고정 머리 높이, 기본 84)
    GA 사건: qg_pick{q} · qg_link{q,href} · qg_submit{q} · form_start{form} · form_try{form} · form_leave{form,last}
 */
 (function(){
@@ -48,7 +51,7 @@
   var all=C.items.slice();if(C.free)all.push({q:C.free.q,free:true,ph:C.free.ph});
   var rows=all.map(function(it,i){var li=el('li','qg-row'+(it.free?' qg-free':''));li.style.setProperty('--i',i);
     var b=el('button','qg-q');b.type='button';b.setAttribute('aria-expanded','false');b.setAttribute('aria-controls',uid+'-p');
-    b.appendChild(el('span','qg-n',it.free?'+':String(i+1).padStart(2,'0')));b.appendChild(el('span','qg-qt',it.q));
+    b.appendChild(el('span','qg-n',C.qa?'Q':(it.free?'+':String(i+1).padStart(2,'0'))));b.appendChild(el('span','qg-qt',it.q));
     var ar=el('span','qg-ar');ar.setAttribute('aria-hidden','true');b.appendChild(ar);
     b.addEventListener('click',function(){toggle(i);});li.appendChild(b);list.appendChild(li);return li;});
 
@@ -56,6 +59,7 @@
   var pan=el('div','qg-pan');pan.id=uid+'-p';pan.hidden=true;pan.setAttribute('aria-live','polite');
   var bub=el('div','qg-bub');pan.appendChild(bub);
   if(C.who)bub.appendChild(el('p','qg-who',C.who));
+  if(C.qa)bub.appendChild(el('span','qg-alab','A'));
   var typing=el('p','qg-typing');typing.setAttribute('aria-hidden','true');typing.innerHTML='<i></i><i></i><i></i>';bub.appendChild(typing);
   var pa=el('p','qg-a'),pl=el('a','qg-link');bub.appendChild(pa);bub.appendChild(pl);
   var fm=el('form','qg-form');fm.noValidate=true;pan.appendChild(fm);
@@ -80,13 +84,13 @@
     hint.textContent=it.free?'':(F.hint||'');hint.hidden=!!it.free||!F.hint;
     ta.hidden=!it.free;if(it.free)ta.placeholder=it.ph||'';
     clearTimeout(tmr);
-    if(user&&!still){bub.classList.add('wait');tmr=setTimeout(function(){bub.classList.remove('wait');if(it.free)ta.focus();},520);}
+    if(user&&!still&&C.typing){bub.classList.add('wait');tmr=setTimeout(function(){bub.classList.remove('wait');if(it.free)ta.focus();},520);}
     else bub.classList.remove('wait');
     if(!user)return;
     if(C.fill&&C.fill.msg&&!it.free){var m=document.querySelector(C.fill.msg);
       if(m&&(!m.value||m.getAttribute('data-qg')===m.value)){m.value='궁금한 것: '+it.q;m.setAttribute('data-qg',m.value);}}
     ga('qg_pick',{q:it.q});
-    var r=rows[i].getBoundingClientRect();if(r.top<70||r.top>innerHeight*.55)rows[i].scrollIntoView({behavior:still?'auto':'smooth',block:'start'});
+    var r=rows[i].getBoundingClientRect(),top=C.offset||84;if(r.top<top||r.top>innerHeight*.55)window.scrollTo({top:r.top+scrollY-top,behavior:still?'auto':'smooth'});
   }
   pl.addEventListener('click',function(){if(cur>=0)ga('qg_link',{q:all[cur].q,href:pl.getAttribute('href')});});
   function say(t,err){msg.hidden=false;msg.textContent=t;msg.classList.toggle('err',!!err);}
