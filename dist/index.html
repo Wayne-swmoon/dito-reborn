@@ -731,6 +731,8 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
 }
 </style>
 <link rel="stylesheet" href="/m-short.css?v=4">
+<link rel="stylesheet" href="/q-guide.css?v=1">
+<style>.qg-sec{width:100%;padding-block:clamp(8px,2vw,24px) clamp(40px,5vw,64px)}@media (max-width:900px){main[data-mshort]>.qg-sec{padding-block:28px 8px}}</style>
 
 <header class="hd" id="hd">
   <div class="wrap">
@@ -779,6 +781,8 @@ html.font-dandi body,html.font-dandi button,html.font-dandi input,html.font-dand
   <p class="hero-foot">성공률은 2024~2025년 인가·면책 기준입니다.</p>
   </div>
 </section>
+
+<section class="wrap qg-sec" id="ask" data-m-order="2" aria-label="자주 묻는 질문 바로 보기"><div data-qguide></div></section>
 
 <section class="wrap" aria-label="사례 영상" data-m-order="4">
   <div class="film" id="film">
@@ -1467,5 +1471,30 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);}
 matchMedia('(min-width:901px)').addEventListener('change',function(m){if(m.matches)set(false);});})();
 </script>
 <script src="/m-short.js?v=2" defer></script>
+<script>
+/* 한 줄 질문 안내 (위즈웹 모듈 q-guide) — 리본 데이터. 답은 채무 안내서 내용 그대로, 금지 표현 없이 */
+window.QGUIDE={
+ title:"무엇이 궁금하세요?",
+ sub:"하나만 눌러 보세요. 짧은 답과 자세한 안내, 바로 상담까지 이어져요.",
+ tag:"질문 안내",
+ items:[
+  {q:"월급이 적은데 개인회생 되나요?",a:"월급이 법원이 정한 생계비보다 많고 꾸준하면 검토할 수 있어요. 2026년 1인 생계비는 월 1,538,543원이고, 월급에서 이 돈을 뺀 만큼을 3년 동안 나눠 갚는 구조예요.",href:"/guide/living-cost-2026/",label:"생계비와 변제금 보기"},
+  {q:"회생과 파산, 저는 어느 쪽인가요?",a:"먼저 소득을 봐요. 꾸준한 소득이 있으면 개인회생, 소득이 없거나 생계비에 못 미치면 개인파산을 먼저 검토해요.",href:"/guide/rehabilitation-or-bankruptcy/",label:"한눈에 비교하기"},
+  {q:"소득이 없거나 기초수급자예요",a:"갚을 소득이 없다면 개인파산·면책을 살펴봐요. 기초생활수급자·70세 이상·중증장애인은 조건이 맞으면 더 빨리 끝나는 신속면책 제도도 있어요.",href:"/guide/bankruptcy-process/",label:"개인파산 진행 순서 보기"},
+  {q:"독촉·압류는 언제 멈추나요?",a:"신청만으로 저절로 멈추지는 않고, 법원의 중지·금지명령이 나와야 멈춰요. 개인회생을 신청하면서 함께 신청할 수 있어요.",href:"/guide/stop-collection/",label:"멈추는 때 자세히 보기"},
+  {q:"가족·회사에 알려지나요?",a:"법원이 회사나 가족에게 따로 알리지는 않아요. 다만 급여 압류가 있었거나 회사 서류가 필요하면 알 수 있어서, 상담 때 먼저 정리해요.",href:"/guide/faq/",label:"자주 묻는 질문 보기"},
+  {q:"비용과 기간이 궁금해요",a:"법원에 내는 비용과 수임료가 있고, 수임료는 나눠 낼 수 있어요. 센터 안내 기준으로 개시 결정까지 3~6개월, 최종 인가까지 6개월~1년이 걸려요.",href:"/guide/cost-and-duration/",label:"비용·기간 보기"},
+  {q:"소득 없는 주부예요",a:"본인 소득이 전혀 없다면 보통 개인파산을 먼저 검토해요. 아르바이트·부업도 꾸준하고 증빙되면 소득으로 봐요.",href:"/guide/homemaker-no-income/",label:"주부 개인회생·파산 보기"},
+  {q:"울산·경남에 살아요",a:"부산·울산·경남에 살거나 일하면 부산회생법원에 신청할 수 있어요. 원하시면 계신 곳까지 찾아가 상담해요.",href:"/guide/which-court/",label:"어느 법원인지 보기"}
+ ],
+ free:{q:"직접 적을게요",ph:"예) 카드값이 밀려 독촉 전화가 와요"},
+ form:{hint:"연락처를 남기시면 이 질문으로 매니저가 먼저 전화드려요.",btn:"이 질문으로 상담",privacyFor:true,submit:"rebornSubmit",
+  ok:"접수되었습니다. 전담 매니저가 곧 전화드립니다.",err:"접수 중 오류가 났습니다. 010-5094-3679로 전화 주세요."},
+ fill:{msg:"#c-msg"},
+ track:["#form","#heroQuick","#quickForm"]
+};
+</script>
+<script src="/q-guide.js?v=1" defer></script>
+
 </body>
 </html>

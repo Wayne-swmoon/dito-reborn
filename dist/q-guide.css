@@ -1,0 +1,32 @@
+/* 위즈웹 모듈: 한 줄 질문 안내 (q-guide) v1 — 사용법은 q-guide.js 맨 위
+   색은 사이트 변수(--accent · --ink · --line …)를 따르고, 없으면 기본값. 누르는 곳 44px · 입력칸 16px */
+.qg{--qg-a:var(--accent,#0D6E6B);--qg-ink:var(--ink,#141716);--qg-ink3:var(--ink-3,#666C69);--qg-line:var(--line-2,#D6D8D5);--qg-bg:var(--bg-2,#F6F6F4);--qg-soft:var(--accent-soft,rgba(13,110,107,.12))}
+.qg-t{font-size:clamp(20px,2.2vw,26px);font-weight:700;letter-spacing:-.03em;color:var(--qg-ink);line-height:1.3}
+.qg-s{margin-top:6px;font-size:15px;color:var(--qg-ink3)}
+.qg-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.qg-chip{min-height:44px;padding:9px 16px;border:1px solid var(--qg-line);border-radius:999px;background:#fff;color:var(--qg-ink);font:inherit;font-size:15px;font-weight:500;line-height:1.35;text-align:left;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.qg-chip:hover{border-color:var(--qg-a)}
+.qg-chip[aria-pressed="true"]{background:var(--qg-a);border-color:var(--qg-a);color:#fff}
+.qg-free{border-style:dashed}
+.qg-pan{margin-top:14px;padding:20px;border-radius:14px;background:var(--qg-bg);border:1px solid var(--qg-line)}
+.qg-q{font-size:17px;font-weight:700;color:var(--qg-ink)}
+.qg-a{max-width:68ch;margin-top:6px;font-size:16px;line-height:1.65;color:var(--qg-ink)}
+.qg-link{display:inline-flex;align-items:center;min-height:44px;margin-top:4px;font-size:15px;font-weight:600;color:var(--qg-a);text-decoration:underline;text-underline-offset:3px}
+.qg-form{max-width:640px;margin-top:10px;padding-top:14px;border-top:1px solid var(--qg-line)}
+.qg-hint{font-size:15px;color:var(--qg-ink);margin-bottom:8px}
+.qg-ta{width:100%;margin-bottom:8px;padding:10px 12px;border:1px solid var(--qg-line);border-radius:10px;font:inherit;font-size:16px;resize:vertical;background:#fff}
+.qg-row{display:flex;gap:8px}
+.qg-tel{flex:1;min-width:0;min-height:48px;padding:0 14px;border:1px solid var(--qg-line);border-radius:10px;font:inherit;font-size:16px;background:#fff}
+.qg-btn{min-height:48px;padding:0 20px;border:0;border-radius:10px;background:var(--qg-a);color:#fff;font:inherit;font-size:16px;font-weight:700;cursor:pointer;white-space:nowrap}
+.qg-btn:disabled{opacity:.6}
+.qg-ag{display:flex;align-items:center;flex-wrap:wrap;gap:2px 6px;margin-top:8px;font-size:14px;color:var(--qg-ink3)}
+.qg-ag label{display:inline-flex;align-items:center;gap:6px;min-height:44px;cursor:pointer}
+.qg-ag input{width:20px;height:20px;accent-color:var(--qg-a)}
+.qg-ag .pv-open{min-height:44px}
+.qg-msg{margin-top:6px;font-size:15px;color:var(--qg-a);font-weight:600}
+.qg-msg.err{color:#C0392B}
+@media (max-width:600px){
+  .qg-chip{flex:1 1 calc(50% - 4px);font-size:15px;padding:9px 12px}
+  .qg-free{flex-basis:100%}
+  .qg-pan{padding:16px}
+}
